@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardware-Signed Truth for Carbon and AI Compute · Mālama Labs</title>
+<meta name="description" content="Mālama Labs is the hardware-signed trust anchor for environmental data. Carbon dMRV proven on Cardano. AI compute monitoring scaling now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=18">
+</head>
+<body>
+<nav class="top">
+  <a href="index.html" class="brand">
+    <div class="brand-mark"></div>
+    Mālama Labs
+  </a>
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="company/">Company ▾</a>
+      <div class="nav-dropdown">
+        <a href="company/">About<span>Mission and origin</span></a>
+        <a href="team/">Team<span>Founders and operators</span></a>
+        <a href="careers/">Careers<span>Open roles</span></a>
+        <a href="contact/">Contact<span>Schedule a call</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="platform/">Platform ▾</a>
+      <div class="nav-dropdown">
+        <a href="platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
+        <a href="ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
+        <a href="platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
+        <a href="methodology/">Methodology<span>From sensor to proof</span></a>
+        <a href="technology/">Technology<span>Six-layer architecture</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="projects/">Projects ▾</a>
+      <div class="nav-dropdown">
+        <a href="projects/">All Projects<span>Active deployments</span></a>
+        <a href="idaho/">Idaho ERW Pilot<span>Enhanced rock weathering</span></a>
+        <a href="stake/">Hex Nodes<span>Network participation</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="investors/">Investors ▾</a>
+      <div class="nav-dropdown">
+        <a href="investors/">Investor Overview<span>Round and terms</span></a>
+        <a href="advisors/">Advisory Board<span>Board portal</span></a>
+        <a href="presentations/">Presentations<span>Deck and materials</span></a>
+        <a href="/#hex-launch-updates">Hex launchpad ↗<span>Coming soon · get updates</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="resources/">Resources ▾</a>
+      <div class="nav-dropdown">
+        <a href="resources/">Knowledge Base<span>Docs and primers</span></a>
+        <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>aipower.fyi · live data</span></a>
+        <a href="blog/">Blog<span>Updates and analysis</span></a>
+        <a href="faq/">FAQ<span>Common questions</span></a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="contact/" class="nav-cta-secondary">Schedule a Call</a>
+    <a href="/#hex-launch-updates" class="nav-cta">Get updates →</a>
+  </div>
+<button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-drawer').classList.add('open');document.getElementById('mobile-drawer-overlay').classList.add('open');document.body.style.overflow='hidden'">☰</button>
+</nav>
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="document.getElementById('mobile-drawer').classList.remove('open');this.classList.remove('open');document.body.style.overflow=''"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+  <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+  <h4>Company</h4>
+  <a href="/company/">About</a>
+  <a href="/team/">Team</a>
+  <a href="/careers/">Careers</a>
+  <a href="/contact/">Contact</a>
+  <h4>Platform</h4>
+  <a href="/platform/">Platform Overview</a>
+  <a href="/ai-compute/">AI Compute Monitoring</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/technology/">Technology</a>
+  <h4>Projects</h4>
+  <a href="/projects/">All Projects</a>
+  <a href="/idaho/">Idaho ERW Pilot</a>
+  <a href="/stake/">Hex Nodes</a>
+  <h4>Investors</h4>
+  <a href="/investors/">Investor Overview</a>
+  <a href="/advisors/">Advisory Board</a>
+  <a href="/presentations/">Presentations</a>
+  <h4>Resources</h4>
+  <a href="/resources/">Knowledge Base</a>
+  <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
+  <a href="/blog/">Blog</a>
+  <a href="/faq/">FAQ</a>
+  <a href="/contact/">Schedule a Call</a>
+  <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
+</aside>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="min-height: 92vh; padding-top: 160px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: center;">
+  <div>
+    <div class="eyebrow"><span class="live-dot"></span>Hardware-Verified · Cardano · Hex Node Network</div>
+    <h1 style="font-family: var(--serif); font-size: clamp(48px, 6.8vw, 104px); font-weight: 400; line-height: 0.92; letter-spacing: -0.035em; margin-bottom: 32px;">
+      Estimation is the start.<br><em style="font-style: italic; color: var(--accent); font-weight: 300;">Sensors are the truth.</em>
+    </h1>
+    <p style="font-size: 19px; line-height: 1.6; color: var(--ink-dim); max-width: 580px; margin-bottom: 24px;">
+      Mālama Labs is the hardware-signed trust anchor for environmental data. We proved the pipeline in carbon. Now we are measuring the largest unverified emissions source in the world: AI compute.
+    </p>
+    <p style="font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--ink); border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 44px; max-width: 560px;">
+      According to the <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-style: normal; text-decoration: underline; text-underline-offset: 3px;">Federation of American Scientists</a>, Meta's actual data center emissions may be up to 19,000× higher than market-based reporting suggests. Software cannot fix that. Hardware-signed truth can.
+    </p>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+      <a href="stake/" class="btn btn-primary">Join our waitlist ↗</a>
+      <a href="#hex-launch-updates" class="btn btn-ghost">Get updates →</a>
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
+      <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dim);">Live AI Energy Data ↗</a>
+      <span style="color: var(--line-bright);">|</span>
+      <a href="#proof" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dim);">On-Chain Proof</a>
+    </div>
+  </div>
+
+  <div style="background: var(--bg-card); border: 1px solid var(--line-bright); border-radius: 4px; padding: 28px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent);"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); gap: 16px;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 6px;">Live AI Energy Data ↗</div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 8px;">On-Chain Proof</div>
+        <span style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint);">AI Energy Data · 30 Models</span>
+      </div>
+      <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none;">aipower.fyi</a>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-bottom: 24px;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Video Gen Cost</div>
+        <div data-aipower="video_gen" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">944<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">Wh</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">GPT-o3 Per Prompt</div>
+        <div data-aipower="gpt_o3" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">39.2<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">Wh</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Water Per Video</div>
+        <div data-aipower="water" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">1.0<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">L</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Efficiency Gap</div>
+        <div data-aipower="gap" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">1.88M<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">×</span></div>
+      </div>
+    </div>
+    <p style="font-size: 11px; line-height: 1.55; color: var(--ink-faint); margin: 0 0 4px 0;">The AI Energy dashboard at <a href="https://aipower.fyi" target="_blank" rel="noopener" style="color: var(--accent-dim); text-decoration: underline; text-underline-offset: 2px;">aipower.fyi</a> is an open-source project of the Mālama Foundation. Explore there, or visit <a href="https://malamafoundation.org" target="_blank" rel="noopener" style="color: var(--accent-dim); text-decoration: underline; text-underline-offset: 2px;">MalamaFoundation.org</a> for our non-profit work.</p>
+    <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; padding-top: 16px; border-top: 1px dashed var(--line); display: flex; justify-content: space-between;">
+      <span>Estimation tier</span>
+      <span>Sensors next</span>
+    </div>
+  </div>
+
+  <!-- LIVE SENSOR CARD: Dallas Pilot Node #1 hardware-signed reading -->
+  <div style="background: var(--bg-card); border: 1px solid var(--accent); border-radius: 4px; padding: 28px; position: relative; overflow: hidden; margin-top: 20px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent);"></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px dashed var(--line);">
+      <span style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">
+        <span class="live-pulse" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: middle; box-shadow: 0 0 8px var(--accent);"></span>
+        Live Sensor Data · Dallas Pilot Node #1
+      </span>
+      <span style="font-family: var(--mono); font-size: 11px; color: var(--accent);" data-sensor="source">Pilot stream</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-bottom: 24px;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Soil Temperature</div>
+        <div data-sensor="soil_c" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">°C</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Air Temperature</div>
+        <div data-sensor="air_c" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">°C</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Humidity</div>
+        <div data-sensor="humidity" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">%</span></div>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Battery</div>
+        <div data-sensor="battery" style="font-family: var(--serif); font-size: 32px; line-height: 1; color: var(--ink);">—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">%</span></div>
+      </div>
+    </div>
+    <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; padding-top: 16px; border-top: 1px dashed var(--line); display: flex; justify-content: space-between;">
+      <span>Hardware signed · ECDSA</span>
+      <span data-sensor="ts">…</span>
+    </div>
+    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line);">
+      <a href="#what-is" style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); text-decoration: none;">Orientation · 60 seconds →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS MALAMA LABS · ORIENTATION VIDEO -->
+<section id="what-is" style="padding-top: 80px; padding-bottom: 80px;">
+  <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto;">
+    <div>
+      <div class="section-num" style="margin-bottom: 16px;">Orientation · 60 seconds</div>
+      <h2 style="font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px;">What is <em style="font-style: italic; color: var(--accent); font-weight: 300;">Mālama Labs?</em></h2>
+      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 20px;">Estimation broke environmental markets. Carbon credits get verified once a year by humans walking transects. AI's emissions are reported via spreadsheets and renewable energy credits. Voluntary registries are losing buyer trust faster than they can issue credits.</p>
+      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 24px;">Mālama replaces estimation with hardware-signed sensors. Each reading is cryptographically signed at the device, anchored on chain, and verifiable by anyone. One protocol. Two product lines. Carbon proved it works. AI compute scales it.</p>
+      <a href="#explainer-video" style="display: inline-block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); padding-top: 20px; border-top: 1px dashed var(--line-bright); text-decoration: none;">
+        Watch the 60-second explainer →
+      </a>
+    </div>
+    <div id="explainer-video" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; border: 1px solid var(--line-bright); background: var(--bg-elev); scroll-margin-top: 100px;">
+      <iframe
+        src="https://www.youtube.com/embed/WXGZoGSojj4?rel=0&modestbranding=1"
+        title="What is Mālama Labs"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- TWO PRODUCT LINES -->
+<section id="lines">
+  <div class="section-num">01 · Two Product Lines, One Pipeline</div>
+  <h2 class="section-title">Carbon proved it. <em>AI compute scales it.</em></h2>
+  <p class="section-lede">The same hardware-signed verification pipeline that produced 2,786+ on-chain SaveCards from a soil sensor in Dallas now extends to rack-level power sensing inside AI data centers. One protocol. One Hex Node network. Two upstream data streams. One coherent answer to the environmental measurement crisis.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--accent); border-radius: 4px; padding: 40px; position: relative;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;">PROVEN · LIVE SINCE JUNE 2024</div>
+      <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px; line-height: 1.1;">Carbon dMRV</h3>
+      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Genesis 300 Pilot Node #1 (Dallas) emitted hourly ECDSA-signed environmental SaveCards to Cardano preprod since June 2024. The full credit lineage pipeline (sensor → oracle → biochar event → carbon credit) is operational on preprod with 2,786+ records and zero gaps. Cardano mainnet deployment follows final smart contract audit (target Q2 2026).</p>
+      <ul style="list-style: none; color: var(--ink-dim); font-size: 13px; line-height: 1.9; margin-bottom: 24px;">
+        <li>· Soil, atmospheric, and enhanced rock weathering telemetry</li>
+        <li>· LCO₂ pre-finance, VCO₂ verified credits</li>
+        <li>· Registered with Puro.earth and Isometric for data validation</li>
+        <li>· 24+ months continuous operation</li>
+      </ul>
+      <a href="platform/#dmrv" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);">Carbon dMRV detail →</a>
+    </div>
+
+    <div style="background: var(--bg-elev); border: 1px solid #4a90e2; border-radius: 4px; padding: 40px; position: relative;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a90e2; margin-bottom: 16px;">SCALING · Q2 2026 PILOTS</div>
+      <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px; line-height: 1.1;">AI Compute Monitoring</h3>
+      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Rack-level power sensors deployed inside AI data centers measure exact electrical load per inference and training cycle. Same hardware-signed pipeline. Same Cardano anchor. Same Hex Node validators. Verified scope 1 emissions data the data center cannot omit.</p>
+      <ul style="list-style: none; color: var(--ink-dim); font-size: 13px; line-height: 1.9; margin-bottom: 24px;">
+        <li>· Direct power sensing per inference</li>
+        <li>· Water cooling attribution and evaporation tracking</li>
+        <li>· Real-time grid carbon intensity sync</li>
+        <li>· SEC climate disclosure and EU CSRD ready</li>
+        <li>· Enables scope 3 emissions calculation for AI-consuming businesses</li>
+      </ul>
+      <a href="ai-compute/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #4a90e2;">AI compute detail →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE PROOF -->
+<section id="proof">
+  <div class="section-num">02 · Live Proof</div>
+  <h2 class="section-title">2,786 SaveCards. <em>Preprod.</em> Right now.</h2>
+  <p class="section-lede">The Dallas pilot is the technology demonstration that proved Mālama's hardware-signing pipeline. Every SaveCard was signed by a device whose private key was burned in at manufacture. The same pipeline now scales to AI compute.</p>
+
+  <div class="proof-card" style="background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-elev) 100%); border: 1px solid var(--line-bright); border-radius: 6px; padding: 56px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);"></div>
+
+    <div class="proof-stats-grid">
+      <div class="proof-stat">
+        <div class="proof-stat-label">SaveCards Minted</div>
+        <div class="proof-stat-num" id="stat-savecards">2,786</div>
+        <div class="proof-stat-sub">Hardware-signed · Yes</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-label">Field Events</div>
+        <div class="proof-stat-num" id="stat-events">3</div>
+        <div class="proof-stat-sub">Biochar · Soil Test</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-label">Genesis Date</div>
+        <div class="proof-stat-num">JUN '24</div>
+        <div class="proof-stat-sub">Continuous since June 2024</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-label">Latest Block</div>
+        <div class="proof-stat-num" id="stat-block">4,561,635</div>
+        <div class="proof-stat-sub" id="stat-age">Updated live</div>
+      </div>
+    </div>
+
+    <div style="border-top: 1px dashed var(--line-bright); padding-top: 36px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 12px;">
+        <h4 style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); font-weight: 500;">Recent Transactions <span id="net-label" style="color: var(--ink-faint); margin-left: 8px;">· Preprod</span></h4>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div id="network-toggle" style="display: inline-flex; background: var(--bg); border: 1px solid var(--line-bright); border-radius: 100px; padding: 2px;">
+            <button data-net="preprod" class="net-btn active" style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 12px; border: none; background: var(--accent); color: var(--bg); border-radius: 100px; cursor: pointer;">Preprod</button>
+            <button data-net="mainnet" class="net-btn" style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 12px; border: none; background: transparent; color: var(--ink-faint); border-radius: 100px; cursor: pointer;">Mainnet</button>
+          </div>
+          <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-faint);" id="feed-status">● Auto-refresh 30s</span>
+        </div>
+      </div>
+      <p style="font-family: var(--mono); font-size: 10px; color: var(--ink-faint); letter-spacing: 0.05em; margin-bottom: 20px; line-height: 1.6;">Sensor stream <span style="color: var(--accent);">live today</span> on preprod. Cardano mainnet SaveCard minting paused pending audit completion and mainnet migration (target Q2 2026). <strong style="color: var(--ink); font-weight: 500;">Recent transactions</strong> below are the latest involving the Mālama preprod wallet from our indexers. Each row opens in Cardanoscan. If the feed is empty or indexers are slow, we show the last list loaded in your browser as a fallback.</p>
+      <div id="tx-list">
+        <div style="display: grid; grid-template-columns: 1fr; padding: 16px 0; font-family: var(--mono); font-size: 12px; color: var(--ink-faint);">
+          Loading recent transactions…
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MEASUREMENT CRISIS -->
+<section id="crisis">
+  <div class="section-num">03 · The Measurement Crisis</div>
+  <h2 class="section-title">Beyond estimation. <em>The 19,000× problem.</em></h2>
+  <p class="section-lede">While the AI industry accelerates, its environmental footprint remains obscured by voluntary disclosures and market-based accounting. The <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Federation of American Scientists</a> found that Meta's actual emissions may be up to 19,000× higher than market-based reports suggest. Software cannot fix the gap between what is reported and what is real. Hardware-signed truth can.</p>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">DIRECT POWER SENSING</div>
+      <h3>Per-Inference Wattage</h3>
+      <p>Rack-level sensors measure exact electrical load per inference and training cycle. Not market-based estimates. Not vendor self-reports. Direct measurement at the source.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">WATER ATTRIBUTION</div>
+      <h3>Cooling and Evaporation</h3>
+      <p>Hardware-linked tracking of cooling energy and evaporation rates. A single video generation prompt can consume up to 1 liter of water for cooling alone.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">GRID INTENSITY SYNC</div>
+      <h3>Real Carbon, Not Average</h3>
+      <p>Cross-references real-time grid carbon intensity with sensor-verified energy use. The same kilowatt-hour at different times and locations carries radically different emissions weight.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <a href="ai-compute/" class="btn btn-primary">AI Compute Product →</a>
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-left: 12px;">Live Dashboard ↗</a>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="section-num">04 · The Stack</div>
+  <h2 class="section-title">Four layers visible. <em>Six layers</em> in the protocol.</h2>
+  <p class="section-lede">The four-layer summary below collapses Mālama's full six-layer architecture (Physical, Verification, Oracle, Blockchain, Reward Scaling, Redemption) into the parts that matter. Both carbon SaveCards and AI compute packets flow through the same pipeline. Full architecture: <a href="technology/" style="color: var(--accent);">technology page →</a></p>
+
+  <div class="layer-stack">
+    <div class="layer-row">
+      <div class="layer-num">01</div>
+      <div class="layer-name">Hardware</div>
+      <div class="layer-tag">The device</div>
+      <div class="layer-desc">Two hardware classes, one signing architecture. Genesis 300 outdoor nodes for environmental sites. Rack-mount AI Power Sensors for data center deployment. Both carry ATECC608B secure enclaves with private keys burned in at manufacture.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">02</div>
+      <div class="layer-name">Trust</div>
+      <div class="layer-tag">The signature</div>
+      <div class="layer-desc">ECDSA/SHA-256 device signing. Every reading, whether soil temperature or rack-level wattage, is signed by the device private key before it leaves hardware. Tamper-evidence is cryptographic, not procedural.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">03</div>
+      <div class="layer-name">Blockchain</div>
+      <div class="layer-tag">The anchor</div>
+      <div class="layer-desc">Dual-chain by design. Cardano anchors SaveCards via CIP-25/CIP-68 datum-metadata for archival custody and registry-grade auditability. Base handles execution, rewards, claims, and EVM market activity. LayerZero OApp coordinates state across both. Cardano mainnet migration post-audit Q2 2026.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">04</div>
+      <div class="layer-name">Hex Nodes</div>
+      <div class="layer-tag">The validators</div>
+      <div class="layer-desc">Decentralized validator network running Proof-of-Truth consensus. Each Hex Node operates within an H3 geographic cell governed by an NFT-HEX rights object. Nodes validate both carbon SaveCards and AI compute packets. Phase 1 Hex Node launchpad coming soon.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ICP -->
+<section id="who">
+  <div class="section-num">05 · Who It's For</div>
+  <h2 class="section-title">Three audiences. <em>One data layer.</em></h2>
+
+  <div class="card-grid-3">
+    <div class="feature-card">
+      <div class="num">01 / AI OPERATORS</div>
+      <h3>AI Compute & Data Center Teams</h3>
+      <p>Hardware-verified scope 1 emissions data ready for SEC climate disclosure, EU CSRD, and SBTi reporting. Support for scope 3 calculations for businesses using AI compute. Stop estimating. Start measuring at the rack.</p>
+      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">Scope 1:</strong> Direct measurement of electrical load per inference.<br><strong style="color: var(--ink-dim); font-weight: 500;">Scope 3 support:</strong> Hardware data enables businesses using AI services to calculate upstream emissions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">02 / DEVELOPERS</div>
+      <h3>Carbon Project Developers</h3>
+      <p>Deploy a Genesis 300 node. Receive LCO₂ pre-finance within 90 days. MRV cost as low as $2 per ton of CO₂e verified, compared to $20,000–$50,000 for traditional audits. Sub-acre deployments viable.</p>
+      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">How it works:</strong> Hardware signing + on-chain proof eliminates manual sampling cost. Continuous verification beats annual walk-throughs.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">03 / NODE OPERATORS</div>
+      <h3>Hex Node Validators</h3>
+      <p>Run a Hex Node in an H3 cell. Validate both carbon SaveCards and AI compute packets. Earn MLMA verification yield, uptime multipliers, and governance weight in the Mālama DAO.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA: Hex launch waitlist -->
+<div id="hex-launch-updates" style="margin: 80px 40px 0; max-width: 1400px; margin-left: auto; margin-right: auto; padding: 80px 56px; background: var(--bg-card); border: 1px solid var(--line-bright); border-radius: 6px; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(196,240,97,0.08), transparent 70%); pointer-events: none;"></div>
+  <h2 style="font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 400; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 16px; position: relative;">Phase 1 Hex Node launchpad</h2>
+  <p style="font-family: var(--serif); font-size: clamp(22px, 2.5vw, 28px); font-weight: 400; color: var(--ink); margin-bottom: 16px; position: relative;">Own the infrastructure of truth.</p>
+  <p style="font-size: 17px; color: var(--ink-dim); max-width: 640px; margin: 0 auto 28px; position: relative;">Each Hex Node validates carbon SaveCards and AI compute packets across the Mālama network. Get updates—learn first when we open in the coming days.</p>
+  <div style="margin-bottom: 28px; position: relative;">
+    <a href="stake/" class="btn btn-primary">Join our waitlist ↗</a>
+  </div>
+  <form id="hex-launch-form" class="hex-launch-form" novalidate>
+    <input type="text" name="name" autocomplete="name" placeholder="Name" required aria-label="Name" />
+    <input type="email" name="email" autocomplete="email" placeholder="Email" required aria-label="Email" />
+    <button type="submit" class="btn btn-primary">Get updates</button>
+  </form>
+  <p id="hex-launch-form-status" class="hex-launch-form-status" hidden role="status" style="margin-top: 20px; font-size: 14px; color: var(--accent-dim); position: relative;"></p>
+  <div style="display: flex; gap: 16px; justify-content: center; position: relative; flex-wrap: wrap; margin-top: 24px;">
+    <a href="contact/" class="btn btn-ghost">Schedule a Call</a>
+  </div>
+</div>
+<script>
+(function () {
+  var form = document.getElementById('hex-launch-form');
+  var statusEl = document.getElementById('hex-launch-form-status');
+  if (!form || !statusEl) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fd = new FormData(form);
+    var name = (fd.get('name') || '').toString().trim();
+    var email = (fd.get('email') || '').toString().trim();
+    statusEl.hidden = false;
+    statusEl.textContent = 'Sending…';
+    fetch('/api/launch-updates', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name: name, email: email, source: 'hex-launch-updates' }),
+    })
+      .then(function (r) {
+        return r.json().then(function (data) {
+          return { ok: r.ok, status: r.status, data: data };
+        });
+      })
+      .then(function (_ref) {
+        if (_ref.ok && _ref.data && _ref.data.ok) {
+          statusEl.textContent = "You're on the list. We'll email you when the launchpad opens.";
+          form.reset();
+        } else if (_ref.status === 503) {
+          statusEl.textContent =
+            'Signups are finishing setup. Email tyler@malamalabs.com with subject "Hex launch updates" to get on the list.';
+        } else {
+          statusEl.textContent =
+            (_ref.data && _ref.data.error) || 'Something went wrong. Email tyler@malamalabs.com.';
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = 'Network error. Email tyler@malamalabs.com to get updates.';
+      });
+  });
+})();
+</script>
+
+<script>
+// Unified live data via Vercel Edge Function /api/live
+let currentNetwork = 'preprod';
+let pollTimer = null;
+
+function fmt(n) {
+  if (n == null) return '0';
+  return Number(n).toLocaleString();
+}
+
+function relAge(ts) {
+  if (!ts) return '';
+  const ms = typeof ts === 'number' ? (ts < 1e12 ? ts * 1000 : ts) : new Date(ts).getTime();
+  const diff = (Date.now() - ms) / 1000;
+  if (diff < 0) return 'just now';
+  if (diff < 60) return Math.floor(diff) + 's ago';
+  if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+  return Math.floor(diff / 86400) + 'd ago';
+}
+
+async function loadLive() {
+  const status = document.getElementById('feed-status');
+  const TX_FEED_CACHE_KEY = 'mlma_tx_feed_v1';
+  function txFeedRead(network) {
+    try {
+      const raw = localStorage.getItem(TX_FEED_CACHE_KEY);
+      if (!raw) return null;
+      const o = JSON.parse(raw);
+      return o[network] || null;
+    } catch (e) {
+      return null;
+    }
+  }
+  function txFeedWrite(network, txs) {
+    try {
+      const raw = localStorage.getItem(TX_FEED_CACHE_KEY);
+      const o = raw ? JSON.parse(raw) : {};
+      o[network] = { txs: txs, savedAt: Date.now() };
+      localStorage.setItem(TX_FEED_CACHE_KEY, JSON.stringify(o));
+    } catch (e) {}
+  }
+  function txExplorerUrl(hash) {
+    return currentNetwork === 'mainnet'
+      ? `https://cardanoscan.io/transaction/${hash}`
+      : `https://preprod.cardanoscan.io/transaction/${hash}`;
+  }
+  try {
+    const r = await fetch(`/api/live?network=${currentNetwork}`, { cache: 'no-store' });
+    if (!r.ok) throw new Error('api status ' + r.status);
+    const data = await r.json();
+
+    // AI compute always populates regardless of chain state
+    if (data.ai_compute) {
+      const ai = data.ai_compute;
+      const setIfPresent = (key, val, unit) => {
+        const el = document.querySelector(`[data-aipower="${key}"]`);
+        if (el && val != null) el.innerHTML = `${val}<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">${unit}</span>`;
+      };
+      setIfPresent('video_gen', ai.video_gen_wh, 'Wh');
+      setIfPresent('gpt_o3', ai.gpt_o3_wh, 'Wh');
+      setIfPresent('water', ai.water_per_video_l, 'L');
+      setIfPresent('gap', ai.efficiency_gap_label, '×');
+    }
+
+    // Live sensor card: Dallas Pilot Node #1 (field telemetry via /api/live)
+    var SENSOR_SNAP_KEY = 'mlma_dallas_sensor_v1';
+    function sensorSnapRead() {
+      try {
+        var raw = localStorage.getItem(SENSOR_SNAP_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+    function sensorSnapWrite(s) {
+      try {
+        localStorage.setItem(SENSOR_SNAP_KEY, JSON.stringify(s));
+      } catch (e) {}
+    }
+    function lastRecordedLine(ts) {
+      if (!ts) return '—';
+      var r = relAge(ts);
+      return r ? 'Last recorded · ' + r : 'Last recorded · ' + new Date(ts).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+    }
+    var tsEl = document.querySelector('[data-sensor="ts"]');
+    function renderSensorCard(s, opts) {
+      opts = opts || {};
+      var setSensor = function (key, val, unit, decimals) {
+        decimals = decimals === undefined ? 1 : decimals;
+        var el = document.querySelector('[data-sensor="' + key + '"]');
+        if (!el) return;
+        if (val != null && !Number.isNaN(val)) {
+          var num = typeof val === 'number' ? val.toFixed(decimals) : val;
+          el.innerHTML = num + '<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">' + unit + '</span>';
+        } else if (opts.placeholder) {
+          el.innerHTML = '—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">' + unit + '</span>';
+        }
+      };
+      setSensor('soil_c', s.soil_c, '°C');
+      setSensor('air_c', s.air_c, '°C');
+      setSensor('humidity', s.humidity, '%', 0);
+      setSensor('battery', s.battery, '%', 0);
+      if (tsEl) {
+        if (opts.lastRecordedOnly) {
+          tsEl.textContent = lastRecordedLine(s.timestamp);
+          tsEl.title = opts.title || '';
+        } else if (s.timestamp) {
+          var dt = new Date(s.timestamp);
+          var now = new Date();
+          var mins = Math.floor((now - dt) / 60000);
+          var label;
+          if (mins < 1) label = 'just now';
+          else if (mins < 60) label = mins + 'm ago';
+          else if (mins < 1440) label = Math.floor(mins / 60) + 'h ago';
+          else label = Math.floor(mins / 1440) + 'd ago';
+          tsEl.textContent = label;
+          tsEl.title = '';
+        } else {
+          tsEl.textContent = 'live';
+          tsEl.title = '';
+        }
+      }
+    }
+    if (data.sensor) {
+      var s = data.sensor;
+      var incomplete = s.incomplete === true;
+      if (!incomplete) {
+        sensorSnapWrite({
+          soil_c: s.soil_c,
+          air_c: s.air_c,
+          humidity: s.humidity,
+          battery: s.battery,
+          timestamp: s.timestamp,
+        });
+        var miss = [s.soil_c, s.air_c, s.humidity, s.battery].some(function (v) {
+          return v == null || Number.isNaN(v);
+        });
+        renderSensorCard(s, { placeholder: miss });
+      } else {
+        renderSensorCard(s, {
+          placeholder: true,
+          lastRecordedOnly: true,
+          title: 'Live readings not available yet; showing last timestamp from feed.',
+        });
+      }
+    } else {
+      var snap = sensorSnapRead();
+      if (snap && snap.timestamp) {
+        renderSensorCard(snap, {
+          placeholder: true,
+          lastRecordedOnly: true,
+          title: 'Live feed unavailable; showing last successful read from this browser.',
+        });
+      } else {
+        ['soil_c', 'air_c', 'humidity', 'battery'].forEach(function (key) {
+          var el = document.querySelector('[data-sensor="' + key + '"]');
+          if (el) {
+            var unit = key === 'humidity' || key === 'battery' ? '%' : '°C';
+            el.innerHTML = '—<span style="font-size: 14px; color: var(--ink-dim); margin-left: 4px;">' + unit + '</span>';
+          }
+        });
+        if (tsEl) {
+          tsEl.textContent = 'Waiting for live data…';
+          tsEl.title = 'Sensor feed not yet available. Values appear when the pilot stream returns data.';
+        }
+      }
+    }
+
+    const chain = data.chain || {};
+    const chainOk = chain.ok !== false;
+
+    // Proof stats: only when chain indexers returned wallet + block data
+    if (!chainOk) {
+      document.getElementById('stat-savecards').textContent = '—';
+      document.getElementById('stat-events').textContent = '—';
+      document.getElementById('stat-block').textContent = '—';
+      document.getElementById('stat-age').textContent = currentNetwork === 'mainnet' ? 'Q2 2026' : '—';
+    } else {
+      const counts = chain.counts || {};
+      const savecards = counts.savecard || 0;
+      const events = (counts.biochar || 0) + (counts.soiltest || 0);
+      document.getElementById('stat-savecards').textContent = savecards > 0 ? fmt(savecards) : '—';
+      document.getElementById('stat-events').textContent = events > 0 ? fmt(events) : '—';
+      if (chain.latest_block) {
+        const lb = chain.latest_block;
+        document.getElementById('stat-block').textContent = fmt(lb.height);
+        document.getElementById('stat-age').textContent = lb.time ? relAge(lb.time) : 'live';
+      }
+    }
+
+    // Recent txs: Mālama wallet via Blockfrost/Koios; browser cache as fallback
+    let txs = chain.recent_txs || [];
+    let txFromCache = false;
+    if (txs.length > 0 && chainOk) {
+      txFeedWrite(currentNetwork, txs);
+    }
+    if (txs.length === 0) {
+      const cached = txFeedRead(currentNetwork);
+      if (cached && cached.txs && cached.txs.length) {
+        txs = cached.txs;
+        txFromCache = true;
+      }
+    }
+    const list = document.getElementById('tx-list');
+    if (txs.length > 0) {
+      list.innerHTML = txs.slice(0, 8).map((tx) => `
+        <a class="tx-row" href="${txExplorerUrl(tx.hash)}" target="_blank" rel="noopener" style="display: grid; grid-template-columns: 1fr 100px 100px; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; align-items: center; text-decoration: none; color: inherit;">
+          <div style="color: var(--ink-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${tx.hash.slice(0, 18)}…${tx.hash.slice(-12)}</div>
+          <div style="color: var(--accent-dim);">#${fmt(tx.block)}</div>
+          <div style="color: var(--ink-faint); text-align: right;">${relAge(tx.block_time)}</div>
+        </a>
+      `).join('');
+    } else if (!chainOk) {
+      list.innerHTML = `<div style="display: grid; grid-template-columns: 1fr; padding: 16px 0; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); line-height: 1.65;">
+        ${chain.message || 'No data available for this network yet.'}
+      </div>`;
+    } else {
+      list.innerHTML = `<div style="display: grid; grid-template-columns: 1fr; padding: 16px 0; font-family: var(--mono); font-size: 12px; color: var(--ink-faint);">
+        No recent transactions for this wallet on ${currentNetwork === 'mainnet' ? 'mainnet' : 'preprod'} yet.
+      </div>`;
+    }
+
+    if (txFromCache) {
+      status.textContent = '● Cached snapshot';
+      status.style.color = 'var(--ink-faint)';
+    } else if (txs.length > 0 && chainOk) {
+      const src = chain.source || 'indexers';
+      status.textContent = `● Live · ${src}`;
+      status.style.color = 'var(--accent)';
+    } else if (chainOk) {
+      status.textContent = '● Live · indexers';
+      status.style.color = 'var(--accent)';
+    } else {
+      status.textContent = currentNetwork === 'mainnet' ? '● Mainnet Q2 2026' : '● Indexers unavailable';
+      status.style.color = 'var(--ink-faint)';
+    }
+  } catch (e) {
+    console.warn('Live fetch failed', e);
+    status.textContent = '● Cached snapshot';
+    status.style.color = 'var(--ink-faint)';
+    const list = document.getElementById('tx-list');
+    const cached = txFeedRead(currentNetwork);
+    if (list && cached && cached.txs && cached.txs.length) {
+      list.innerHTML = cached.txs.slice(0, 8).map((tx) => `
+        <a class="tx-row" href="${txExplorerUrl(tx.hash)}" target="_blank" rel="noopener" style="display: grid; grid-template-columns: 1fr 100px 100px; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; align-items: center; text-decoration: none; color: inherit;">
+          <div style="color: var(--ink-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${tx.hash.slice(0, 18)}…${tx.hash.slice(-12)}</div>
+          <div style="color: var(--accent-dim);">#${fmt(tx.block)}</div>
+          <div style="color: var(--ink-faint); text-align: right;">${relAge(tx.block_time)}</div>
+        </a>
+      `).join('');
+    } else if (list && list.innerHTML.includes('Loading')) {
+      list.innerHTML = `<div style="display: grid; grid-template-columns: 1fr; padding: 16px 0; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); line-height: 1.6;">
+        Live feed temporarily unavailable. Try again shortly.
+      </div>`;
+    }
+  }
+}
+
+function setNetwork(net) {
+  currentNetwork = net;
+  document.getElementById('net-label').textContent = '· ' + (net === 'mainnet' ? 'Mainnet' : 'Preprod');
+  document.querySelectorAll('.net-btn').forEach(btn => {
+    if (btn.dataset.net === net) {
+      btn.style.background = 'var(--accent)';
+      btn.style.color = 'var(--bg)';
+    } else {
+      btn.style.background = 'transparent';
+      btn.style.color = 'var(--ink-faint)';
+    }
+  });
+  loadLive();
+}
+
+document.querySelectorAll('.net-btn').forEach(btn => {
+  btn.addEventListener('click', () => setNetwork(btn.dataset.net));
+});
+
+loadLive();
+pollTimer = setInterval(loadLive, 30000);
+</script>
+</main><footer>
+  <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img src="/assets/logo-mark-200.png" alt="Mālama Labs" style="width: 40px; height: 40px; flex-shrink: 0;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 4px;">Powered by Mālama dMRV</div>
+        <div style="font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3;">Hardware-verified energy data for a nature-positive AI.</div>
+      </div>
+    </div>
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); padding: 12px 20px; border-radius: 2px; transition: all 0.2s; white-space: nowrap;">View Live Stream → aipower.fyi</a>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mālama Labs</div>
+      <p class="footer-tag">The hardware-signed trust anchor for environmental truth. Two product lines: carbon dMRV (proven) and AI compute monitoring (scaling).</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/malama-labs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+        <a href="https://medium.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><ellipse cx="16.5" cy="12" rx="2" ry="5"/><ellipse cx="21" cy="12" rx="0.5" ry="5"/></svg>
+        </a>
+        <a href="https://twitter.com/malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="company/">About</a></li>
+        <li><a href="team/">Team</a></li>
+        <li><a href="careers/">Careers</a></li>
+        <li><a href="contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="platform/">Overview</a></li>
+        <li><a href="ai-compute/">AI Compute</a></li>
+        <li><a href="methodology/">Methodology</a></li>
+        <li><a href="technology/">Technology</a></li>
+        <li><a href="projects/">Network</a></li>
+        <li><a href="stake/">Hex Nodes</a></li>
+        <li><a href="/#hex-launch-updates">Hex launchpad · coming soon</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Investors</h5>
+      <ul>
+        <li><a href="presentations/">Deck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Live Data</h5>
+      <ul>
+        <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
+        <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
+        <li><a href="faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center; align-items: center; padding: 28px 24px 8px; border-top: 1px solid var(--line); margin-top: 16px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">
+    <a href="contact/" style="color: var(--accent); text-decoration: none;">Schedule a Call</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Get updates →</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Join our Hex Node waitlist →</a>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mālama Labs, Inc. · Los Angeles · Honolulu</div>
+    <div>Cardano · Preprod Live · Mainnet Q2 2026</div>
+  </div>
+</footer>
+</body>
+</html>

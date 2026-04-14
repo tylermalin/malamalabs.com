@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Compute · Scaling Now · Mālama Labs</title>
+<meta name="description" content="Hardware-signed rack-level power sensing for AI data centers. The Mālama answer to AI's measurement crisis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=18">
+</head>
+<body>
+<nav class="top">
+  <a href="../index.html" class="brand">
+    <div class="brand-mark"></div>
+    Mālama Labs
+  </a>
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="../company/">Company ▾</a>
+      <div class="nav-dropdown">
+        <a href="../company/">About<span>Mission and origin</span></a>
+        <a href="../team/">Team<span>Founders and operators</span></a>
+        <a href="../careers/">Careers<span>Open roles</span></a>
+        <a href="../contact/">Contact<span>Schedule a call</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../platform/">Platform ▾</a>
+      <div class="nav-dropdown">
+        <a href="../platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
+        <a href="../ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
+        <a href="../platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
+        <a href="../methodology/">Methodology<span>From sensor to proof</span></a>
+        <a href="../technology/">Technology<span>Six-layer architecture</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../projects/">Projects ▾</a>
+      <div class="nav-dropdown">
+        <a href="../projects/">All Projects<span>Active deployments</span></a>
+        <a href="../idaho/">Idaho ERW Pilot<span>Enhanced rock weathering</span></a>
+        <a href="../stake/">Hex Nodes<span>Network participation</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../investors/">Investors ▾</a>
+      <div class="nav-dropdown">
+        <a href="../investors/">Investor Overview<span>Round and terms</span></a>
+        <a href="../advisors/">Advisory Board<span>Board portal</span></a>
+        <a href="../presentations/">Presentations<span>Deck and materials</span></a>
+        <a href="/#hex-launch-updates">Hex launchpad ↗<span>Coming soon · get updates</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../resources/">Resources ▾</a>
+      <div class="nav-dropdown">
+        <a href="../resources/">Knowledge Base<span>Docs and primers</span></a>
+        <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>Open source · Mālama Foundation</span></a>
+        <a href="../blog/">Blog<span>Updates and analysis</span></a>
+        <a href="../faq/">FAQ<span>Common questions</span></a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="../contact/" class="nav-cta-secondary">Schedule a Call</a>
+    <a href="/#hex-launch-updates" class="nav-cta">Get updates →</a>
+  </div>
+<button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-drawer').classList.add('open');document.getElementById('mobile-drawer-overlay').classList.add('open');document.body.style.overflow='hidden'">☰</button>
+</nav>
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="document.getElementById('mobile-drawer').classList.remove('open');this.classList.remove('open');document.body.style.overflow=''"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+  <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+  <h4>Company</h4>
+  <a href="/company/">About</a>
+  <a href="/team/">Team</a>
+  <a href="/careers/">Careers</a>
+  <a href="/contact/">Contact</a>
+  <h4>Platform</h4>
+  <a href="/platform/">Platform Overview</a>
+  <a href="/ai-compute/">AI Compute Monitoring</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/technology/">Technology</a>
+  <h4>Projects</h4>
+  <a href="/projects/">All Projects</a>
+  <a href="/idaho/">Idaho ERW Pilot</a>
+  <a href="/stake/">Hex Nodes</a>
+  <h4>Investors</h4>
+  <a href="/investors/">Investor Overview</a>
+  <a href="/advisors/">Advisory Board</a>
+  <a href="/presentations/">Presentations</a>
+  <h4>Resources</h4>
+  <a href="/resources/">Knowledge Base</a>
+  <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
+  <a href="/blog/">Blog</a>
+  <a href="/faq/">FAQ</a>
+  <a href="/contact/">Schedule a Call</a>
+  <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
+</aside>
+
+<main>
+<div class="page-hero">
+  <div class="eyebrow">AI Compute · Scaling Now</div>
+  <h1>Beyond estimation. <em>The AI compute measurement crisis.</em></h1>
+  <p class="section-lede">Mālama Labs is bringing rack-level hardware-signed power sensing to AI data centers. The same verification pipeline that produced 2,786+ on-chain SaveCards from Dallas now extends to the largest unverified emissions source in the world: AI compute.</p>
+</div>
+
+<!-- WATCH · ORIENTATION VIDEO -->
+<section id="watch" style="padding-top: 60px; padding-bottom: 60px;">
+  <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto;">
+    <div>
+      <div class="section-num" style="margin-bottom: 16px;">Watch · 60 seconds</div>
+      <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px;">The hardware <em style="font-style: italic; color: var(--accent); font-weight: 300;">answer</em> to AI's biggest blind spot.</h2>
+      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 20px;">A short walkthrough of why estimation breaks at AI scale and how rack-level sensors with cryptographic signing close the gap. Same proven pipeline as Dallas, applied to the largest unmeasured emissions source on the planet.</p>
+      <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); padding-top: 20px; border-top: 1px dashed var(--line-bright);">
+        <span style="color: var(--accent);">●</span> Press play →
+      </div>
+    </div>
+    <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; border: 1px solid var(--line-bright); background: var(--bg-elev);">
+      <iframe
+        src="https://www.youtube.com/embed/CuINetqBdl8?rel=0&modestbranding=1"
+        title="Mālama Labs · AI Compute Monitoring"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;">
+    <div>
+      <div class="section-num">01 · The Crisis</div>
+      <h2 class="section-title">The 19,000× reporting gap.</h2>
+    </div>
+    <div>
+      <p style="font-size: 19px; line-height: 1.7; color: var(--ink); margin-bottom: 22px;">
+        The AI industry has a measurement problem. There is no standardized methodology for measuring AI's environmental footprint. Companies report whatever they choose, if they report at all.
+      </p>
+      <p style="font-size: 17px; line-height: 1.7; color: var(--ink-dim); margin-bottom: 22px;">
+        <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 3px;">The Federation of American Scientists</a> found that Meta's actual carbon emissions may be up to <strong style="color: var(--accent);">19,000× higher</strong> than market-based reports suggest. This is not a rounding error. It is the difference between treating climate disclosure as a marketing exercise and treating it as physical reality.
+      </p>
+      <p style="font-size: 17px; line-height: 1.7; color: var(--ink-dim); margin-bottom: 22px;">
+        While the AI industry accelerates, every model upgrade, every video generation, every reasoning step compounds the gap. A single 5-second video generation consumes 944 Wh, enough to power a laptop for a full day. GPT-o3 uses 39.2 Wh per prompt, nearly 2,500× more than a lightweight text classifier.
+      </p>
+      <p style="font-size: 17px; line-height: 1.7; color: var(--ink-dim);">
+        Voluntary disclosures will not close this gap. Methodology committees will not close this gap. <strong style="color: var(--accent);">Hardware-signed measurement at the rack will.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">02 · The Numbers</div>
+  <h2 class="section-title">What <em>aipower.fyi</em> reveals.</h2>
+  <p class="section-lede">Mālama's AI Energy Impact dashboard tracks 30 AI models with full methodology transparency. Every assumption is published with confidence levels. The contribution form is open. This is the estimation tier. Hardware sensors are next.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 36px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 12px;">VIDEO GENERATION</div>
+      <div style="font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 8px;">944 Wh</div>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.6;">Per 5-second clip. Equivalent to powering a laptop for a full day. Up to 1 liter of water consumed for cooling alone.</p>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 36px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 12px;">GPT-o3 REASONING</div>
+      <div style="font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 8px;">39.2 Wh</div>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.6;">Per prompt. Nearly 2,500× more than a lightweight text classifier (0.016 Wh). Frontier reasoning is energy-intensive by design.</p>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 36px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 12px;">EFFICIENCY GAP</div>
+      <div style="font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 8px;">1,888,880×</div>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.6;">Energy difference between most and least efficient AI tasks. Video generation versus text classification. Model choice matters enormously.</p>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 36px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 12px;">AGENTIC COMPOUNDING</div>
+      <div style="font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 8px;">3 to 10×</div>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.6;">Multi-step agent workflows compound energy costs per task. The next generation of AI is more agentic by default.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; font-family: var(--mono); font-size: 12px;">
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" class="btn btn-primary">Explore Dashboard ↗</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="../methodology/" class="btn btn-ghost">View Methodology →</a>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 · The Hardware Answer</div>
+  <h2 class="section-title">Real-time AI <em>power intelligence</em>.</h2>
+  <p class="section-lede">We are integrating specialized AI Data Center Power Sensors directly into rack-level infrastructure. This creates a high-fidelity, hardware-verified data stream that bypasses corporate guesswork.</p>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">DIRECT POWER SENSING</div>
+      <h3>Per-Inference Wattage</h3>
+      <p>Rack-level sensors measure exact electrical load per inference and training cycle. Not market-based estimates. Not vendor self-reports. Direct measurement at the source, signed at silicon.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">WATER ATTRIBUTION</div>
+      <h3>Cooling and Evaporation</h3>
+      <p>Hardware-linked tracking of cooling energy and evaporation rates. A single video generation prompt can consume up to 1 liter of water. Hardware sensors close the attribution loop.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">CARBON INTENSITY SYNC</div>
+      <h3>Real Carbon, Not Average</h3>
+      <p>Cross-references real-time grid carbon intensity with sensor-verified energy use for an absolute CO₂ figure. The same kilowatt-hour at different times and locations carries radically different emissions weight.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 · How It Connects</div>
+  <h2 class="section-title">Same pipeline. <em>Two upstream streams.</em></h2>
+  <p class="section-lede">The AI compute product line is not a parallel stack. It is the same six-layer Reality Engine architecture that already runs in Dallas, with rack-mount hardware as a second class of signing device feeding the same Hex Node validators.</p>
+
+  <div style="display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-top: 40px;">
+    <div style="background: var(--bg-elev); padding: 28px 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: center;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 6px;">UPSTREAM:</div>
+        <div style="font-family: var(--serif); font-size: 22px; color: var(--ink);">Carbon SaveCards</div>
+        <div style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin-top: 6px;">Genesis 300 outdoor nodes. Soil, atmospheric, ERW telemetry from biochar and weathering sites.</div>
+      </div>
+      <div style="text-align: center; font-family: var(--mono); color: var(--accent); font-size: 24px;">→</div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 6px;">VALIDATED BY:</div>
+        <div style="font-family: var(--serif); font-size: 22px; color: var(--ink);">Hex Node Network</div>
+        <div style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin-top: 6px;">Same validators. Same Cardano anchor. Same Proof-of-Truth consensus.</div>
+      </div>
+    </div>
+    <div style="background: var(--bg-elev); padding: 28px 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: center;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; color: #4a90e2; margin-bottom: 6px;">UPSTREAM:</div>
+        <div style="font-family: var(--serif); font-size: 22px; color: var(--ink);">AI Compute Packets</div>
+        <div style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin-top: 6px;">Rack-mount AI Power Sensors. PDU-level wattage, cooling, water, and grid carbon intensity.</div>
+      </div>
+      <div style="text-align: center; font-family: var(--mono); color: #4a90e2; font-size: 24px;">→</div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; color: #4a90e2; margin-bottom: 6px;">VALIDATED BY:</div>
+        <div style="font-family: var(--serif); font-size: 22px; color: var(--ink);">Hex Node Network</div>
+        <div style="font-size: 13px; color: var(--ink-dim); line-height: 1.5; margin-top: 6px;">Same validators. Same Cardano anchor. Same Proof-of-Truth consensus.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; padding: 20px 24px; background: rgba(196,240,97,0.04); border-left: 2px solid var(--accent-dim); font-size: 13px; color: var(--ink-faint); line-height: 1.6;">
+    The Dallas Pilot Node #1 (op5pro-field-a) is the technology demonstration that proved Mālama's hardware-signing pipeline works. Its 2,786+ on-chain SaveCards establish credibility for the signing architecture itself, which the AI compute product line then extends to rack-level deployment. AI compute pilot deployments target Q2 2026.
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 · Who It's For</div>
+  <h2 class="section-title">Three buyers. <em>One verified data stream.</em></h2>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">01 / DATA CENTER OPERATORS</div>
+      <h3>AI Compute &amp; Infrastructure Teams</h3>
+      <p>Hardware-verified scope 1 emissions data (direct rack-level power measurement) ready for SEC climate disclosure, EU CSRD, and SBTi reporting. Replace estimation with measurement. Replace vendor self-reports with on-chain proof.</p>
+      <p style="font-family: var(--mono); font-size: 12px; color: var(--ink-dim); margin-top: 16px; line-height: 1.55;"><strong style="color: var(--ink); font-weight: 500;">Scope 1:</strong> Verified power draw per inference at the rack level.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">02 / PROCUREMENT &amp; ESG TEAMS</div>
+      <h3>AI Procurement Teams at Enterprises</h3>
+      <p>Procuring AI compute from hyperscalers and inference platforms. Need verified scope 3 attribution per workload for your corporate emissions reporting. Mālama provides the hardware-signed audit trail your framework requires.</p>
+      <p style="font-family: var(--mono); font-size: 12px; color: var(--ink-dim); margin-top: 16px; line-height: 1.55;"><strong style="color: var(--ink); font-weight: 500;">Scope 3 Support:</strong> Use Mālama's verified power data to calculate upstream emissions from your AI service consumption.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">03 / RESEARCHERS</div>
+      <h3>Academic &amp; Policy Researchers</h3>
+      <p>Studying AI sustainability, energy use, and disclosure quality. Mālama's open dashboard, methodology transparency, and contribution form provide a public good data layer for the field.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 · Roadmap</div>
+  <h2 class="section-title">From dashboard to <em>deployed sensors</em>.</h2>
+
+  <div style="display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-top: 40px;">
+    <div style="background: var(--bg-elev); padding: 28px 32px; display: grid; grid-template-columns: 140px 1fr 120px; gap: 24px; align-items: center;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em;">LIVE NOW</div>
+      <div style="font-family: var(--serif); font-size: 17px;">aipower.fyi dashboard<span style="display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-dim); margin-top: 4px;">30 AI models tracked. Open methodology. Contribution form active.</span></div>
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); text-align: right;">● LIVE</div>
+    </div>
+    <div style="background: var(--bg-elev); padding: 28px 32px; display: grid; grid-template-columns: 140px 1fr 120px; gap: 24px; align-items: center;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em;">Q2 2026</div>
+      <div style="font-family: var(--serif); font-size: 17px;">Rack sensor pilot<span style="display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-dim); margin-top: 4px;">First AI Power Sensor deployment in a partner data center facility.</span></div>
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warn); text-align: right;">PARTNER LOI</div>
+    </div>
+    <div style="background: var(--bg-elev); padding: 28px 32px; display: grid; grid-template-columns: 140px 1fr 120px; gap: 24px; align-items: center;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em;">Q3 2026</div>
+      <div style="font-family: var(--serif); font-size: 17px;">Hex Node validator integration<span style="display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-dim); margin-top: 4px;">AI compute packets validated by the same Hex Node network that handles carbon SaveCards.</span></div>
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); text-align: right;">PLANNED</div>
+    </div>
+    <div style="background: var(--bg-elev); padding: 28px 32px; display: grid; grid-template-columns: 140px 1fr 120px; gap: 24px; align-items: center;">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em;">Q4 2026</div>
+      <div style="font-family: var(--serif); font-size: 17px;">Hyperscaler partnership program<span style="display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-dim); margin-top: 4px;">Multi-site deployment, EU CSRD reporting integration, SBTi alignment.</span></div>
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); text-align: right;">PLANNED</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+    <a href="/#hex-launch-updates" class="btn btn-primary">Get updates →</a>
+    <a href="../contact/" class="btn btn-ghost">Talk to the Team →</a>
+  </div>
+</section>
+</main><footer>
+  <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img src="/assets/logo-mark-200.png" alt="Mālama Labs" style="width: 40px; height: 40px; flex-shrink: 0;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 4px;">Powered by Mālama dMRV</div>
+        <div style="font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3;">Hardware-verified energy data for a nature-positive AI.</div>
+      </div>
+    </div>
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); padding: 12px 20px; border-radius: 2px; transition: all 0.2s; white-space: nowrap;">View Live Stream → aipower.fyi</a>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mālama Labs</div>
+      <p class="footer-tag">The hardware-signed trust anchor for environmental truth. Two product lines: carbon dMRV (proven) and AI compute monitoring (scaling).</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/malama-labs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+        <a href="https://medium.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><ellipse cx="16.5" cy="12" rx="2" ry="5"/><ellipse cx="21" cy="12" rx="0.5" ry="5"/></svg>
+        </a>
+        <a href="https://twitter.com/malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="../company/">About</a></li>
+        <li><a href="../team/">Team</a></li>
+        <li><a href="../careers/">Careers</a></li>
+        <li><a href="../contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="../platform/">Overview</a></li>
+        <li><a href="../ai-compute/">AI Compute</a></li>
+        <li><a href="../methodology/">Methodology</a></li>
+        <li><a href="../technology/">Technology</a></li>
+        <li><a href="../projects/">Network</a></li>
+        <li><a href="../stake/">Hex Nodes</a></li>
+        <li><a href="/#hex-launch-updates">Hex launchpad · coming soon</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Investors</h5>
+      <ul>
+        <li><a href="../presentations/">Deck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Live Data</h5>
+      <ul>
+        <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
+        <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center; align-items: center; padding: 28px 24px 8px; border-top: 1px solid var(--line); margin-top: 16px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">
+    <a href="../contact/" style="color: var(--accent); text-decoration: none;">Schedule a Call</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Get updates →</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Join our Hex Node waitlist →</a>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mālama Labs, Inc. · Los Angeles · Honolulu</div>
+    <div>Cardano · Preprod Live · Mainnet Q2 2026</div>
+  </div>
+</footer>
+</body>
+</html>

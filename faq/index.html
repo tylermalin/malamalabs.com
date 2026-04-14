@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ · Mālama Labs</title>
+<meta name="description" content="FAQ: AI compute lead product, Dallas pilot, Hex Nodes, carbon dMRV, Cardano, LCO₂/VCO₂, MRV cost, MLMA, operators, team, seed round.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=18">
+</head>
+<body>
+<nav class="top">
+  <a href="../index.html" class="brand">
+    <div class="brand-mark"></div>
+    Mālama Labs
+  </a>
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="../company/">Company ▾</a>
+      <div class="nav-dropdown">
+        <a href="../company/">About<span>Mission and origin</span></a>
+        <a href="../team/">Team<span>Founders and operators</span></a>
+        <a href="../careers/">Careers<span>Open roles</span></a>
+        <a href="../contact/">Contact<span>Schedule a call</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../platform/">Platform ▾</a>
+      <div class="nav-dropdown">
+        <a href="../platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
+        <a href="../ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
+        <a href="../platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
+        <a href="../methodology/">Methodology<span>From sensor to proof</span></a>
+        <a href="../technology/">Technology<span>Six-layer architecture</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../projects/">Projects ▾</a>
+      <div class="nav-dropdown">
+        <a href="../projects/">All Projects<span>Active deployments</span></a>
+        <a href="../idaho/">Idaho ERW Pilot<span>Enhanced rock weathering</span></a>
+        <a href="../stake/">Hex Nodes<span>Network participation</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../investors/">Investors ▾</a>
+      <div class="nav-dropdown">
+        <a href="../investors/">Investor Overview<span>Round and terms</span></a>
+        <a href="../advisors/">Advisory Board<span>Board portal</span></a>
+        <a href="../presentations/">Presentations<span>Deck and materials</span></a>
+        <a href="/#hex-launch-updates">Hex launchpad ↗<span>Coming soon · get updates</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../resources/">Resources ▾</a>
+      <div class="nav-dropdown">
+        <a href="../resources/">Knowledge Base<span>Docs and primers</span></a>
+        <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>Open source · Mālama Foundation</span></a>
+        <a href="../blog/">Blog<span>Updates and analysis</span></a>
+        <a href="../faq/">FAQ<span>Common questions</span></a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="../contact/" class="nav-cta-secondary">Schedule a Call</a>
+    <a href="/#hex-launch-updates" class="nav-cta">Get updates →</a>
+  </div>
+<button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-drawer').classList.add('open');document.getElementById('mobile-drawer-overlay').classList.add('open');document.body.style.overflow='hidden'">☰</button>
+</nav>
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="document.getElementById('mobile-drawer').classList.remove('open');this.classList.remove('open');document.body.style.overflow=''"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+  <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+  <h4>Company</h4>
+  <a href="/company/">About</a>
+  <a href="/team/">Team</a>
+  <a href="/careers/">Careers</a>
+  <a href="/contact/">Contact</a>
+  <h4>Platform</h4>
+  <a href="/platform/">Platform Overview</a>
+  <a href="/ai-compute/">AI Compute Monitoring</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/technology/">Technology</a>
+  <h4>Projects</h4>
+  <a href="/projects/">All Projects</a>
+  <a href="/idaho/">Idaho ERW Pilot</a>
+  <a href="/stake/">Hex Nodes</a>
+  <h4>Investors</h4>
+  <a href="/investors/">Investor Overview</a>
+  <a href="/advisors/">Advisory Board</a>
+  <a href="/presentations/">Presentations</a>
+  <h4>Resources</h4>
+  <a href="/resources/">Knowledge Base</a>
+  <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
+  <a href="/blog/">Blog</a>
+  <a href="/faq/">FAQ</a>
+  <a href="/contact/">Schedule a Call</a>
+  <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
+</aside>
+
+<main>
+<div class="page-hero">
+  <div class="eyebrow">FAQ</div>
+  <h1>Common questions.</h1>
+  <p class="section-lede">Direct answers to the questions investors, operators, registries, and partners ask most often. If your question is not here, contact the team.</p>
+</div>
+
+<section>
+  <div style="max-width: 900px;">
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;" open>
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Why is AI compute the new lead product?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">The <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener" style="color: var(--accent);">Federation of American Scientists</a> found that Meta’s actual emissions may be up to 19,000× higher than market-based reports suggest. AI compute is the largest, fastest-growing, most under-measured environmental disclosure problem in the world, and the regulatory environment (SEC climate disclosure, EU CSRD, SBTi) is converging on requirements that voluntary methodology cannot satisfy. The Mālama hardware-signing pipeline that we proved in carbon over 24 months is the same pipeline that solves this. Carbon is where we proved it. AI compute is where we scale it.</p>
+    </details>
+
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Is the Dallas sensor measuring AI power consumption?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">No. The Dallas Pilot Node #1 (op5pro-field-a) is a Genesis 300 outdoor environmental sensor measuring soil temperature, air temperature, humidity, and battery state. It has been live since June 2024 and has produced 2,786+ on-chain SaveCards on Cardano preprod. Its role is the technology demonstration that proved Mālama's hardware-signing pipeline works at production cadence. The AI compute product line uses a different hardware class (rack-mount AI Power Sensors) but the same signing architecture, the same Hex Node validators, the same Cardano anchor, and the same dMRV cycle. AI compute pilot deployments target Q2 2026.</p>
+    </details>
+
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>What's the relationship between Hex Node and NFT-HEX?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">NFT-HEX is the geographic rights object. It encodes ownership of an H3 hex cell (Resolution 5, approximately 252.9 km² each) including capacity constraints, reward weighting, and acquisition policy. Hex Node is the validator infrastructure component that operates inside that cell. Buying an NFT-HEX gives you the right and obligation to operate a Hex Node validator within the specific cell. The cell determines your reward multiplier (urban 0.5×, rural 1.5×, frontier 2×, strategic 3×). One NFT-HEX, one Hex Node, one cell. See the <a href="../stake/" style="color: var(--accent);">Hex Node page</a> for technical specifications.</p>
+    </details>
+
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Does the carbon work continue?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Yes. The carbon dMRV product line is the proven pipeline and continues to operate. The Dallas Pilot Node remains live, the Idaho ERW pilot is funded for Q3 2026, the Puro.earth and Isometric registry engagements are still in process, and the LCO₂ to VCO₂ credit lifecycle remains a Mālama product. Carbon is the credibility foundation. AI compute is the scaling product. They run on the same protocol and the same Hex Node validator network.</p>
+    </details>
+
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>What is Mālama Labs actually building?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">A hardware-signed dMRV infrastructure layer for environmental markets. Genesis 300 sensors generate ECDSA-signed environmental readings at the device, anchor them to Cardano via CIP-25/68 SaveCards, and convert that verified data into pre-finance LCO₂ instruments and verified VCO₂ credits. The platform is methodology-agnostic and serves carbon, prediction markets, supply chain, agriculture, insurance, and smart cities applications.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Is the infrastructure actually live or is this a roadmap?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Live. Genesis 300 Pilot Node #1 (op5pro-field-a) has been emitting hourly hardware-signed SaveCards to Cardano preprod since June 2024. As of April 2026 there are 2,786+ SaveCards on chain with continuous operation and no gaps. The full credit lineage pipeline (sensor → biochar event → carbon credit token) is operational on preprod. Mainnet migration is scheduled Q2 2026 post-audit.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Why Cardano instead of Ethereum or Base?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Cardano's eUTXO model and Plutus contracts provide deterministic, auditable transaction logic that is critical for registry-grade data provenance. CIP-25/68 standards give us native NFT semantics for SaveCards. We bridge to Base via LayerZero OApp for EVM liquidity access. The architecture is dual-chain by design, not Cardano-only.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>What happens if Puro.earth or Isometric do not approve the methodology?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Mālama is building methodology-agnostic infrastructure. If Puro or Isometric timelines extend beyond expectation, Verra, Gold Standard, ACR, and Article 6.4 are parallel registry paths. The sensor data itself is registry-neutral by design. The dMRV engine outputs in the format each registry requires.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>How does LCO₂ become VCO₂?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Conditionally, not automatically. LCO₂ is a pre-finance instrument issued against the live data stream at approximately 65% of expected verified value. VCO₂ converts upon completion of full MRV validation and registry acceptance. The conditions precedent include verification completion, registry sign-off, and retirement logic. LCO₂ does not become VCO₂ by default.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>What does an MRV cycle actually cost?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Traditional MRV costs $20,000 to $50,000 per project on an 18 to 24 month credit cycle. Mālama’s streaming architecture delivers continuously verified environmental data at $2 per ton, depending on project size and methodology complexity. The cost reduction comes from replacing episodic human audits with continuous hardware verification.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Is the MLMA token live? Can I buy it?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">No. The MLMA network token is part of the planned post-mainnet architecture and is not currently sold or available. The token side letter offered to eligible SAFE investors provides contingent participation rights only and is not a present token sale. Token launch is contingent on regulatory clarity, mainnet migration, and final structuring.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>How do I become a node operator?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Operator onboarding opens Q3 2026 following Cardano mainnet migration. To join the operator waitlist or discuss earlier deployment partnerships, contact the team directly. Existing pilot sites are onboarded by Mālama directly, not through a public application process.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>Who is on the team?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">Three co-founders: Tyler Malin (CEO, ex-Cravath, ex-CFTC, ReSeed Carbon Assets), Jeffrey Wise (COO, land steward and Hawaiʻi field operations), Dominick Garey (CTO, full-stack systems architect, built the live Genesis 300 stack and Cardano pipeline). See the <a href="../team/" style="color: var(--accent);">Team page</a> for full bios.</p>
+    </details>
+    <details style="border-bottom: 1px solid var(--line); padding: 28px 0; cursor: pointer;">
+      <summary style="font-family: var(--serif); font-size: 22px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <span>How can I invest?</span>
+        <span style="font-family: var(--mono); color: var(--accent); font-size: 18px;">+</span>
+      </summary>
+      <p style="margin-top: 18px; color: var(--ink-dim); font-size: 15px; line-height: 1.7;">The seed round is open. SAFE at $20M post-money cap, up to $5M raise size, $50K minimum check. Eligible investors may receive a token side letter. Contact <a href="mailto:tyler@malamalabs.com" style="color: var(--accent);">tyler@malamalabs.com</a> to request the data room and schedule a diligence call.</p>
+    </details>
+  </div>
+
+  <div style="margin-top: 60px;">
+    <a href="../contact/" class="btn btn-primary">Ask Another Question →</a>
+  </div>
+</section>
+</main><footer>
+  <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img src="/assets/logo-mark-200.png" alt="Mālama Labs" style="width: 40px; height: 40px; flex-shrink: 0;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 4px;">Powered by Mālama dMRV</div>
+        <div style="font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3;">Hardware-verified energy data for a nature-positive AI.</div>
+      </div>
+    </div>
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); padding: 12px 20px; border-radius: 2px; transition: all 0.2s; white-space: nowrap;">View Live Stream → aipower.fyi</a>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mālama Labs</div>
+      <p class="footer-tag">The hardware-signed trust anchor for environmental truth. Two product lines: carbon dMRV (proven) and AI compute monitoring (scaling).</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/malama-labs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+        <a href="https://medium.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><ellipse cx="16.5" cy="12" rx="2" ry="5"/><ellipse cx="21" cy="12" rx="0.5" ry="5"/></svg>
+        </a>
+        <a href="https://twitter.com/malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="../company/">About</a></li>
+        <li><a href="../team/">Team</a></li>
+        <li><a href="../careers/">Careers</a></li>
+        <li><a href="../contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="../platform/">Overview</a></li>
+        <li><a href="../ai-compute/">AI Compute</a></li>
+        <li><a href="../methodology/">Methodology</a></li>
+        <li><a href="../technology/">Technology</a></li>
+        <li><a href="../projects/">Network</a></li>
+        <li><a href="../stake/">Hex Nodes</a></li>
+        <li><a href="/#hex-launch-updates">Hex launchpad · coming soon</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Investors</h5>
+      <ul>
+        <li><a href="../presentations/">Deck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Live Data</h5>
+      <ul>
+        <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
+        <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center; align-items: center; padding: 28px 24px 8px; border-top: 1px solid var(--line); margin-top: 16px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">
+    <a href="../contact/" style="color: var(--accent); text-decoration: none;">Schedule a Call</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Get updates →</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Join our Hex Node waitlist →</a>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mālama Labs, Inc. · Los Angeles · Honolulu</div>
+    <div>Cardano · Preprod Live · Mainnet Q2 2026</div>
+  </div>
+</footer>
+</body>
+</html>

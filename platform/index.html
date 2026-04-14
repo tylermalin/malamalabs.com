@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dMRV · Continuous Verification · Mālama Labs</title>
+<meta name="description" content="One protocol, three primitives, two chains. Universal dMRV engine, SaveCards, NFT-HEX, veMLMA. Cardano archival custody and Base execution via LayerZero.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=18">
+</head>
+<body>
+<nav class="top">
+  <a href="../index.html" class="brand">
+    <div class="brand-mark"></div>
+    Mālama Labs
+  </a>
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="../company/">Company ▾</a>
+      <div class="nav-dropdown">
+        <a href="../company/">About<span>Mission and origin</span></a>
+        <a href="../team/">Team<span>Founders and operators</span></a>
+        <a href="../careers/">Careers<span>Open roles</span></a>
+        <a href="../contact/">Contact<span>Schedule a call</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../platform/">Platform ▾</a>
+      <div class="nav-dropdown">
+        <a href="../platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
+        <a href="../ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
+        <a href="../platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
+        <a href="../methodology/">Methodology<span>From sensor to proof</span></a>
+        <a href="../technology/">Technology<span>Six-layer architecture</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../projects/">Projects ▾</a>
+      <div class="nav-dropdown">
+        <a href="../projects/">All Projects<span>Active deployments</span></a>
+        <a href="../idaho/">Idaho ERW Pilot<span>Enhanced rock weathering</span></a>
+        <a href="../stake/">Hex Nodes<span>Network participation</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../investors/">Investors ▾</a>
+      <div class="nav-dropdown">
+        <a href="../investors/">Investor Overview<span>Round and terms</span></a>
+        <a href="../advisors/">Advisory Board<span>Board portal</span></a>
+        <a href="../presentations/">Presentations<span>Deck and materials</span></a>
+        <a href="/#hex-launch-updates">Hex launchpad ↗<span>Coming soon · get updates</span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="../resources/">Resources ▾</a>
+      <div class="nav-dropdown">
+        <a href="../resources/">Knowledge Base<span>Docs and primers</span></a>
+        <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>Open source · Mālama Foundation</span></a>
+        <a href="../blog/">Blog<span>Updates and analysis</span></a>
+        <a href="../faq/">FAQ<span>Common questions</span></a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="../contact/" class="nav-cta-secondary">Schedule a Call</a>
+    <a href="/#hex-launch-updates" class="nav-cta">Get updates →</a>
+  </div>
+<button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-drawer').classList.add('open');document.getElementById('mobile-drawer-overlay').classList.add('open');document.body.style.overflow='hidden'">☰</button>
+</nav>
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="document.getElementById('mobile-drawer').classList.remove('open');this.classList.remove('open');document.body.style.overflow=''"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+  <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
+  <h4>Company</h4>
+  <a href="/company/">About</a>
+  <a href="/team/">Team</a>
+  <a href="/careers/">Careers</a>
+  <a href="/contact/">Contact</a>
+  <h4>Platform</h4>
+  <a href="/platform/">Platform Overview</a>
+  <a href="/ai-compute/">AI Compute Monitoring</a>
+  <a href="/methodology/">Methodology</a>
+  <a href="/technology/">Technology</a>
+  <h4>Projects</h4>
+  <a href="/projects/">All Projects</a>
+  <a href="/idaho/">Idaho ERW Pilot</a>
+  <a href="/stake/">Hex Nodes</a>
+  <h4>Investors</h4>
+  <a href="/investors/">Investor Overview</a>
+  <a href="/advisors/">Advisory Board</a>
+  <a href="/presentations/">Presentations</a>
+  <h4>Resources</h4>
+  <a href="/resources/">Knowledge Base</a>
+  <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
+  <a href="/blog/">Blog</a>
+  <a href="/faq/">FAQ</a>
+  <a href="/contact/">Schedule a Call</a>
+  <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
+</aside>
+
+<main>
+<div class="page-hero">
+  <div class="eyebrow">dMRV · Continuous Verification</div>
+  <h1>One protocol. Three primitives. Two chains.</h1>
+  <p class="section-lede">The Mālama platform is a hardware-verified evidence network. SaveCards instantiate the data layer. NFT-HEX instantiates geographic rights and reward logic. veMLMA instantiates governance and redemption. All three coordinate across Cardano (archival custody) and Base (execution and liquidity) via LayerZero OApp.</p>
+</div>
+
+<section id="dmrv">
+  <div class="section-num">00 · Two Product Lines</div>
+  <h2 class="section-title">Carbon proved it. AI compute scales it.</h2>
+  <p class="section-lede">The Mālama platform serves two upstream data streams through one verification pipeline. Carbon dMRV is the proven product, operational on Cardano preprod since June 2024 with 2,786+ on-chain SaveCards. AI compute monitoring is the scaling product, bringing rack-level power sensing to data centers in Q2 2026. Same hardware-signing architecture. Same Hex Node validators. Same on-chain anchor.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--accent); border-radius: 4px; padding: 36px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;">PROVEN · LIVE SINCE JUNE 2024</div>
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">Carbon dMRV</h3>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65; margin-bottom: 16px;">Hardware-signed environmental telemetry from biochar and enhanced rock weathering sites. LCO₂ pre-finance issued within 90 days. VCO₂ verified credits upon registry approval.</p>
+      <a href="#engine" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);">dMRV Engine detail ↓</a>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid #4a90e2; border-radius: 4px; padding: 36px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a90e2; margin-bottom: 16px;">SCALING · Q2 2026 PILOTS</div>
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">AI Compute Monitoring</h3>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65; margin-bottom: 16px;">Rack-level power sensors inside AI data centers. Direct wattage per inference. Cooling water attribution. Real-time grid carbon intensity. SEC climate disclosure and EU CSRD ready.</p>
+      <a href="../ai-compute/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #4a90e2;">AI Compute detail →</a>
+    </div>
+  </div>
+</section>
+
+<section id="engine">
+  <div class="section-num">01 · Universal dMRV Engine</div>
+  <h2 class="section-title">Continuous verification, not periodic audit.</h2>
+  <p class="section-lede">A unified MRV pipeline that ingests hardware-signed sensor streams, runs anti-spoofing and anomaly detection, batches by region and methodology into Merkle trees, and emits registry-compatible verification records hourly. MVP methodologies: enhanced rock weathering and biochar. Roadmap: forestry, soil carbon, and regenerative agriculture on the same engine.</p>
+
+  <div class="card-grid-2" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">INGESTION</div>
+      <h3>Hardware-Signed Streams</h3>
+      <p>Every sensor reading arrives ECDSA-signed at the Device DID. Signatures are validated against the on-chain device registry before ingestion. Anything unsigned or invalid is rejected at the gate.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">VALIDATION</div>
+      <h3>Layered Validator Stack</h3>
+      <p>Cryptographic, protocol, physical, spatial, temporal, and methodology validators each contribute to a quality score. AI z-score anomaly detection flags spoofed and physically implausible readings. Validators stake to participate and face 10% slashing for fraud.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">AGGREGATION</div>
+      <h3>Merkle Trees on Arweave</h3>
+      <p>Validated readings are batched by region and methodology, bundled into Merkle trees, archived on Arweave for permanent data availability. Only the Merkle root is anchored on chain. O(1) on-chain footprint regardless of telemetry volume.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">REPORTING</div>
+      <h3>Registry-Compatible Output</h3>
+      <p>Verra VCS, Gold Standard, Puro.earth, Isometric, ACR, and Article 6.4 output formats supported. Continuous monitoring records map directly into the methodology fields each registry requires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIMITIVES -->
+<section id="primitives">
+  <div class="section-num">02 · Protocol Primitives</div>
+  <h2 class="section-title">Three objects. Six layers.</h2>
+  <p class="section-lede">Each primitive bundles the outputs of multiple architectural layers into a unit operators, validators, and institutional counterparties can transact with directly.</p>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">SAVECARD · LAYERS 1-3</div>
+      <h3>The Evidence Object</h3>
+      <p>Hardware signing, validator review, and oracle aggregation collapsed into a portable cryptographic record. Each SaveCard points to hardware-signed data with retrievable Merkle inclusion proofs. The standard evidence primitive.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">NFT-HEX · LAYERS 4-5</div>
+      <h3>The Geographic Right</h3>
+      <p>An H3-cell rights and policy object. Encodes geographic rights, capacity constraints, reward weighting, acquisition policy. Not a collectible. The unit through which capital deploys infrastructure into specific climate-relevant regions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">veMLMA · LAYER 6</div>
+      <h3>The Governance Lock</h3>
+      <p>Vote-escrowed MLMA staking. Aligns long-term protocol commitment with governance weight. Drives operator claims, treasury distribution, methodology approval, and validator set changes through veMLMA-weighted proposals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL CHAIN -->
+<section id="chains">
+  <div class="section-num">03 · Dual-Chain Coordination</div>
+  <h2 class="section-title">Cardano for archival. Base for execution.</h2>
+  <p class="section-lede">A climate data network needs more than one blockchain property profile. Mālama separates long-horizon archival functions from faster execution and liquidity-facing functions. LayerZero OApp coordinates state across the two environments as a single state machine.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--accent); border-radius: 4px; padding: 36px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;">ARCHIVAL CUSTODY</div>
+      <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px;">Cardano</h3>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65;">CIP-25/CIP-68 SaveCard NFTs. Datum-metadata for richer state semantics. Deterministic Plutus contracts for registry-grade auditability. Long-horizon integrity anchoring. Mainnet migration Q2 2026 post-audit.</p>
+      <p style="margin-top: 16px;"><a href="../technology/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);">Architecture detail →</a></p>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid #4a90e2; border-radius: 4px; padding: 36px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a90e2; margin-bottom: 16px;">EXECUTION &amp; LIQUIDITY</div>
+      <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px;">Base</h3>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65;">EVM L2 for faster, cheaper execution. Reward distribution, claims, LCO₂ market activity, EVM liquidity composability. LayerZero OApp bridges state with Cardano.</p>
+      <p style="margin-top: 16px;"><a href="../technology/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #4a90e2;">Architecture detail →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="section-num">04 · Carbon Credit Studio</div>
+  <h2 class="section-title">From verified data to tradeable instrument.</h2>
+  <p class="section-lede">The Credit Studio is the lifecycle layer that converts dMRV output into pre-finance LCO₂ instruments and verified VCO₂ credits. Project developers monitor issuance, conversion, retirement, and registry status from a single workspace.</p>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">STAGE 01</div>
+      <h3>Project Onboarding</h3>
+      <p>Site assessment, methodology selection, Genesis 300 deployment planning. Onboarding fee covers hardware capex and field installation. Sub-acre deployments economically viable.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">STAGE 02</div>
+      <h3>LCO₂ Issuance</h3>
+      <p>Pre-finance instrument minted against the live data stream at approximately 65% of expected verified value. Issued on Base for EVM market activity. Capital in 90 days, not 24 months.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">STAGE 03</div>
+      <h3>VCO₂ Conversion</h3>
+      <p>Upon registry approval, LCO₂ converts to VCO₂ verified credit. Cryptographic chain of custody from device signature to ledger record. Audit-ready, retirement-ready, compliance-grade.</p>
+    </div>
+  </div>
+</section>
+
+<section id="protocols">
+  <div class="section-num">05 · Carbon Protocols</div>
+  <h2 class="section-title">Methodology-compatible, not methodology-substituting.</h2>
+  <p class="section-lede">The dMRV engine speaks the language of every major durable carbon removal registry. Mālama's role is digital evidence infrastructure for operating conditions, environmental context, logistics traceability, and project-level data integrity, not the sole determinant of issued removal quantity. Methodology rules still govern quantification. Switch registries without switching infrastructure.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">Puro.earth</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Onboarding underway · Biochar · CIP-25 SaveCard integration target Q4 2025</div>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">Isometric</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Onboarding underway · Enhanced Rock Weathering · Data format alignment complete, registry submission target Q4 2025</div>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">Verra VCS</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Compatible · Soil Carbon · VM0042 output format supported</div>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">Gold Standard</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Compatible · Multiple methodologies · Output format supported</div>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">ACR</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Compatible · Multiple methodologies · Output format supported</div>
+    </div>
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 24px; border-radius: 4px;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px;">Registry status</div>
+      <div style="font-family: var(--serif); font-size: 22px;">Article 6.4</div>
+      <div style="font-size: 12px; color: var(--ink-dim); margin-top: 10px; line-height: 1.55;">Roadmap · International carbon markets · Post-mainnet focus</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <a href="../technology/" class="btn btn-primary">Architecture detail →</a>
+  </div>
+</section>
+</main><footer>
+  <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img src="/assets/logo-mark-200.png" alt="Mālama Labs" style="width: 40px; height: 40px; flex-shrink: 0;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 4px;">Powered by Mālama dMRV</div>
+        <div style="font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3;">Hardware-verified energy data for a nature-positive AI.</div>
+      </div>
+    </div>
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border: 1px solid var(--accent); padding: 12px 20px; border-radius: 2px; transition: all 0.2s; white-space: nowrap;">View Live Stream → aipower.fyi</a>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mālama Labs</div>
+      <p class="footer-tag">The hardware-signed trust anchor for environmental truth. Two product lines: carbon dMRV (proven) and AI compute monitoring (scaling).</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/malama-labs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+        <a href="https://medium.com/@malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><ellipse cx="16.5" cy="12" rx="2" ry="5"/><ellipse cx="21" cy="12" rx="0.5" ry="5"/></svg>
+        </a>
+        <a href="https://twitter.com/malamalabs" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="../company/">About</a></li>
+        <li><a href="../team/">Team</a></li>
+        <li><a href="../careers/">Careers</a></li>
+        <li><a href="../contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="../platform/">Overview</a></li>
+        <li><a href="../ai-compute/">AI Compute</a></li>
+        <li><a href="../methodology/">Methodology</a></li>
+        <li><a href="../technology/">Technology</a></li>
+        <li><a href="../projects/">Network</a></li>
+        <li><a href="../stake/">Hex Nodes</a></li>
+        <li><a href="/#hex-launch-updates">Hex launchpad · coming soon</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Investors</h5>
+      <ul>
+        <li><a href="../presentations/">Deck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Live Data</h5>
+      <ul>
+        <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
+        <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
+        <li><a href="../faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center; align-items: center; padding: 28px 24px 8px; border-top: 1px solid var(--line); margin-top: 16px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;">
+    <a href="../contact/" style="color: var(--accent); text-decoration: none;">Schedule a Call</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Get updates →</a>
+    <span style="color: var(--line-bright);">|</span>
+    <a href="/#hex-launch-updates" style="color: var(--accent); text-decoration: none;">Join our Hex Node waitlist →</a>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mālama Labs, Inc. · Los Angeles · Honolulu</div>
+    <div>Cardano · Preprod Live · Mainnet Q2 2026</div>
+  </div>
+</footer>
+</body>
+</html>
