@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=18">
+<link rel="stylesheet" href="/site.css?v=19">
+<script>document.documentElement.classList.add('hero-animate');</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLRSGH6KMJ"></script>
 <script>
@@ -104,25 +105,30 @@
 </aside>
 
 <main>
-<!-- HERO -->
-<section class="hero" style="min-height: 92vh; padding-top: 160px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: center;">
+<!-- HERO · Signal Sweep animations (design handoff: Animated Hero.html · variant 01) -->
+<section id="home-hero" class="hero hero--animated" style="min-height: 92vh; padding-top: 160px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: center;">
   <div>
-    <div class="eyebrow"><span class="live-dot"></span>Hardware-Verified · Cardano · Hex Node Network</div>
-    <h1 style="font-family: var(--serif); font-size: clamp(48px, 6.8vw, 104px); font-weight: 400; line-height: 0.92; letter-spacing: -0.035em; margin-bottom: 32px;">
-      Estimation is the start.<br><em style="font-style: italic; color: var(--accent); font-weight: 300;">Sensors are the truth.</em>
-    </h1>
+    <div class="hero-animated-head">
+      <div class="hero-scan-bar" aria-hidden="true"></div>
+      <div class="eyebrow"><span class="live-dot"></span>Hardware-Verified · Cardano · Hex Node Network</div>
+      <h1 class="hero-h1-anim">
+        <span class="hero-reveal-line"><span>Reality is measured.</span></span>
+        <span class="hero-reveal-line"><span>Not estimated.</span></span>
+        <span class="hero-reveal-line"><span><em>Hardware-signed truth.</em></span></span>
+      </h1>
+    </div>
     <p style="font-size: 19px; line-height: 1.6; color: var(--ink-dim); max-width: 580px; margin-bottom: 24px;">
-      Mālama Labs is the hardware-signed trust anchor for environmental data. We proved the pipeline in carbon. Now we are measuring the largest unverified emissions source in the world: AI compute.
+      Mālama Labs is the hardware-signed trust anchor for physical-world data. Every environmental market, every emissions disclosure, every ESG claim, every parametric insurance payout, and every supply-chain attestation depends on one thing: knowing what is actually happening in the physical world.
     </p>
     <p style="font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--ink); border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 44px; max-width: 560px;">
-      According to the <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-style: normal; text-decoration: underline; text-underline-offset: 3px;">Federation of American Scientists</a>, Meta's actual data center emissions may be up to 19,000× higher than market-based reporting suggests. Software cannot fix that. Hardware-signed truth can.
+      For thirty years, that knowledge came from estimates, models, self-reports, and annual audits. We replaced estimation with cryptographically signed sensors. Each reading is signed at the device by a key burned into hardware at manufacture, anchored on-chain, and verifiable by anyone. Carbon proved the pipeline works. AI compute scales it. Water, supply chain, biodiversity, and grid follow.
     </p>
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-      <a href="stake/" class="btn btn-primary">Join our waitlist ↗</a>
-      <a href="#hex-launch-updates" class="btn btn-ghost">Get updates →</a>
+      <a href="stake/" class="btn btn-primary">Join our waitlist →</a>
+      <a href="contact/" class="btn btn-ghost">Schedule a Call →</a>
     </div>
     <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px;">
-      <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dim);">Live AI Energy Data ↗</a>
+      <a href="#stack" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dim);">One Protocol · One Hex Network</a>
       <span style="color: var(--line-bright);">|</span>
       <a href="#proof" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dim);">On-Chain Proof</a>
     </div>
@@ -132,9 +138,9 @@
     <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent);"></div>
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); gap: 16px;">
       <div>
-        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 6px;">Live AI Energy Data ↗</div>
-        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 8px;">On-Chain Proof</div>
-        <span style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint);">AI Energy Data · 30 Models</span>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 6px;">07 · AI Energy Data</div>
+        <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 8px;">30 models tracked live</div>
+        <span style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint);">Estimation tier today · hardware tier next</span>
       </div>
       <a href="https://aipower.fyi" target="_blank" rel="noopener" style="font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none;">aipower.fyi</a>
     </div>
@@ -169,10 +175,11 @@
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px dashed var(--line);">
       <span style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);">
         <span class="live-pulse" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: middle; box-shadow: 0 0 8px var(--accent);"></span>
-        Live Sensor Data · Dallas Pilot Node #1
+        06 · Live Sensor Data · Dallas Pilot Node #1
       </span>
       <span style="font-family: var(--mono); font-size: 11px; color: var(--accent);" data-sensor="source">Pilot stream</span>
     </div>
+    <div class="hero-ticker" id="hero-dallas-ticker" aria-hidden="true"></div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; margin-bottom: 24px;">
       <div>
         <div style="font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;">Soil Temperature</div>
@@ -205,12 +212,12 @@
 <section id="what-is" style="padding-top: 80px; padding-bottom: 80px;">
   <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto;">
     <div>
-      <div class="section-num" style="margin-bottom: 16px;">Orientation · 60 seconds</div>
+      <div class="section-num" style="margin-bottom: 16px;">What is Mālama Labs?</div>
       <h2 style="font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px;">What is <em style="font-style: italic; color: var(--accent); font-weight: 300;">Mālama Labs?</em></h2>
-      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 20px;">Estimation broke environmental markets. Carbon credits get verified once a year by humans walking transects. AI's emissions are reported via spreadsheets and renewable energy credits. Voluntary registries are losing buyer trust faster than they can issue credits.</p>
-      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 24px;">Mālama replaces estimation with hardware-signed sensors. Each reading is cryptographically signed at the device, anchored on chain, and verifiable by anyone. One protocol. Two product lines. Carbon proved it works. AI compute scales it.</p>
+      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 20px;">Carbon markets lost buyer trust because credits are verified once a year by humans walking transects. AI data-center emissions are reported via spreadsheets and renewable energy certificates. Parametric insurance triggers on weather stations hundreds of miles away. Supply-chain provenance still lives on PDFs.</p>
+      <p style="color: var(--ink-dim); font-size: 16px; line-height: 1.65; margin-bottom: 24px;">Every one of these markets has the same missing input: a trusted, continuously monitored, cryptographically signed physical data source. That is what Mālama builds. Not a methodology. Not a registry. The hardware-signed measurement layer downstream markets have been trying to work around.</p>
       <a href="#explainer-video" style="display: inline-block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); padding-top: 20px; border-top: 1px dashed var(--line-bright); text-decoration: none;">
-        Watch the 60-second explainer →
+        See how the pipeline works →
       </a>
     </div>
     <div id="explainer-video" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; border: 1px solid var(--line-bright); background: var(--bg-elev); scroll-margin-top: 100px;">
@@ -227,22 +234,22 @@
   </div>
 </section>
 
-<!-- TWO PRODUCT LINES -->
+<!-- ONE PIPELINE -->
 <section id="lines">
-  <div class="section-num">01 · Two Product Lines, One Pipeline</div>
+  <div class="section-num">01 · One Pipeline. Any Physical Measurement.</div>
   <h2 class="section-title">Carbon proved it. <em>AI compute scales it.</em></h2>
-  <p class="section-lede">The same hardware-signed verification pipeline that produced 2,786+ on-chain SaveCards from a soil sensor in Dallas now extends to rack-level power sensing inside AI data centers. One protocol. One Hex Node network. Two upstream data streams. One coherent answer to the environmental measurement crisis.</p>
+  <p class="section-lede">The Dallas pilot has emitted 2,786 signed SaveCards from a soil sensor since June 2024. The same signing architecture, same Cardano anchor, and same Hex Node validators now extend to rack-level power sensing inside AI data centers. The same architecture generalizes to any sensor that can be housed in a device with a secure enclave.</p>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;">
     <div style="background: var(--bg-elev); border: 1px solid var(--accent); border-radius: 4px; padding: 40px; position: relative;">
       <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;">PROVEN · LIVE SINCE JUNE 2024</div>
       <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px; line-height: 1.1;">Carbon dMRV</h3>
-      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Genesis 300 Pilot Node #1 (Dallas) emitted hourly ECDSA-signed environmental SaveCards to Cardano preprod since June 2024. The full credit lineage pipeline (sensor → oracle → biochar event → carbon credit) is operational on preprod with 2,786+ records and zero gaps. Cardano mainnet deployment follows final smart contract audit (target Q2 2026).</p>
+      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Genesis 300 Pilot Node #1 in Dallas has operated continuously since June 2024 on Cardano preprod. Full credit lineage (sensor → oracle → event → credit) is operational with 2,786+ records and zero gaps. Mainnet migration targets Q2 2026 post-audit.</p>
       <ul style="list-style: none; color: var(--ink-dim); font-size: 13px; line-height: 1.9; margin-bottom: 24px;">
         <li>· Soil, atmospheric, and enhanced rock weathering telemetry</li>
-        <li>· LCO₂ pre-finance, VCO₂ verified credits</li>
-        <li>· Registered with Puro.earth and Isometric for data validation</li>
-        <li>· 24+ months continuous operation</li>
+        <li>· LCO2 pre-finance and VCO2 verified credits</li>
+        <li>· Registry engagement underway with Puro.earth and Isometric</li>
+        <li>· Same signing architecture used across all verticals</li>
       </ul>
       <a href="platform/#dmrv" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);">Carbon dMRV detail →</a>
     </div>
@@ -250,24 +257,97 @@
     <div style="background: var(--bg-elev); border: 1px solid #4a90e2; border-radius: 4px; padding: 40px; position: relative;">
       <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #4a90e2; margin-bottom: 16px;">SCALING · Q2 2026 PILOTS</div>
       <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px; line-height: 1.1;">AI Compute Monitoring</h3>
-      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Rack-level power sensors deployed inside AI data centers measure exact electrical load per inference and training cycle. Same hardware-signed pipeline. Same Cardano anchor. Same Hex Node validators. Verified scope 1 emissions data the data center cannot omit.</p>
+      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Rack-level power sensors measure exact electrical load per inference and training cycle. Same hardware-signed pipeline. Same Cardano anchor. Same Hex Node validators. Verified scope 1 data the data center cannot omit.</p>
       <ul style="list-style: none; color: var(--ink-dim); font-size: 13px; line-height: 1.9; margin-bottom: 24px;">
-        <li>· Direct power sensing per inference</li>
+        <li>· Direct power sensing per inference and training cycle</li>
         <li>· Water cooling attribution and evaporation tracking</li>
         <li>· Real-time grid carbon intensity sync</li>
-        <li>· SEC climate disclosure and EU CSRD ready</li>
-        <li>· Enables scope 3 emissions calculation for AI-consuming businesses</li>
+        <li>· Built for SEC, EU CSRD, and SBTi-aligned reporting</li>
       </ul>
       <a href="ai-compute/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #4a90e2;">AI compute detail →</a>
+    </div>
+
+    <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 40px; position: relative; grid-column: 1 / -1;">
+      <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 16px;">DESIGNED · IN ACTIVE ARCHITECTURE</div>
+      <h3 style="font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 16px; line-height: 1.1;">Adjacent Physical Markets</h3>
+      <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.65; margin-bottom: 16px;">Parametric insurance triggers, EUDR supply-chain provenance, grid and microgrid intelligence, water rights, and permit compliance. Each uses the same signing pipeline. None require a new core trust layer.</p>
+      <div style="display: flex; gap: 12px 24px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint);">
+        <span>Parametric insurance</span><span>·</span><span>Supply chain provenance</span><span>·</span><span>Grid intelligence</span><span>·</span><span>Water compliance</span>
+      </div>
+      <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="platform/#dmrv" class="btn btn-ghost">Carbon dMRV detail →</a>
+        <a href="ai-compute/" class="btn btn-ghost">AI Compute detail →</a>
+        <a href="technology/" class="btn btn-ghost">Platform roadmap →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="section-num">02 · The Stack</div>
+  <h2 class="section-title">Four layers visible. <em>Six layers</em> in the protocol.</h2>
+  <p class="section-lede">The four-layer summary below collapses Mālama's full six-layer architecture (Physical, Verification, Oracle, Blockchain, Reward Scaling, Redemption) into what teams need day-to-day. Carbon SaveCards, AI compute packets, and future sensor types all flow through the same trust pipeline. Full architecture: <a href="technology/" style="color: var(--accent);">technology page →</a></p>
+
+  <div class="layer-stack">
+    <div class="layer-row">
+      <div class="layer-num">01</div>
+      <div class="layer-name">Hardware</div>
+      <div class="layer-tag">The device</div>
+      <div class="layer-desc">Two hardware classes, one signing architecture. Genesis 300 outdoor nodes for environmental sites. Rack-mount AI Power Sensors for data center deployment. Both carry ATECC608B secure enclaves with private keys burned in at manufacture.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">02</div>
+      <div class="layer-name">Trust</div>
+      <div class="layer-tag">The signature</div>
+      <div class="layer-desc">ECDSA/SHA-256 device signing. Every reading, whether soil temperature or rack-level wattage, is signed by the device private key before it leaves hardware. Tamper-evidence is cryptographic, not procedural.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">03</div>
+      <div class="layer-name">Blockchain</div>
+      <div class="layer-tag">The anchor</div>
+      <div class="layer-desc">Dual-chain by design. Cardano anchors SaveCards via CIP-25/CIP-68 datum-metadata for archival custody and registry-grade auditability. Base handles execution, rewards, claims, and EVM market activity. LayerZero OApp coordinates state across both. Cardano mainnet migration post-audit Q2 2026.</div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-num">04</div>
+      <div class="layer-name">Hex Nodes</div>
+      <div class="layer-tag">The validators</div>
+      <div class="layer-desc">Decentralized validator network running Proof-of-Truth consensus. Each Hex Node operates within an H3 geographic cell governed by an NFT-HEX rights object. Nodes validate both carbon SaveCards and AI compute packets. Phase 1 Hex Node launchpad coming soon.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ICP -->
+<section id="who">
+  <div class="section-num">03 · Who It's For</div>
+  <h2 class="section-title">Three audiences today. <em>The list grows as the sensor catalog grows.</em></h2>
+
+  <div class="card-grid-3">
+    <div class="feature-card">
+      <div class="num">01 / CARBON PROJECT DEVELOPERS</div>
+      <h3>Deploy Genesis 300 Nodes</h3>
+      <p>Deploy a Genesis 300 node and move from intermittent audit assumptions to continuous hardware-signed verification. Sub-acre deployments become viable when field telemetry is continuously signed and queryable.</p>
+      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">Cost framing:</strong> Traditional verification often carries $20,000–$50,000+ per-project audit overhead. Mālama targets single-digit dollar MRV cost per tCO2e at scale, depending on project size and sensor density.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">02 / AI OPERATORS</div>
+      <h3>AI Compute & Data Center Teams</h3>
+      <p>Hardware-verified scope 1 data ready for SEC climate disclosure, EU CSRD, and SBTi reporting. Scope 3 support for businesses consuming AI compute services. Stop estimating at the meter; start measuring at the rack.</p>
+      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">Scope 1:</strong> Direct measurement of electrical load per inference.<br><strong style="color: var(--ink-dim); font-weight: 500;">Scope 3 support:</strong> Hardware data supports upstream emissions calculations for AI buyers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">03 / NODE OPERATORS</div>
+      <h3>Hex Node Validators</h3>
+      <p>Run a Hex Node in an H3 cell and validate carbon SaveCards, AI compute packets, and future physical-world data types. Earn MLMA verification yield, uptime multipliers, and governance weight in the Mālama DAO.</p>
     </div>
   </div>
 </section>
 
 <!-- LIVE PROOF -->
 <section id="proof">
-  <div class="section-num">02 · Live Proof</div>
-  <h2 class="section-title">2,786 SaveCards. <em>Preprod.</em> Right now.</h2>
-  <p class="section-lede">The Dallas pilot is the technology demonstration that proved Mālama's hardware-signing pipeline. Every SaveCard was signed by a device whose private key was burned in at manufacture. The same pipeline now scales to AI compute.</p>
+  <div class="section-num">04 · Live Proof</div>
+  <h2 class="section-title">Carbon dMRV is the production reference. <em>AI compute is next.</em></h2>
+  <p class="section-lede">Sensor stream live today on Cardano preprod. Mainnet SaveCard minting is paused pending audit completion and migration (target Q2 2026). Recent transactions below are the latest involving the Mālama preprod wallet from our indexers.</p>
 
   <div class="proof-card" style="background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-elev) 100%); border: 1px solid var(--line-bright); border-radius: 6px; padding: 56px; position: relative; overflow: hidden;">
     <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);"></div>
@@ -318,9 +398,9 @@
 
 <!-- THE MEASUREMENT CRISIS -->
 <section id="crisis">
-  <div class="section-num">03 · The Measurement Crisis</div>
-  <h2 class="section-title">Beyond estimation. <em>The 19,000× problem.</em></h2>
-  <p class="section-lede">While the AI industry accelerates, its environmental footprint remains obscured by voluntary disclosures and market-based accounting. The <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Federation of American Scientists</a> found that Meta's actual emissions may be up to 19,000× higher than market-based reports suggest. Software cannot fix the gap between what is reported and what is real. Hardware-signed truth can.</p>
+  <div class="section-num">05 · The Measurement Crisis (AI Compute)</div>
+  <h2 class="section-title">Why the next vertical after carbon is <em>AI.</em></h2>
+  <p class="section-lede">The AI industry accelerates while its environmental footprint remains obscured by voluntary disclosure and market-based accounting. A <a href="https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Federation of American Scientists analysis</a> indicates Meta's actual emissions may be materially higher than market-based reports suggest. Software reporting cannot close the gap between what is disclosed and what is real. Hardware-signed direct measurement can.</p>
 
   <div class="card-grid-3" style="margin-top: 40px;">
     <div class="feature-card">
@@ -343,66 +423,6 @@
   <div style="margin-top: 40px;">
     <a href="ai-compute/" class="btn btn-primary">AI Compute Product →</a>
     <a href="https://aipower.fyi" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-left: 12px;">Live Dashboard ↗</a>
-  </div>
-</section>
-
-<!-- STACK -->
-<section id="stack">
-  <div class="section-num">04 · The Stack</div>
-  <h2 class="section-title">Four layers visible. <em>Six layers</em> in the protocol.</h2>
-  <p class="section-lede">The four-layer summary below collapses Mālama's full six-layer architecture (Physical, Verification, Oracle, Blockchain, Reward Scaling, Redemption) into the parts that matter. Both carbon SaveCards and AI compute packets flow through the same pipeline. Full architecture: <a href="technology/" style="color: var(--accent);">technology page →</a></p>
-
-  <div class="layer-stack">
-    <div class="layer-row">
-      <div class="layer-num">01</div>
-      <div class="layer-name">Hardware</div>
-      <div class="layer-tag">The device</div>
-      <div class="layer-desc">Two hardware classes, one signing architecture. Genesis 300 outdoor nodes for environmental sites. Rack-mount AI Power Sensors for data center deployment. Both carry ATECC608B secure enclaves with private keys burned in at manufacture.</div>
-    </div>
-    <div class="layer-row">
-      <div class="layer-num">02</div>
-      <div class="layer-name">Trust</div>
-      <div class="layer-tag">The signature</div>
-      <div class="layer-desc">ECDSA/SHA-256 device signing. Every reading, whether soil temperature or rack-level wattage, is signed by the device private key before it leaves hardware. Tamper-evidence is cryptographic, not procedural.</div>
-    </div>
-    <div class="layer-row">
-      <div class="layer-num">03</div>
-      <div class="layer-name">Blockchain</div>
-      <div class="layer-tag">The anchor</div>
-      <div class="layer-desc">Dual-chain by design. Cardano anchors SaveCards via CIP-25/CIP-68 datum-metadata for archival custody and registry-grade auditability. Base handles execution, rewards, claims, and EVM market activity. LayerZero OApp coordinates state across both. Cardano mainnet migration post-audit Q2 2026.</div>
-    </div>
-    <div class="layer-row">
-      <div class="layer-num">04</div>
-      <div class="layer-name">Hex Nodes</div>
-      <div class="layer-tag">The validators</div>
-      <div class="layer-desc">Decentralized validator network running Proof-of-Truth consensus. Each Hex Node operates within an H3 geographic cell governed by an NFT-HEX rights object. Nodes validate both carbon SaveCards and AI compute packets. Phase 1 Hex Node launchpad coming soon.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ICP -->
-<section id="who">
-  <div class="section-num">05 · Who It's For</div>
-  <h2 class="section-title">Three audiences. <em>One data layer.</em></h2>
-
-  <div class="card-grid-3">
-    <div class="feature-card">
-      <div class="num">01 / AI OPERATORS</div>
-      <h3>AI Compute & Data Center Teams</h3>
-      <p>Hardware-verified scope 1 emissions data ready for SEC climate disclosure, EU CSRD, and SBTi reporting. Support for scope 3 calculations for businesses using AI compute. Stop estimating. Start measuring at the rack.</p>
-      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">Scope 1:</strong> Direct measurement of electrical load per inference.<br><strong style="color: var(--ink-dim); font-weight: 500;">Scope 3 support:</strong> Hardware data enables businesses using AI services to calculate upstream emissions.</p>
-    </div>
-    <div class="feature-card">
-      <div class="num">02 / DEVELOPERS</div>
-      <h3>Carbon Project Developers</h3>
-      <p>Deploy a Genesis 300 node. Receive LCO₂ pre-finance within 90 days. MRV cost as low as $2 per ton of CO₂e verified, compared to $20,000–$50,000 for traditional audits. Sub-acre deployments viable.</p>
-      <p style="margin-top: 12px; font-size: 12px; line-height: 1.65; color: var(--ink-faint);"><strong style="color: var(--ink-dim); font-weight: 500;">How it works:</strong> Hardware signing + on-chain proof eliminates manual sampling cost. Continuous verification beats annual walk-throughs.</p>
-    </div>
-    <div class="feature-card">
-      <div class="num">03 / NODE OPERATORS</div>
-      <h3>Hex Node Validators</h3>
-      <p>Run a Hex Node in an H3 cell. Validate both carbon SaveCards and AI compute packets. Earn MLMA verification yield, uptime multipliers, and governance weight in the Mālama DAO.</p>
-    </div>
   </div>
 </section>
 
@@ -746,6 +766,42 @@ document.querySelectorAll('.net-btn').forEach(btn => {
 
 loadLive();
 pollTimer = setInterval(loadLive, 30000);
+
+(function initHomeHeroAnimations() {
+  var hero = document.getElementById('home-hero');
+  if (hero) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hero.classList.add('hero-anim-static');
+    } else {
+      requestAnimationFrame(function () {
+        hero.classList.add('hero-anim-ready');
+      });
+    }
+  }
+  var box = document.getElementById('hero-dallas-ticker');
+  if (!box) return;
+  var n = 40;
+  var bars = [];
+  var seed = [];
+  var i;
+  for (i = 0; i < n; i++) {
+    var b = document.createElement('div');
+    b.className = 'hero-ticker-bar';
+    b.style.height = '20%';
+    box.appendChild(b);
+    bars.push(b);
+    seed.push(0.3 + Math.random() * 0.6);
+  }
+  setInterval(function () {
+    seed.shift();
+    seed.push(0.3 + Math.random() * 0.7);
+    for (var k = 0; k < n; k++) {
+      var h = seed[k] * 100;
+      bars[k].style.height = h + '%';
+      bars[k].style.opacity = String(0.3 + seed[k] * 0.6);
+    }
+  }, 180);
+})();
 </script>
 </main><footer>
   <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
