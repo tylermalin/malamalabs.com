@@ -15,16 +15,13 @@
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Fix for Mālama kerning overlap - assign robust system fonts based on context */
+/* Fix for Mālama kerning overlap - use sans-serif globally for brand name as preferred */
 .m-font {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-h1 .m-font, h2 .m-font, h3 .m-font, h4 .m-font, h5 .m-font, h6 .m-font, .brand .m-font, .hero-h1-anim .m-font, .section-title .m-font {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--sans);
   letter-spacing: normal !important;
 }
 .mono .m-font, .nav-item .m-font, .btn .m-font, .footer-col h5 .m-font, .eyebrow .m-font {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--mono);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
