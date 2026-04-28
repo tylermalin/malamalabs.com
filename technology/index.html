@@ -31,17 +31,12 @@
     <li class="nav-item"><a href="../company/">Company ▾</a>
       <div class="nav-dropdown">
         <a href="../company/">About<span>Mission and origin</span></a>
-        <a href="../team/">Team<span>Founders and operators</span></a>
-        <a href="../careers/">Careers<span>Open roles</span></a>
         <a href="../contact/">Contact<span>Schedule a call</span></a>
       </div>
     </li>
     <li class="nav-item"><a href="../platform/">Platform ▾</a>
       <div class="nav-dropdown">
         <a href="../platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
-        <a href="../ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
-        <a href="../platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
-        <a href="../methodology/">Methodology<span>From sensor to proof</span></a>
         <a href="../technology/">Technology<span>Six-layer architecture</span></a>
       </div>
     </li>
@@ -65,7 +60,7 @@
         <a href="../resources/">Knowledge Base<span>Docs and primers</span></a>
         <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>Open source · Mālama Foundation</span></a>
         <a href="../blog/">Blog<span>Updates and analysis</span></a>
-        <a href="../faq/">FAQ<span>Common questions</span></a>
+        <a href="/resources/#faq">FAQ<span>Common questions</span></a>
       </div>
     </li>
   </ul>
@@ -80,13 +75,9 @@
   <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
   <h4>Company</h4>
   <a href="/company/">About</a>
-  <a href="/team/">Team</a>
-  <a href="/careers/">Careers</a>
   <a href="/contact/">Contact</a>
   <h4>Platform</h4>
   <a href="/platform/">Platform Overview</a>
-  <a href="/ai-compute/">AI Compute Monitoring</a>
-  <a href="/methodology/">Methodology</a>
   <a href="/technology/">Technology</a>
   <h4>Projects</h4>
   <a href="/projects/">All Projects</a>
@@ -100,7 +91,7 @@
   <a href="/resources/">Knowledge Base</a>
   <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
   <a href="/blog/">Blog</a>
-  <a href="/faq/">FAQ</a>
+  <a href="/resources/#faq">FAQ</a>
   <a href="/contact/">Schedule a Call</a>
   <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
 </aside>
@@ -356,6 +347,139 @@
     </table>
   </div>
 </section>
+
+<!-- METHODOLOGY SECTION -->
+<div id="methodology" style="border-top: 1px solid var(--line-bright); padding-top: 120px; margin-top: 60px;">
+  <div style="text-align: center; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <div class="eyebrow">Methodology</div>
+    <h2 style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 400; margin-bottom: 16px;">From sensor to proof.</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">The Mālama dMRV cycle. Four steps from physical reality to on-chain certificate. The same pipeline serves carbon project sites and AI data centers. Hardware signs at the source. Hex Nodes validate. Cardano anchors. Proof of Truth issues.</p>
+  </div>
+
+</div>
+
+<section>
+  <div class="section-num">The dMRV Cycle</div>
+  <h2 class="section-title">Four steps. One chain of custody.</h2>
+
+  <div style="display: grid; gap: 24px; margin-top: 40px;">
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 40px; border-radius: 4px;">
+      <div>
+        <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">01 · Direct Sensor Capture</h3>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7; margin-bottom: 12px;">
+          IoT sensors deployed at the source capture high-frequency environmental data. For carbon: Genesis 300 nodes at biochar and enhanced rock weathering sites measure soil temperature, moisture, EC, pH, and atmospheric conditions. Forestry, soil carbon, and regenerative agriculture support are roadmap items. For AI compute: rack-mount AI Power Sensors measure exact electrical load per inference and training cycle, plus cooling water and evaporation.
+        </p>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7;">
+          Every reading is signed by an ECDSA private key burned into the device's ATECC608B secure enclave at manufacture. The signature exists before the data leaves the silicon. There is no software path to forge it.
+        </p>
+      </div>
+    </div>
+
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 40px; border-radius: 4px;">
+      <div>
+        <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">02 · Edge Verification</h3>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7; margin-bottom: 12px;">
+          Raw signed data is processed at the edge before transmission. The verification stack runs cryptographic, protocol, physical, spatial, temporal, and methodology checks in sequence. AI z-score anomaly detection flags spoofed and physically implausible readings.
+        </p>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7;">
+          For AI compute, edge verification cross-references power draw with real-time grid carbon intensity and cooling water evaporation rates. A kilowatt-hour at 4 AM in Quebec carries different carbon weight than the same kilowatt-hour at 4 PM in Texas. Edge verification captures that difference at the moment of measurement.
+        </p>
+      </div>
+    </div>
+
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 40px; border-radius: 4px;">
+      <div>
+        <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">03 · Hex Node Consensus</h3>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7; margin-bottom: 12px;">
+          Verified data is broadcast to the Mālama Hex Node network. Each Hex Node operates within an H3 geographic cell governed by an NFT-HEX rights object. Nodes perform decentralized audits, verifying that the data packet matches protocol standards and the device signature checks out against the on-chain device registry.
+        </p>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7;">
+          Validated readings are batched by region and methodology, bundled into Merkle trees, and archived on Arweave for permanent data availability. Only the Merkle root is committed to Cardano-anchored ledger via CIP-25/CIP-68 SaveCard semantics. Validators stake MLMA. Fraudulent attestations face 10% slashing. The network is Byzantine Fault Tolerant by construction.
+        </p>
+      </div>
+    </div>
+
+    <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 40px; border-radius: 4px;">
+      <div>
+        <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 14px; line-height: 1.2;">04 · Proof of Truth</h3>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7; margin-bottom: 12px;">
+          Once verified and committed, the data becomes a Proof of Truth certificate. For carbon: a SaveCard that feeds into LCO₂ pre-finance issuance and eventual VCO₂ verified credit conversion. For AI compute: a hardware-verified disclosure record that satisfies SEC climate disclosure, EU CSRD, and SBTi reporting requirements.
+        </p>
+        <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7;">
+          Companies use these certificates for radical transparency and regulatory compliance. Registries integrate them into existing methodology workflows. Buyers verify them on chain without trusting any intermediary. The chain of custody from device signature to ledger record is publicly inspectable and cryptographically continuous.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Methodology Transparency</div>
+  <h2 class="section-title">Open data, open assumptions.</h2>
+  <p class="section-lede">Mālama publishes every assumption that goes into the dMRV cycle with confidence levels. For the AI Energy dashboard at aipower.fyi, this means cited data sources with type badges, model assumptions with confidence ratings, full calculation formulas visible, and an open contribution form for researchers. If our numbers are wrong, the system makes it easy to tell us. That is the entire point.</p>
+
+  <div class="card-grid-3" style="margin-top: 40px;">
+    <div class="feature-card">
+      <div class="num">CITED SOURCES</div>
+      <h3>10+ Data Sources</h3>
+      <p>Every calculation references published research, vendor specifications, or peer-reviewed studies. Type badges identify whether each source is academic, vendor-supplied, regulatory, or community-contributed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">CONFIDENCE RATINGS</div>
+      <h3>6 Model Assumptions</h3>
+      <p>Each assumption is published with a confidence rating. Low confidence assumptions are explicitly flagged. Researchers can challenge any assumption through the contribution form.</p>
+    </div>
+    <div class="feature-card">
+      <div class="num">OPEN CONTRIBUTION</div>
+      <h3>Living Dataset</h3>
+      <p>The aipower.fyi dataset is a public good. The contribution form accepts better data, alternative methodologies, and direct corrections. Improvements are versioned and attributed.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;">
+    <a href="https://aipower.fyi" target="_blank" rel="noopener" class="btn btn-primary">View Live Dashboard ↗</a>
+    <span style="color: var(--line-bright); font-family: var(--mono); font-size: 12px;">|</span>
+    <a href="../technology/" class="btn btn-ghost">Architecture Detail →</a>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">Estimation vs. Measurement</div>
+  <h2 class="section-title">Why this is different from everyone else.</h2>
+
+  <div class="method-compare-wrap">
+  <div class="method-compare-table" style="border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-top: 40px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 24px 32px; gap: 24px; background: var(--bg-elev); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); border-bottom: 1px solid var(--line);">
+      <div>Approach</div><div>Method</div><div>Verifiability</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 22px 32px; gap: 24px; align-items: center; border-bottom: 1px solid var(--line); font-size: 14px;">
+      <div style="font-family: var(--serif); font-size: 17px; color: var(--ink-dim);">Vendor self-report</div>
+      <div style="color: var(--ink-dim);">Market-based accounting, voluntary disclosure</div>
+      <div style="color: var(--ink-dim);">Trust the vendor</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 22px 32px; gap: 24px; align-items: center; border-bottom: 1px solid var(--line); font-size: 14px;">
+      <div style="font-family: var(--serif); font-size: 17px; color: var(--ink-dim);">Third-party estimation</div>
+      <div style="color: var(--ink-dim);">Industry averages applied to compute hours</div>
+      <div style="color: var(--ink-dim);">Trust the model</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 22px 32px; gap: 24px; align-items: center; border-bottom: 1px solid var(--line); font-size: 14px;">
+      <div style="font-family: var(--serif); font-size: 17px; color: var(--ink-dim);">Live dashboards (aipower.fyi)</div>
+      <div style="color: var(--ink-dim);">Cited research with open methodology and confidence ratings</div>
+      <div style="color: var(--ink-dim);">Trust the published assumptions</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 22px 32px; gap: 24px; align-items: center; font-size: 14px;">
+      <div style="font-family: var(--serif); font-size: 17px; color: var(--accent);">Mālama dMRV (target Q2 2026)</div>
+      <div style="color: var(--ink-dim);">Hardware-signed rack-level sensors, on-chain anchored</div>
+      <div style="color: var(--ink-dim);">Trust the cryptography</div>
+    </div>
+  </div>
+  </div>
+
+  <div style="margin-top: 24px; padding: 20px 24px; background: rgba(196,240,97,0.04); border-left: 2px solid var(--accent-dim); font-size: 13px; color: var(--ink-faint); line-height: 1.6;">
+    Estimation is the start. Sensors are the truth. The aipower.fyi dashboard is the estimation tier. The Mālama AI Power Sensor program (Q2 2026 pilots) is the sensor tier. Both are necessary. Estimation is what gets the field talking and the methodology improving. Hardware sensors are what move the field beyond debate.
+  </div>
+</section>
+</div>
 </main><footer>
   <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -391,8 +515,6 @@
       <h5>Company</h5>
       <ul>
         <li><a href="../company/">About</a></li>
-        <li><a href="../team/">Team</a></li>
-        <li><a href="../careers/">Careers</a></li>
         <li><a href="../contact/">Contact</a></li>
       </ul>
     </div>
@@ -400,8 +522,6 @@
       <h5>Platform</h5>
       <ul>
         <li><a href="../platform/">Overview</a></li>
-        <li><a href="../ai-compute/">AI Compute</a></li>
-        <li><a href="../methodology/">Methodology</a></li>
         <li><a href="../technology/">Technology</a></li>
         <li><a href="../projects/">Network</a></li>
         <li><a href="../stake/">Hex Nodes</a></li>
@@ -419,7 +539,7 @@
       <ul>
         <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
         <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
-        <li><a href="../faq/">FAQ</a></li>
+        <li><a href="/resources/#faq">FAQ</a></li>
       </ul>
     </div>
   </div>

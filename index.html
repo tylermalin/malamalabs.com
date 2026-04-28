@@ -32,17 +32,12 @@
     <li class="nav-item"><a href="company/">Company ▾</a>
       <div class="nav-dropdown">
         <a href="company/">About<span>Mission and origin</span></a>
-        <a href="team/">Team<span>Founders and operators</span></a>
-        <a href="careers/">Careers<span>Open roles</span></a>
         <a href="contact/">Contact<span>Schedule a call</span></a>
       </div>
     </li>
     <li class="nav-item"><a href="platform/">Platform ▾</a>
       <div class="nav-dropdown">
         <a href="platform/">Platform Overview<span>Two product lines, one pipeline</span></a>
-        <a href="ai-compute/">AI Compute Monitoring<span>Rack-level power sensing</span></a>
-        <a href="platform/#dmrv">Carbon dMRV Engine<span>The proven pipeline</span></a>
-        <a href="methodology/">Methodology<span>From sensor to proof</span></a>
         <a href="technology/">Technology<span>Six-layer architecture</span></a>
       </div>
     </li>
@@ -66,7 +61,7 @@
         <a href="resources/">Knowledge Base<span>Docs and primers</span></a>
         <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗<span>aipower.fyi · live data</span></a>
         <a href="blog/">Blog<span>Updates and analysis</span></a>
-        <a href="faq/">FAQ<span>Common questions</span></a>
+        <a href="/resources/#faq">FAQ<span>Common questions</span></a>
       </div>
     </li>
   </ul>
@@ -81,13 +76,9 @@
   <button class="mobile-drawer-close" aria-label="Close menu" onclick="document.getElementById('mobile-drawer').classList.remove('open');document.getElementById('mobile-drawer-overlay').classList.remove('open');document.body.style.overflow=''">×</button>
   <h4>Company</h4>
   <a href="/company/">About</a>
-  <a href="/team/">Team</a>
-  <a href="/careers/">Careers</a>
   <a href="/contact/">Contact</a>
   <h4>Platform</h4>
   <a href="/platform/">Platform Overview</a>
-  <a href="/ai-compute/">AI Compute Monitoring</a>
-  <a href="/methodology/">Methodology</a>
   <a href="/technology/">Technology</a>
   <h4>Projects</h4>
   <a href="/projects/">All Projects</a>
@@ -101,7 +92,7 @@
   <a href="/resources/">Knowledge Base</a>
   <a href="https://aipower.fyi" target="_blank" rel="noopener">AI Energy Dashboard ↗</a>
   <a href="/blog/">Blog</a>
-  <a href="/faq/">FAQ</a>
+  <a href="/resources/#faq">FAQ</a>
   <a href="/contact/">Schedule a Call</a>
   <a href="/#hex-launch-updates" class="mobile-cta">Get updates →</a>
 </aside>
@@ -116,8 +107,8 @@
       <h1 class="hero-h1-anim">
         <span class="hero-reveal-line"><span>Reality is measured.</span></span>
         <span class="hero-reveal-line"><span>Not estimated.</span></span>
-        <span class="hero-reveal-line"><span><em>Hardware-signed truth.</em></span></span>
       </h1>
+      <h2 class="hero-reveal-line" style="font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 400; color: var(--ink-dim); margin-top: 16px; margin-bottom: 24px;"><em>Hardware-signed truth.</em></h2>
     </div>
     <p style="font-size: 19px; line-height: 1.6; color: var(--ink-dim); max-width: 580px; margin-bottom: 24px;">
       Mālama Labs is the hardware-signed trust anchor for physical-world data. Every environmental market, every emissions disclosure, every ESG claim, every parametric insurance payout, and every supply-chain attestation depends on one thing: knowing what is actually happening in the physical world.
@@ -253,7 +244,6 @@
         <li>· Registry engagement underway with Puro.earth and Isometric</li>
         <li>· Same signing architecture used across all verticals</li>
       </ul>
-      <a href="platform/#dmrv" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent);">Carbon dMRV detail →</a>
     </div>
 
     <div style="background: var(--bg-elev); border: 1px solid #4a90e2; border-radius: 4px; padding: 40px; position: relative;">
@@ -266,7 +256,6 @@
         <li>· Real-time grid carbon intensity sync</li>
         <li>· Built for SEC, EU CSRD, and SBTi-aligned reporting</li>
       </ul>
-      <a href="ai-compute/" style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #4a90e2;">AI compute detail →</a>
     </div>
 
     <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 40px; position: relative; grid-column: 1 / -1;">
@@ -277,8 +266,6 @@
         <span>Parametric insurance</span><span>·</span><span>Supply chain provenance</span><span>·</span><span>Grid intelligence</span><span>·</span><span>Water compliance</span>
       </div>
       <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="platform/#dmrv" class="btn btn-ghost">Carbon dMRV detail →</a>
-        <a href="ai-compute/" class="btn btn-ghost">AI Compute detail →</a>
         <a href="technology/" class="btn btn-ghost">Platform roadmap →</a>
       </div>
     </div>
@@ -423,7 +410,6 @@
   </div>
 
   <div style="margin-top: 40px;">
-    <a href="ai-compute/" class="btn btn-primary">AI Compute Product →</a>
     <a href="https://aipower.fyi" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-left: 12px;">Live Dashboard ↗</a>
   </div>
 </section>
@@ -840,8 +826,6 @@ pollTimer = setInterval(loadLive, 30000);
       <h5>Company</h5>
       <ul>
         <li><a href="company/">About</a></li>
-        <li><a href="team/">Team</a></li>
-        <li><a href="careers/">Careers</a></li>
         <li><a href="contact/">Contact</a></li>
       </ul>
     </div>
@@ -849,8 +833,6 @@ pollTimer = setInterval(loadLive, 30000);
       <h5>Platform</h5>
       <ul>
         <li><a href="platform/">Overview</a></li>
-        <li><a href="ai-compute/">AI Compute</a></li>
-        <li><a href="methodology/">Methodology</a></li>
         <li><a href="technology/">Technology</a></li>
         <li><a href="projects/">Network</a></li>
         <li><a href="stake/">Hex Nodes</a></li>
@@ -868,7 +850,7 @@ pollTimer = setInterval(loadLive, 30000);
       <ul>
         <li><a href="https://aipower.fyi" target="_blank" rel="noopener">AIPower.fyi ↗</a></li>
         <li><a href="https://malamafoundation.org" target="_blank" rel="noopener">MalamaFoundation.org ↗</a></li>
-        <li><a href="faq/">FAQ</a></li>
+        <li><a href="/resources/#faq">FAQ</a></li>
       </ul>
     </div>
   </div>
