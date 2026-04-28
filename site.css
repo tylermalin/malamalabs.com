@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Fraunces Fix';
+  src: local('Georgia'), serif;
+  unicode-range: U+0101, U+0100; /* Only apply to ā and Ā */
+}
+@font-face {
+  font-family: 'Inter Tight Fix';
+  src: local('Helvetica Neue'), local('Arial'), sans-serif;
+  unicode-range: U+0101, U+0100; /* Only apply to ā and Ā */
+}
+
 :root {
   --bg: #0a0e0a;
   --bg-elev: #0f1410;
@@ -10,8 +21,8 @@
   --accent: #c4f061;
   --accent-dim: #8aa845;
   --warn: #f0a05a;
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Inter Tight', system-ui, sans-serif;
+  --serif: 'Fraunces Fix', 'Fraunces', Georgia, serif;
+  --sans: 'Inter Tight Fix', 'Inter Tight', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1226,3 +1237,11 @@ footer {
   }
 }
 
+
+/* Fix for Mālama kerning overlap */
+em, .hero-h1-anim em, #what-is h2 em, .section-title em {
+  letter-spacing: 0.01em !important;
+}
+.brand {
+  letter-spacing: 0.01em !important;
+}
