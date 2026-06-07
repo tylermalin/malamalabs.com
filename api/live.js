@@ -315,7 +315,7 @@ export default async function handler(req) {
   ]);
 
   // If no address is configured for this network, return a graceful empty state
-  // rather than 503. The mainnet wallet is intentionally empty until Q2 2026.
+  // rather than 503. The mainnet wallet is intentionally empty until Q4 2026.
   if (!addr) {
     return new Response(
       JSON.stringify({
@@ -327,7 +327,7 @@ export default async function handler(req) {
           ok: false,
           status: 'not_configured',
           message: network === 'mainnet'
-            ? 'Mainnet launches Q2 2026 after audit. Preprod is live now.'
+            ? 'Mainnet launches Q4 2026 after audit. Preprod is live now.'
             : `${network} not yet configured`,
           assets_total: 0,
           tx_count: 0,

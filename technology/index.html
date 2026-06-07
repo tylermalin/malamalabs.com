@@ -52,7 +52,7 @@
         <a href="../investors/">Investor Overview<span>Round and terms</span></a>
         <a href="../advisors/">Advisory Board<span>Board portal</span></a>
         <a href="../presentations/">Presentations<span>Deck and materials</span></a>
-        <a href="/#hex-launch-updates">Hex launchpad ↗<span>Late May 2026 · get whitelist access</span></a>
+        <a href="/#hex-launch-updates">Hex launchpad ↗<span>June 1, 2026 · get whitelist access</span></a>
       </div>
     </li>
     <li class="nav-item"><a href="../resources/">Resources ▾</a>
@@ -119,7 +119,7 @@
       <div class="layer-num">02</div>
       <div class="layer-name">Verification</div>
       <div class="layer-tag">Anti-Spoofing & Anomaly Detection</div>
-      <div class="layer-desc">Statistical plausibility review and outlier detection across cryptographic, protocol, physical, spatial, temporal, and methodology checks. Validators participate under a PONO credential issued through KYB and operational milestones. Fraudulent attestations result in PONO revocation and forfeiture of unvested operator rewards (85% of the allocation). The geographic consensus layer (H3 k-ring BFT attestation) makes single-validator falsification detectable by neighboring nodes.</div>
+      <div class="layer-desc">Statistical plausibility review and outlier detection across cryptographic, protocol, physical, spatial, temporal, and methodology checks. Validators participate under a PONO credential issued through KYB and operational milestones. Fraudulent attestations result in PONO revocation and forfeiture of unvested operator rewards (85% of the allocation, routing to the Genesis Performing Operator Bonus Pool). The geographic consensus layer (H3 k-ring BFT attestation) makes single-validator falsification detectable by neighboring nodes.</div>
     </div>
     <div class="layer-row">
       <div class="layer-num">03</div>
@@ -131,13 +131,13 @@
       <div class="layer-num">04</div>
       <div class="layer-name">Blockchain</div>
       <div class="layer-tag">Two-Chain Architecture</div>
-      <div class="layer-desc">Cardano for archival custody via CIP-68 SaveCards. Base for execution: MLMA token issuance, staking, governance, claims, and EVM-side market activity. The chains operate independently and are not bridged at TGE. Each handles the function it's best suited for, without a single tradeoff envelope being forced on both.</div>
+      <div class="layer-desc">Cardano for archival custody via CIP-68 SaveCards. Base for execution: MLMA digital tool issuance, staking, governance, claims, and EVM-side market activity. The chains operate independently and are not bridged at TGE. Each handles the function it's best suited for, without a single tradeoff envelope being forced on both.</div>
     </div>
     <div class="layer-row">
       <div class="layer-num">05</div>
       <div class="layer-name">Reward Scaling</div>
       <div class="layer-tag">H3 Geographic Economics</div>
-      <div class="layer-desc">Uber's H3 hex grid partitions the planet into policy-manageable cells (Resolution 5: ~252.9 km² per hex, approximately 2,016,842 unique indexes globally). Reward and acquisition cost multipliers vary by zone density. Frontier and strategic gap regions earn up to 3x. Urban regions cap at 0.5x. Coverage follows climate value, not population density.</div>
+      <div class="layer-desc">Uber's H3 hex grid partitions the planet into cells (Resolution 5: ~252.9 km² per hex, approximately 2,016,842 unique indexes globally). Reward scaling applies Hex Type (0.95× to 1.30×) and Data Demand Score (0.70× to 1.30×) multipliers to the 125,000 base. Rewards are distributed from a fixed 25,000,000 pool on a cohort-normalized basis.</div>
     </div>
     <div class="layer-row">
       <div class="layer-num">06</div>
@@ -183,7 +183,7 @@
 
   <div style="margin-top: 24px; padding: 28px 32px; background: var(--bg-elev); border: 1px solid var(--line); border-radius: 4px;">
     <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 12px;">Independent, Not Bridged</div>
-    <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65;">The two chains do separate jobs and don't need to share state through a bridge for the protocol to function. SaveCards live on Cardano. The MLMA token, staking, and governance live on Base. Operators don't move tokens between chains as part of normal protocol activity. A Cardano-side MLMA mirror is a Phase 2 question contingent on bridge selection, security audit, and market readiness. It is not on the critical path.</p>
+    <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65;">The two chains do separate jobs and don't need to share state through a bridge for the protocol to function. SaveCards live on Cardano. The MLMA digital tool, staking, and governance live on Base. Operators don't move tokens between chains as part of normal protocol activity. A Cardano-side MLMA mirror is a Phase 2 question contingent on bridge selection, security audit, and market readiness. It is not on the critical path.</p>
   </div>
 </section>
 
@@ -191,38 +191,37 @@
 <section>
   <div class="section-num">Layer 05 · Geographic Economics</div>
   <h2 class="section-title">H3 hex grid. Coverage follows climate value, not population.</h2>
-  <p class="section-lede">Uniform rewards across all locations create predictable distortions. Dense urban regions saturate quickly because they are easier to access, while frontier zones with the highest climate relevance remain under-supplied. <span class="m-font">Mālama</span>'s reward scaling layer fixes this by partitioning the planet into H3 cells and applying zone-based reward and acquisition cost multipliers.</p>
+  <p class="section-lede">Uniform rewards across all locations create predictable distortions. Dense urban regions saturate quickly because they are easier to access, while remote zones with the highest climate relevance remain under-supplied. <span class="m-font">Mālama</span>'s reward scaling layer fixes this by partitioning the planet into H3 cells and applying Hex Type and Data Demand Score multipliers on a cohort-normalized basis.</p>
 
-  <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-top: 32px; margin-bottom: 12px;">Zone classification</div>
+  <div style="font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-top: 32px; margin-bottom: 12px;">Hex Type Multipliers</div>
   <div class="data-table-wrap">
     <table class="data-table">
       <thead>
         <tr>
-          <th>Zone Type</th>
-          <th>Population Range</th>
-          <th>Max Nodes / Cell</th>
-          <th>Reward Multiplier</th>
+          <th>Hex Type</th>
+          <th>Placement Context</th>
+          <th>Multiplier</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td data-label="Zone Type" class="td-name">Urban</td><td data-label="Population">&gt;1M</td><td data-label="Max Nodes">20</td><td data-label="Reward">0.5x</td></tr>
-        <tr><td data-label="Zone Type" class="td-name">Dense Suburban</td><td data-label="Population">100K to 1M</td><td data-label="Max Nodes">5</td><td data-label="Reward">1.0x</td></tr>
-        <tr><td data-label="Zone Type" class="td-name">Rural</td><td data-label="Population">10K to 100K</td><td data-label="Max Nodes">2</td><td data-label="Reward">1.5x</td></tr>
-        <tr><td data-label="Zone Type" class="td-name">Frontier</td><td data-label="Population">&lt;10K</td><td data-label="Max Nodes">1</td><td data-label="Reward" class="td-accent">2.0x</td></tr>
-        <tr><td data-label="Zone Type" class="td-name">Strategic / Extreme Gap</td><td data-label="Population">Sparse or critical</td><td data-label="Max Nodes">1</td><td data-label="Reward" class="td-accent">up to 3.0x</td></tr>
+        <tr><td data-label="Hex Type" class="td-name">Urban Core</td><td data-label="Placement Context">High-density metropolitan core</td><td data-label="Multiplier">0.95×</td></tr>
+        <tr><td data-label="Hex Type" class="td-name">Urban</td><td data-label="Placement Context">Standard urban areas</td><td data-label="Multiplier">1.00×</td></tr>
+        <tr><td data-label="Hex Type" class="td-name">Suburban</td><td data-label="Placement Context">Suburban residential and commercial belts</td><td data-label="Multiplier">1.10×</td></tr>
+        <tr><td data-label="Hex Type" class="td-name">Rural</td><td data-label="Placement Context">Agricultural and low-density zones</td><td data-label="Multiplier">1.20×</td></tr>
+        <tr><td data-label="Hex Type" class="td-name">Remote</td><td data-label="Placement Context">Frontier and strategic environmental gap areas</td><td data-label="Multiplier" class="td-accent">1.30×</td></tr>
       </tbody>
     </table>
   </div>
 
   <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
     <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 28px; border-radius: 4px;">
-      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 10px;">H3 RESOLUTION 5</div>
-      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65; margin: 0;">Approximately 252.9 km² per cell. Approximately 2,016,842 unique cells globally. Resolution 5 balances regional granularity against governance manageability.</p>
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 10px;">REWARD SCALING &amp; VESTING</div>
+      <p style="color: var(--ink-dim); font-size: 14px; line-height: 1.65; margin: 0;">Genesis 200 operator rewards come from a fixed 25,000,000 MLMA pool. Rewards vest 15 / 15 / 20 / 20 / 30 across boot, the PONO milestone at ~90 days, and the 6, 9, and 12-month milestones, completing at twelve months. Forfeited tranches route to the Genesis Performing Operator Bonus Pool.</p>
     </div>
     <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 28px; border-radius: 4px;">
-      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 10px;">REWARD ADJUSTMENT</div>
-      <div style="font-family: var(--mono); font-size: 18px; line-height: 1.4; margin-bottom: 10px; color: var(--ink);">R<sub>adj</sub> = R<sub>base</sub> × M(S, Z)</div>
-      <p style="color: var(--ink-dim); font-size: 13px; line-height: 1.6; margin: 0;">Where S = local saturation and Z = zone classification. Acquisition cost follows the same logic so scarce or strategic zones are not priced identically to dense urban cells.</p>
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 10px;">COHORT NORMALIZATION FORMULA</div>
+      <div style="font-family: var(--mono); font-size: 14px; line-height: 1.4; margin-bottom: 10px; color: var(--ink);">Calculated Eligibility = 125,000 base × Genesis Year 1 (1.5×) × Hex Type (0.95× to 1.30×) × Data Demand Score (0.70× to 1.30×)</div>
+      <p style="color: var(--ink-dim); font-size: 13px; line-height: 1.6; margin: 0;">Final Earned = Calculated Eligibility × (25,000,000 / total cohort calculated eligibility). Hex Type reflects placement and coverage value. Data Demand Score reflects how much a node's data is drawn on.</p>
     </div>
   </div>
 </section>
@@ -252,7 +251,7 @@
   </div>
 </section>
 
-<!-- GENESIS 300 SPEC -->
+<!-- GENESIS 200 SPEC -->
 <section>
   <div class="section-num">Hardware Reference Design</div>
   <h2 class="section-title">Genesis Hex Node, field-deployed.</h2>
@@ -339,7 +338,7 @@
       </thead>
       <tbody>
         <tr><td data-label="Metric" class="td-label">Verification time</td><td data-label="Legacy">12 to 24 months</td><td data-label="Mālama" class="td-accent">Continuous, real-time</td></tr>
-        <tr><td data-label="Metric" class="td-label">Verification cost</td><td data-label="Legacy">$5 to $40 per ton</td><td data-label="Mālama" class="td-accent">Targeting single-digit dollars per ton at scale</td></tr>
+        <tr><td data-label="Metric" class="td-label">Verification cost</td><td data-label="Legacy">$5 to $40 per ton (or $20k–$50k+ per-project audit overhead)</td><td data-label="Mālama" class="td-accent">Targeting single-digit dollars per ton at scale (protocol target)</td></tr>
         <tr><td data-label="Metric" class="td-label">Market access</td><td data-label="Legacy">High-cap projects only</td><td data-label="Mālama" class="td-accent">Sub-acre and smallholder viability is a protocol target as sensor density grows</td></tr>
         <tr><td data-label="Metric" class="td-label">Data reliability</td><td data-label="Legacy">Subjective and periodic</td><td data-label="Mālama" class="td-accent">Objective and continuous</td></tr>
         <tr><td data-label="Metric" class="td-label">Tamper-evidence</td><td data-label="Legacy">Procedural</td><td data-label="Mālama" class="td-accent">Cryptographic at the device</td></tr>
@@ -395,7 +394,7 @@
           Verified data is broadcast to the <span class="m-font">Mālama</span> Hex Node network. Each Hex Node operates within an H3 geographic cell under a non-exclusive license encoded as an NFT-HEX rights object. Nodes perform decentralized validation, checking that the data packet matches protocol standards and that the device signature is valid against the on-chain device registry.
         </p>
         <p style="color: var(--ink-dim); font-size: 15px; line-height: 1.7;">
-          Validated readings are batched by region and methodology, bundled into Merkle trees, and persisted in immutable off-chain storage. Only the Merkle root is anchored to Cardano via a CIP-0068 reference NFT, with off-chain metadata schema aligned to CIP-0026. Validators operate under a PONO credential earned through operational milestones; fraudulent attestations result in PONO revocation and forfeiture of unvested operator rewards. The geographic consensus layer (H3 k-ring BFT attestation) makes the network Byzantine Fault Tolerant by construction.
+          Validated readings are batched by region and methodology, bundled into Merkle trees, and persisted in immutable off-chain storage. Only the Merkle root is anchored to Cardano via a CIP-0068 reference NFT, with off-chain metadata schema aligned to CIP-0026. Validators operate under a PONO credential earned through operational milestones; fraudulent attestations result in PONO revocation and forfeiture of unvested operator rewards (routing to the Genesis Performing Operator Bonus Pool). The geographic consensus layer (H3 k-ring BFT attestation) makes the network Byzantine Fault Tolerant by construction.
         </p>
       </div>
     </div>
@@ -554,7 +553,7 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 <span class="m-font">Mālama Labs</span>, Inc. · Los Angeles · Honolulu</div>
-    <div>Cardano preprod live · Mainnet Q2 2026</div>
+    <div>Cardano preprod live · Mainnet Q4 2026</div>
   </div>
 </footer>
 </body>
