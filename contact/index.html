@@ -146,6 +146,41 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="section-num">Send a message</div>
+  <h2 class="section-title">Or write to us <em>here</em>.</h2>
+  <p class="section-lede">Prefer not to open your mail client? Send it directly. We reply within 24 hours on business days.</p>
+  <div style="background:var(--bg-elev); border:1px solid var(--line); padding:40px; border-radius:4px; max-width:600px; margin-top:32px;">
+    <form id="contact-form" style="display:grid; gap:16px;">
+      <input type="text" name="name" placeholder="Name" style="width:100%; padding:12px; background:var(--bg); border:1px solid var(--line); border-radius:4px; color:var(--ink); font-family:var(--mono); font-size:13px;" required>
+      <input type="email" name="email" placeholder="Email" style="width:100%; padding:12px; background:var(--bg); border:1px solid var(--line); border-radius:4px; color:var(--ink); font-family:var(--mono); font-size:13px;" required>
+      <select name="context" style="width:100%; padding:12px; background:var(--bg); border:1px solid var(--line); border-radius:4px; color:var(--ink); font-family:var(--mono); font-size:13px;">
+        <option value="" disabled selected>Context (optional)</option>
+        <option>Investor</option><option>Partner</option><option>Operator</option><option>Press</option><option>Other</option>
+      </select>
+      <textarea name="message" placeholder="How can we help?" style="width:100%; padding:12px; background:var(--bg); border:1px solid var(--line); border-radius:4px; color:var(--ink); font-family:var(--mono); font-size:13px; min-height:110px; resize:vertical;" required></textarea>
+      <button type="submit" class="btn btn-primary" style="justify-self:start;">Send message →</button>
+    </form>
+    <p id="contact-status" hidden style="margin-top:16px; font-family:var(--mono); font-size:12px; line-height:1.6; color:var(--accent);"></p>
+  </div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('contact-form'); if(!f) return;
+  var s=document.getElementById('contact-status');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var fd=new FormData(f);
+    var ctx=fd.get('context');
+    var body={source:'Contact'+(ctx?(' · '+ctx):''),name:fd.get('name'),email:fd.get('email'),message:fd.get('message')};
+    if(s){s.hidden=false;s.textContent='Sending…';s.style.color='var(--ink-dim)';}
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok&&d.ok,d:d};});})
+      .then(function(x){ if(s){s.textContent=x.ok?'Sent. We will reply within 24 hours on business days.':((x.d&&x.d.error)||'Something went wrong. Email tyler@malamalabs.com.');s.style.color=x.ok?'var(--accent)':'#f0a05a';} if(x.ok) f.reset(); })
+      .catch(function(){ if(s){s.textContent='Network error. Email tyler@malamalabs.com.';s.style.color='#f0a05a';} });
+  });
+})();
+</script>
 </main><footer>
   <div style="background: var(--bg-elev); border: 1px solid var(--line-bright); border-radius: 4px; padding: 24px 32px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 16px;">
