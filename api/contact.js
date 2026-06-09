@@ -7,7 +7,7 @@
 export const config = { runtime: 'edge' };
 
 const FROM   = 'Mālama Labs <noreply@malamalabs.com>';
-const NOTIFY = 'Info@malamaproject.org';
+const NOTIFY = ['info@malamaproject.org', 'tyler@malamalabs.com', 'jeffrey@malamalabs.com'];
 const RESEND = 'https://api.resend.com/emails';
 
 const CORS = {
@@ -21,7 +21,7 @@ const esc = (s) =>
   String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 async function send(key, { to, subject, html, text, replyTo }) {
-  const body = { from: FROM, to: [to], subject, html, text };
+  const body = { from: FROM, to: Array.isArray(to) ? to : [to], subject, html, text };
   if (replyTo) body.reply_to = replyTo;
   const r = await fetch(RESEND, {
     method: 'POST',
