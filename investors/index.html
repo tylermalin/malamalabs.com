@@ -203,6 +203,7 @@
       <label style="display:flex; align-items:flex-start; gap:10px; color:var(--ink-dim); font-size:13px; line-height:1.5; border-top:1px dashed var(--line-bright); padding-top:18px;"><input type="checkbox" name="accredited" value="certified" style="margin-top:3px; accent-color:var(--accent);" required> I certify that I am an Accredited Investor or Qualified Purchaser as defined under Rule 501 of SEC Regulation D.</label>
       <button type="submit" class="btn btn-primary" style="justify-self:start;">Complete Onboarding & Request Access →</button>
     </form>
+    <p id="investor-status" hidden style="margin-top:18px; font-family:var(--mono); font-size:12px; line-height:1.6; color:var(--accent);"></p>
   </div>
   <p style="margin-top:24px; font-family:var(--mono); font-size:12px; color:var(--ink-faint); line-height:1.6; max-width:680px;"><span class="m-font">Mālama Labs</span> SLA: verified accredited submissions receive secure data room access credentials within 24 hours on global business days. After material distribution, an onboarding representative coordinates diligence paths.</p>
 </section>
@@ -221,18 +222,16 @@
 <script>
 (function(){
   var f=document.getElementById('investor-onboarding'); if(!f) return;
+  var s=document.getElementById('investor-status');
   f.addEventListener('submit', function(e){
     e.preventDefault();
-    var fd=new FormData(f), out=[], mats=[];
-    out.push('Name: '+(fd.get('name')||''));
-    out.push('Firm: '+(fd.get('firm')||''));
-    out.push('Email: '+(fd.get('email')||''));
-    fd.getAll('materials').forEach(function(m){ mats.push(m); });
-    out.push('Materials: '+(mats.join('; ')||'(none selected)'));
-    out.push('Allocation: '+(fd.get('allocation')||'(not specified)'));
-    out.push('Accredited: '+(fd.get('accredited')?'Certified (Rule 501 Reg D)':'NOT certified'));
-    var subj=encodeURIComponent('Institutional Onboarding Request — '+(fd.get('firm')||fd.get('name')||''));
-    window.location.href='mailto:tyler@malamalabs.com?subject='+subj+'&body='+encodeURIComponent(out.join('\n'));
+    var fd=new FormData(f);
+    var body={source:'Investor Onboarding',name:fd.get('name'),firm:fd.get('firm'),email:fd.get('email'),allocation:fd.get('allocation'),materials:fd.getAll('materials'),accredited:!!fd.get('accredited')};
+    if(s){s.hidden=false;s.textContent='Sending…';s.style.color='var(--ink-dim)';}
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok&&d.ok,d:d};});})
+      .then(function(x){ if(s){s.textContent=x.ok?'Request received. Verified accredited submissions receive secure data room access within 24 hours on business days.':((x.d&&x.d.error)||'Something went wrong. Email tyler@malamalabs.com.');s.style.color=x.ok?'var(--accent)':'#f0a05a';} if(x.ok) f.reset(); })
+      .catch(function(){ if(s){s.textContent='Network error. Email tyler@malamalabs.com.';s.style.color='#f0a05a';} });
   });
 })();
 </script>
