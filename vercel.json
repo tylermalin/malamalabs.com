@@ -41,7 +41,7 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "has": [
@@ -50,17 +50,8 @@
           "value": "buyers.malamalabs.com"
         }
       ],
-      "destination": "/buyers/"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "buyers.malamalabs.com"
-        }
-      ],
-      "destination": "/buyers/"
+      "destination": "/buyers/",
+      "permanent": false
     }
   ]
 }
