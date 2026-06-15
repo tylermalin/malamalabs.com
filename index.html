@@ -737,6 +737,51 @@
   </div>
 </section>
 
+<!-- 03c The hardware: what you receive -->
+<section class="anchor" id="sensors">
+  <style>
+    #sensors .hw-hero{border-radius:18px;overflow:hidden;border:1px solid var(--line2);margin:0 0 30px;box-shadow:var(--shadow-l)}
+    #sensors .hw-hero img{width:100%;display:block;aspect-ratio:16/7;object-fit:cover}
+    #sensors .hwgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:30px}
+    #sensors .hwcard{background:var(--panel);border:1px solid var(--line2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    #sensors .hwcard .ph{aspect-ratio:4/3;background:var(--bg2);overflow:hidden}
+    #sensors .hwcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
+    #sensors .hwcard .bd{padding:18px 18px 20px}
+    #sensors .hwcard h3{font-family:var(--display);font-size:18px;margin:0 0 6px}
+    #sensors .hwcard p{font-size:14px;color:var(--mut);margin:0}
+    #sensors .hwspecs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:6px 0 24px}
+    #sensors .spec{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+    #sensors .spec .k{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--lime-ink);margin-bottom:5px}
+    #sensors .spec .v{font-size:14px;color:var(--txt)}
+    @media(max-width:760px){#sensors .hwgrid,#sensors .hwspecs{grid-template-columns:1fr}}
+  </style>
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="eyebrow">03c · The hardware</span>
+      <h2>What you <em>receive.</em></h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">A hex is your license to validate a place. The sensor system is the instrument that reads it: solar-powered, hardware-signed, and built for the field. This is the kit a Genesis operator deploys inside their cell.</p>
+    </div>
+    <div class="hw-hero"><img src="https://launch.malamalabs.com/sensors/field-hero.png" alt="Mālama sensor node deployed in a Hawaiian taro field" loading="lazy"></div>
+    <div class="hwgrid">
+      <div class="hwcard"><div class="ph"><img src="https://launch.malamalabs.com/sensors/sensor-hub.jpg" alt="Mālama sensor hub with probe" loading="lazy"></div><div class="bd"><h3>The hub</h3><p>The core unit: dual-radio (LoRa + NB-IoT), solar power management, and a color touchscreen. It signs every reading at the source, then sends it on.</p></div></div>
+      <div class="hwcard"><div class="ph"><img src="https://launch.malamalabs.com/sensors/3_b0588513.png" alt="Mālama soil sensor probe with green LED" loading="lazy"></div><div class="bd"><h3>The soil probe</h3><p>A stainless probe for the root zone: pH, moisture, temperature, and conductivity, IP67-rated on a 15m cable.</p></div></div>
+      <div class="hwcard"><div class="ph"><img src="https://launch.malamalabs.com/sensors/sensor-kit.jpg" alt="Mālama Sensor System complete kit contents" loading="lazy"></div><div class="bd"><h3>The complete kit</h3><p>Hub, mounts, power, cabling, and a quick-start guide arrive in one box. Designed to unbox, configure, and deploy in under 30 minutes.</p></div></div>
+    </div>
+    <h3 style="text-align:center;font-family:var(--display);font-size:20px;margin:0 0 14px">Built for the field</h3>
+    <div class="hwspecs">
+      <div class="spec"><div class="k">Connectivity</div><div class="v">Dual-radio LoRa 915MHz + NB-IoT, up to 5km line of sight</div></div>
+      <div class="spec"><div class="k">Power</div><div class="v">Solar with MPPT charging, 48+ hour battery backup</div></div>
+      <div class="spec"><div class="k">Enclosure</div><div class="v">IP67 weatherproof, rated -40°C to +70°C</div></div>
+      <div class="spec"><div class="k">Soil sensing</div><div class="v">pH ±0.1, moisture, temperature, conductivity</div></div>
+      <div class="spec"><div class="k">Display</div><div class="v">2.8 inch color touchscreen, dual sensor ports</div></div>
+      <div class="spec"><div class="k">Setup</div><div class="v">Complete kit, deploy in under 30 minutes</div></div>
+    </div>
+    <div style="text-align:center"><a class="btn btn-ghost" href="https://launch.malamalabs.com/sensors" target="_blank" rel="noopener" style="display:inline-block">See full sensor specs ↗</a></div>
+    <div class="disclaim"><b>In development:</b> the sensor hardware is in active development. Images and specifications are current targets and may change before units ship. Nothing here is an offer of a finished product or a delivery-date commitment.</div>
+    <div class="narr-q" style="display:block;text-align:center;margin-top:18px">Answers: "What hardware do I actually receive when I reserve a hex?"</div>
+  </div>
+</section>
+
 <!-- 04 How it helps you (role selector) -->
 <section class="anchor" id="foryou">
   <div class="wrap">
@@ -845,9 +890,53 @@
   </div>
 </section>
 
-<!-- The Genesis 200 reservation + minting flow lives on the Launch app
-     (https://launch.malamalabs.com/presale#reserve). This marketing site links out to it
-     rather than duplicating the payment flow. -->
+<!-- ============ LIVE PROOF / TRACTION ============ -->
+<section class="anchor" id="proof">
+  <style>
+    #proof .pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:6px 0 18px}
+    #proof .pf{background:var(--panel);border:1px solid var(--line2);border-radius:16px;padding:22px 20px;text-align:center}
+    #proof .pf .n{font-family:var(--display);font-weight:700;font-size:32px;color:var(--lime-ink);line-height:1.05}
+    #proof .pf .l{font-size:13px;color:var(--mut);margin-top:8px}
+    @media(max-width:760px){#proof .pf-grid{grid-template-columns:1fr 1fr}}
+  </style>
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="eyebrow">Live proof</span>
+      <h2>Not a concept. <em>Already running.</em></h2>
+      <p style="margin-left:auto;margin-right:auto">Carbon proved the pipeline. Pilot Node #1 in Texas has signed environmental readings continuously since June 2024, anchored to Cardano. The same signing architecture now extends to AI compute monitoring.</p>
+    </div>
+    <div class="pf-grid">
+      <div class="pf"><div class="n">2,786+</div><div class="l">Hardware-signed SaveCards minted</div></div>
+      <div class="pf"><div class="n">Jun 2024</div><div class="l">Continuous since genesis, zero gaps</div></div>
+      <div class="pf"><div class="n">Cardano</div><div class="l">Anchored on preprod via CIP-68</div></div>
+      <div class="pf"><div class="n">Q4 2026</div><div class="l">Mainnet migration target, post-audit</div></div>
+    </div>
+    <div style="text-align:center"><a class="lime" href="https://www.aipower.fyi/" target="_blank" rel="noopener" style="text-decoration:underline;font-size:14px">See the live AI energy data stream ↗</a></div>
+    <div class="disclaim"><b>Status:</b> the sensor stream is live today on Cardano preprod. Mainnet SaveCard minting is paused pending audit completion and migration (target Q4 2026). AI compute monitoring is in development, with first pilots scheduled for 2026.</div>
+    <div class="narr-q" style="display:block;text-align:center;margin-top:18px">Answers: "Is this actually working today, or just a plan?"</div>
+  </div>
+</section>
+
+<!-- ============ RESERVE HANDOFF (single route to the launchpad) ============ -->
+<section class="anchor" id="reserve">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin-bottom:22px">
+      <span class="eyebrow">Reserve</span>
+      <h2>Ready to claim <em>your hex?</em></h2>
+      <p style="margin-left:auto;margin-right:auto">Genesis 200 is live. Reserve on the secure Mālama launchpad: choose your location, pay by card or crypto, and receive your NFT-HEX, the on-chain license for that cell.</p>
+    </div>
+    <div class="grid3" style="margin-bottom:26px">
+      <div class="card"><h3>Card or crypto</h3><p>Pay by card and we create a wallet for you, no crypto knowledge needed, or connect a Base wallet and pay in USDC.</p></div>
+      <div class="card"><h3>Your NFT-HEX license</h3><p>Lifetime Genesis rights to your hex cell, minted to your wallet as an on-chain license you hold.</p></div>
+      <div class="card"><h3>Signed sensor package</h3><p>Every Genesis Hex Node includes the hardware sensor package shown above, shipped when units are ready.</p></div>
+    </div>
+    <div style="text-align:center">
+      <a class="btn btn-primary" href="https://launch.malamalabs.com/presale#reserve" target="_blank" rel="noopener" style="padding:15px 30px;display:inline-block;font-size:15px">Reserve your hex on the launchpad →</a>
+      <div style="margin-top:14px"><a class="lime" href="mailto:hello@malamalabs.com?subject=Hex%20Node%20call" style="text-decoration:underline;font-size:14px">or schedule a call with the team</a></div>
+      <p class="mut" style="font-size:12px;margin-top:14px">You will continue to the secure launchpad at launch.malamalabs.com to complete your reservation.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ============ EXPLORE · INTERACTIVE GLOBE ============ -->
 <section class="anchor" id="explore">
@@ -855,7 +944,7 @@
     <div class="sec-head" style="text-align:center;margin-bottom:24px">
       <span class="eyebrow">Explore · Hex Map</span>
       <h2>200 hex zones, <em>one living network.</em></h2>
-      <p style="margin-left:auto;margin-right:auto">Spin the globe to see where Genesis nodes are opening across five regions. Click a node to view it, then reserve your hex on Launch.</p>
+      <p style="margin-left:auto;margin-right:auto">Spin the globe to see where Genesis nodes are opening. Click a node to view its details, then head to the launchpad to reserve.</p>
     </div>
     <div class="globe-wrap">
       <div class="globe-stage">
