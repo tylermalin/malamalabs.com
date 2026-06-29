@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOL Admin — Mālama Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e0a;
+      --bg-elev: #0f1410;
+      --bg-card: #131a14;
+      --ink: #e8efe5;
+      --ink-dim: #9ba89a;
+      --ink-faint: #5f6c5f;
+      --line: #1f2a20;
+      --line-bright: #2d3d2e;
+      --accent: #c4f061;
+      --accent-dim: #8aa845;
+      --warn: #f0a05a;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter Tight', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Auth Gate ── */
+    #auth-gate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 16px;
+    }
+    #auth-gate h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 28px;
+      color: var(--ink);
+    }
+    #auth-gate p { color: var(--ink-dim); font-size: 13px; }
+    #auth-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    input[type="password"], input[type="text"], input[type="email"], input[type="number"], select {
+      background: var(--bg-card);
+      border: 1px solid var(--line-bright);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+    input:focus, select:focus { border-color: var(--accent-dim); }
+    input::placeholder { color: var(--ink-faint); }
+
+    button, .btn {
+      background: var(--accent);
+      color: #0a0e0a;
+      border: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    button:hover { opacity: 0.88; }
+    button.secondary {
+      background: transparent;
+      color: var(--ink-dim);
+      border: 1px solid var(--line-bright);
+    }
+    button.secondary:hover { color: var(--ink); border-color: var(--accent-dim); background: transparent; }
+    button.danger { background: #e05252; color: #fff; }
+
+    /* ── Layout ── */
+    #app { display: none; }
+    .header {
+      border-bottom: 1px solid var(--line);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-brand {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .header-brand span { color: var(--accent); }
+    .header-actions { display: flex; gap: 8px; align-items: center; }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
+
+    /* ── Overview cards ── */
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 24px;
+    }
+    .stat-card .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      margin-bottom: 8px;
+    }
+    .stat-card .value {
+      font-size: 28px;
+      font-family: var(--serif);
+      font-weight: 300;
+      color: var(--ink);
+    }
+    .stat-card .value.accent { color: var(--accent); }
+    .stat-card .sub {
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-top: 4px;
+    }
+
+    /* ── Section ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+    .section-actions { display: flex; gap: 8px; }
+
+    /* ── Table ── */
+    .table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-weight: 400;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--line); transition: background 0.1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(196,240,97,0.03); }
+    td { padding: 14px 16px; vertical-align: middle; }
+    td.name { font-weight: 500; }
+    td.mono { font-family: var(--mono); font-size: 12px; color: var(--ink-dim); }
+    td.num { font-family: var(--mono); font-size: 13px; text-align: right; }
+    td.num.accent { color: var(--accent); }
+    td .empty { color: var(--ink-faint); font-size: 12px; }
+
+    .pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(196,240,97,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(196,240,97,0.2);
+    }
+    .pill.inactive { background: rgba(255,255,255,0.04); color: var(--ink-faint); border-color: var(--line); }
+
+    .copy-btn {
+      background: transparent;
+      color: var(--ink-faint);
+      border: 1px solid var(--line);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--mono);
+      transition: all 0.15s;
+      margin-left: 4px;
+    }
+    .copy-btn:hover { color: var(--accent); border-color: var(--accent-dim); background: transparent; }
+    .copy-btn.copied { color: var(--accent); border-color: var(--accent); }
+
+    .link-group { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+
+    /* ── Add KOL Form ── */
+    #add-kol-section { margin-bottom: 40px; }
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 28px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      margin-bottom: 6px;
+    }
+    .form-actions { display: flex; gap: 8px; margin-top: 4px; }
+
+    /* ── Report ── */
+    .report-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    .report-card .form-group { flex: 0 0 auto; }
+    .report-card input[type="month"] { width: 180px; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.2s;
+      pointer-events: none;
+      z-index: 999;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── New KOL result ── */
+    .result-box {
+      background: rgba(196,240,97,0.05);
+      border: 1px solid rgba(196,240,97,0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 2;
+    }
+    .result-box .result-label { color: var(--ink-faint); }
+    .result-box .result-val { color: var(--accent); }
+
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 48px;
+      color: var(--ink-faint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .overview { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .header, .main { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Auth Gate -->
+<div id="auth-gate">
+  <h1>Mālama Labs</h1>
+  <p>KOL Admin Portal — enter your admin key to continue</p>
+  <form id="auth-form">
+    <input type="password" id="secret-input" placeholder="Admin secret key" style="width:320px">
+    <button type="submit">Enter</button>
+  </form>
+  <p id="auth-error" style="color:#e05252;font-size:12px;display:none">Invalid key — try again</p>
+</div>
+
+<!-- Main App -->
+<div id="app">
+  <header class="header">
+    <div class="header-brand"><span>Mālama Labs</span> / KOL Admin</div>
+    <div class="header-actions">
+      <button class="secondary" onclick="logout()">Sign out</button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Overview -->
+    <div class="overview" id="overview">
+      <div class="stat-card">
+        <div class="label">Active KOLs</div>
+        <div class="value" id="ov-kols">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Total Clicks</div>
+        <div class="value" id="ov-clicks">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Total Conversions</div>
+        <div class="value" id="ov-conv">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Commissions Owed</div>
+        <div class="value accent" id="ov-owed">—</div>
+        <div class="sub">unsettled balance</div>
+      </div>
+    </div>
+
+    <!-- KOL Table -->
+    <div class="section-header">
+      <h2 class="section-title">KOL Partners</h2>
+      <div class="section-actions">
+        <button class="secondary" onclick="loadKols()">Refresh</button>
+      </div>
+    </div>
+    <div class="table-wrap" id="kol-table-wrap">
+      <div class="empty-state">Loading…</div>
+    </div>
+
+    <!-- Add KOL -->
+    <div id="add-kol-section">
+      <div class="section-header">
+        <h2 class="section-title">Add New KOL</h2>
+      </div>
+      <div class="form-card">
+        <form id="add-kol-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Ref Code</label>
+              <input type="text" name="code" placeholder="jane" pattern="[a-z0-9\-]{2,32}" title="Lowercase letters, numbers, hyphens" required>
+            </div>
+            <div class="form-group">
+              <label>Commission %</label>
+              <input type="number" name="commission_pct" placeholder="10" min="1" max="100" step="0.5" required>
+            </div>
+            <div class="form-group">
+              <label>Payment Details</label>
+              <input type="text" name="payment_details" placeholder="USDC wallet or bank info">
+            </div>
+            <div class="form-group">
+              <label>Target URL (optional)</label>
+              <input type="text" name="target_url" placeholder="https://malamalabs.com/platform/">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="add-btn">Create KOL</button>
+          </div>
+        </form>
+        <div id="add-result" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- Monthly Report -->
+    <div class="section-header">
+      <h2 class="section-title">Monthly Settlement Report</h2>
+    </div>
+    <div class="report-card">
+      <div class="form-group">
+        <label>Month</label>
+        <input type="month" id="report-month">
+      </div>
+      <button onclick="downloadReport(false)">Download CSV</button>
+      <button class="secondary" onclick="downloadReport(true)" style="border-color:var(--warn);color:var(--warn)">Download + Mark Settled</button>
+    </div>
+
+  </main>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  const BASE = '';
+  let ADMIN_SECRET = sessionStorage.getItem('admin_secret') || '';
+
+  // ── Auth ──────────────────────────────────────────────────────
+  function showApp() {
+    document.getElementById('auth-gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    // Default report month to current month
+    const now = new Date();
+    document.getElementById('report-month').value =
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+    loadKols();
+  }
+
+  async function tryAuth(secret) {
+    const r = await fetch('/api/admin/kols', { headers: { Authorization: `Bearer ${secret}` } });
+    return r.status !== 401;
+  }
+
+  document.getElementById('auth-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const secret = document.getElementById('secret-input').value.trim();
+    if (!secret) return;
+    const ok = await tryAuth(secret);
+    if (ok) {
+      ADMIN_SECRET = secret;
+      sessionStorage.setItem('admin_secret', secret);
+      showApp();
+    } else {
+      document.getElementById('auth-error').style.display = 'block';
+    }
+  });
+
+  function logout() {
+    sessionStorage.removeItem('admin_secret');
+    location.reload();
+  }
+
+  // ── Load KOLs ────────────────────────────────────────────────
+  async function loadKols() {
+    const r = await fetch('/api/admin/kols', { headers: { Authorization: `Bearer ${ADMIN_SECRET}` } });
+    const data = await r.json();
+    if (!data.ok) return;
+
+    const kols = data.kols;
+
+    // Overview
+    const activeKols = kols.filter(k => k.active).length;
+    const totalConv = kols.reduce((s, k) => s + Number(k.total_conversions || 0), 0);
+    const totalOwed = kols.reduce((s, k) => s + Number(k.unpaid_commission_usd || 0), 0);
+
+    document.getElementById('ov-kols').textContent = activeKols;
+    document.getElementById('ov-conv').textContent = totalConv;
+    document.getElementById('ov-owed').textContent = `$${totalOwed.toFixed(2)}`;
+
+    // Fetch click counts via KOL stats (we'll get from the table data for now)
+    document.getElementById('ov-clicks').textContent = '—';
+
+    // Table
+    const wrap = document.getElementById('kol-table-wrap');
+    if (kols.length === 0) {
+      wrap.innerHTML = '<div class="empty-state">No KOLs yet — add one below.</div>';
+      return;
+    }
+
+    wrap.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Ref Code</th>
+            <th>Commission</th>
+            <th style="text-align:right">Conversions</th>
+            <th style="text-align:right">Total Sales</th>
+            <th style="text-align:right">Commission Owed</th>
+            <th>Status</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${kols.map(k => `
+            <tr>
+              <td class="name">
+                ${esc(k.name)}<br>
+                <span style="color:var(--ink-faint);font-size:12px">${esc(k.email)}</span>
+              </td>
+              <td class="mono">${esc(k.ref_code || '—')}</td>
+              <td class="mono">${k.commission_pct}%</td>
+              <td class="num">${k.total_conversions || 0}</td>
+              <td class="num">$${Number(k.total_sales_usd || 0).toFixed(2)}</td>
+              <td class="num accent">$${Number(k.unpaid_commission_usd || 0).toFixed(2)}</td>
+              <td><span class="pill ${k.active ? '' : 'inactive'}">${k.active ? 'active' : 'inactive'}</span></td>
+              <td>
+                <div class="link-group">
+                  ${k.ref_code ? `<button class="copy-btn" onclick="copy('https://malamalabs.com/ref/${esc(k.ref_code)}', this)">Ref Link</button>` : ''}
+                  ${k.portal_token ? `<button class="copy-btn" onclick="copy('https://malamalabs.com/portal/?token=${esc(k.portal_token)}', this)">Portal Link</button>` : ''}
+                  ${k.agreement_token ? `<button class="copy-btn" onclick="copy('https://malamalabs.com/agreement/?token=${esc(k.agreement_token)}', this)" style="border-color:${k.agreement_status==='signed'?'rgba(196,240,97,.4)':'rgba(240,160,90,.3)'}">Agreement ${k.agreement_status==='signed'?'✓':''}</button>` : ''}
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+
+  // ── Add KOL ──────────────────────────────────────────────────
+  document.getElementById('add-kol-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('add-btn');
+    btn.textContent = 'Creating…';
+    btn.disabled = true;
+
+    const form = new FormData(e.target);
+    const body = {
+      name: form.get('name'),
+      email: form.get('email'),
+      code: form.get('code').toLowerCase().replace(/\s+/g, '-'),
+      commission_pct: Number(form.get('commission_pct')),
+      payment_details: form.get('payment_details') || undefined,
+      target_url: form.get('target_url') || undefined,
+    };
+
+    const r = await fetch('/api/admin/kols', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${ADMIN_SECRET}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await r.json();
+    btn.textContent = 'Create KOL';
+    btn.disabled = false;
+
+    const resultEl = document.getElementById('add-result');
+    if (data.ok) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `
+        <div class="result-box">
+          <div><span class="result-label">Ref Link: </span><span class="result-val">${data.ref_url}</span>
+            <button class="copy-btn" onclick="copy('${data.ref_url}', this)">Copy</button></div>
+          <div><span class="result-label">Portal Link: </span><span class="result-val">${data.portal_url}</span>
+            <button class="copy-btn" onclick="copy('${data.portal_url}', this)">Copy</button></div>
+        </div>`;
+      e.target.reset();
+      toast('KOL created successfully');
+      loadKols();
+    } else {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `<div style="color:#e05252;margin-top:12px;font-size:13px">Error: ${esc(data.error)}</div>`;
+    }
+  });
+
+  // ── Report ───────────────────────────────────────────────────
+  function downloadReport(settle) {
+    const month = document.getElementById('report-month').value;
+    if (!month) return alert('Select a month first');
+    const url = `/api/admin/report?month=${month}${settle ? '&settle=true' : ''}`;
+    const a = document.createElement('a');
+    a.href = url;
+    // Pass auth via query param for file downloads (browser can't set headers on <a> clicks)
+    // Workaround: fetch and create blob
+    fetch(url, { headers: { Authorization: `Bearer ${ADMIN_SECRET}` } })
+      .then(r => r.blob())
+      .then(blob => {
+        const burl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = burl;
+        a.download = `kol-report-${month}${settle ? '-settled' : ''}.csv`;
+        a.click();
+        URL.revokeObjectURL(burl);
+        if (settle) toast('Conversions marked as settled');
+      });
+  }
+
+  // ── Helpers ──────────────────────────────────────────────────
+  function copy(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+    });
+  }
+
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2500);
+  }
+
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"]/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  // ── Init ─────────────────────────────────────────────────────
+  if (ADMIN_SECRET) {
+    tryAuth(ADMIN_SECRET).then(ok => {
+      if (ok) showApp();
+      else { sessionStorage.removeItem('admin_secret'); ADMIN_SECRET = ''; }
+    });
+  }
+</script>
+</body>
+</html>
