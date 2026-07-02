@@ -34,6 +34,7 @@ export default async function handler(req) {
 
   if (req.method === 'GET') return listKols();
   if (req.method === 'POST') return createKol(req);
+  if (req.method === 'PATCH') return updateKol(req);
   return json({ ok: false, error: 'Method not allowed' }, 405);
 }
 
@@ -56,6 +57,23 @@ async function listKols() {
     ORDER BY k.created_at DESC
   `;
   return json({ ok: true, kols: rows });
+}
+
+async function updateKol(req) {
+  let body;
+  try { body = await req.json(); } catch { return json({ ok: false, error: 'Invalid JSON' }, 400); }
+  const { kol_id, commission_pct, active, payment_details } = body;
+  if (!kol_id) return json({ ok: false, error: 'kol_id required' }, 400);
+
+  if (commission_pct != null) {
+    const pct = Number(commission_pct);
+    if (isNaN(pct) || pct <= 0 || pct > 100) return json({ ok: false, error: 'invalid commission_pct' }, 400);
+    await sql`UPDATE kols SET commission_pct = ${pct} WHERE id = ${kol_id}`;
+  }
+  if (active != null) await sql`UPDATE kols SET active = ${Boolean(active)} WHERE id = ${kol_id}`;
+  if (payment_details != null) await sql`UPDATE kols SET payment_details = ${payment_details} WHERE id = ${kol_id}`;
+
+  return json({ ok: true });
 }
 
 async function createKol(req) {
