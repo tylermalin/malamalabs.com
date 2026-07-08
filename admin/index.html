@@ -303,6 +303,73 @@
       font-size: 13px;
     }
 
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      background: transparent;
+      color: var(--ink-faint);
+      border: none;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 4px;
+      margin-right: 24px;
+    }
+    .tab-btn:hover { opacity: 1; color: var(--ink); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── Hex Builder ── */
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    textarea {
+      width: 100%; font-family: var(--sans); font-size: 13px; padding: 9px 11px;
+      background: var(--bg-card); border: 1px solid var(--line-bright); color: var(--ink);
+      border-radius: 6px; resize: vertical; min-height: 70px;
+    }
+    .hint { font-size: 11px; color: var(--ink-faint); margin-top: 4px; }
+    .layout { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+    .form-col { flex: 1; min-width: 380px; }
+    .preview-col { width: 380px; }
+    .geo-result {
+      margin-top: 10px; padding: 10px 12px; border-radius: 6px;
+      background: rgba(196,240,97,0.05); border: 1px solid rgba(196,240,97,0.2);
+      font-size: 12px; color: var(--ink-dim); display: none; white-space: pre-wrap;
+    }
+    .geo-result.show { display: block; }
+    .geo-result.error { background: rgba(224,82,82,0.08); border-color: rgba(224,82,82,0.3); color: #e08a8a; }
+    .offer-card {
+      background: linear-gradient(180deg, var(--bg-elev) 0%, #0a0e0a 100%);
+      border: 1px solid var(--line-bright); border-radius: 10px; padding: 26px; color: var(--ink);
+    }
+    .offer-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+    .offer-title { font-family: var(--serif); font-size: 22px; margin: 0 0 4px; font-weight: 400; }
+    .offer-addr { font-size: 12.5px; color: var(--ink-dim); margin-bottom: 18px; }
+    .offer-row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .offer-row .l { color: var(--ink-faint); }
+    .offer-row .v { font-weight: 600; }
+    .offer-total { display: flex; justify-content: space-between; padding-top: 14px; font-size: 16px; font-weight: 700; }
+    .offer-note { margin-top: 16px; font-size: 11.5px; color: var(--ink-faint); line-height: 1.6; font-style: italic; }
+    .offer-validity { margin-top: 14px; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--mono); }
+    .email-preview {
+      background: var(--bg); border: 1px dashed var(--line-bright); border-radius: 6px; padding: 14px; margin-top: 14px;
+      font-family: var(--mono); font-size: 12px; white-space: pre-wrap; line-height: 1.6; color: var(--ink-dim);
+      max-height: 340px; overflow: auto;
+    }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px;
+      padding: 4px 10px; border-radius: 20px; margin-bottom: 16px; background: var(--bg-card); color: var(--ink-faint);
+    }
+    .status-pill.ok { color: var(--accent); }
+    .status-pill.err { color: #e08a8a; }
+    .status-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
     @media (max-width: 768px) {
       .overview { grid-template-columns: 1fr 1fr; }
       .form-grid { grid-template-columns: 1fr 1fr; }
@@ -333,6 +400,13 @@
   </header>
 
   <main class="main">
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-btn-kol" onclick="showTab('kol')">KOL Partners</button>
+      <button class="tab-btn" id="tab-btn-hex" onclick="showTab('hex')">Hex Builder</button>
+    </div>
+
+    <div id="tab-kol">
 
     <!-- Overview -->
     <div class="overview" id="overview">
@@ -420,6 +494,98 @@
       <button class="secondary" onclick="downloadReport(true)" style="border-color:var(--warn);color:var(--warn)">Download + Mark Settled</button>
     </div>
 
+    </div><!-- /tab-kol -->
+
+    <div id="tab-hex" style="display:none">
+      <div class="section-header">
+        <h2 class="section-title">Custom Hex Builder</h2>
+      </div>
+      <div id="hexHealthStatus" class="status-pill"><span class="dot"></span><span>Checking backend…</span></div>
+
+      <div class="layout">
+        <div class="form-col">
+          <div class="form-card" style="margin-bottom:18px;">
+            <h2 class="section-title" style="font-size:15px;margin-bottom:14px;">Prospect</h2>
+            <div class="row2">
+              <div class="form-group"><label>Name</label><input type="text" id="hex_name" placeholder="Jane Prospect"></div>
+              <div class="form-group"><label>Email</label><input type="email" id="hex_email" placeholder="jane@example.com"></div>
+            </div>
+            <div class="form-group" style="margin-top:12px;">
+              <label>Street address</label>
+              <input type="text" id="hex_address" placeholder="123 Maple St, Portland, OR">
+            </div>
+            <div class="form-actions">
+              <button type="button" id="hexGeocodeBtn">Geocode &amp; generate H3</button>
+            </div>
+            <div class="geo-result" id="hexGeoResult"></div>
+            <div class="form-group" style="margin-top:12px;">
+              <label>H3 index (auto-filled, editable)</label>
+              <input type="text" id="hex_h3" placeholder="Generated after geocoding">
+            </div>
+            <div class="hint">Editable in case a manual correction is needed. Cleared automatically if you change the address.</div>
+          </div>
+
+          <div class="form-card" style="margin-bottom:18px;">
+            <h2 class="section-title" style="font-size:15px;margin-bottom:14px;">Pricing</h2>
+            <div class="row2">
+              <div class="form-group"><label>Base hex price ($)</label><input type="number" id="hex_base" value="2500"></div>
+              <div class="form-group"><label>Custom-address premium ($)</label><input type="number" id="hex_premium" value="500"></div>
+            </div>
+            <div class="hint">Both fields are editable — set to real pricing before generating offers.</div>
+            <div class="form-group" style="margin-top:12px;max-width:160px;">
+              <label>Offer valid for (days)</label>
+              <input type="number" id="hex_validity" value="14">
+            </div>
+          </div>
+
+          <div class="form-card" style="margin-bottom:18px;">
+            <h2 class="section-title" style="font-size:15px;margin-bottom:14px;">Personal note</h2>
+            <div class="form-group">
+              <label>Context / relationship note (used in the email, not shown on the offer card)</label>
+              <textarea id="hex_note" placeholder="e.g. Long-time follower who asked about their home block specifically."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button id="hexBuildBtn">Build offer</button>
+            <button class="secondary" id="hexSaveBtn">Save to offer log</button>
+          </div>
+        </div>
+
+        <div class="preview-col">
+          <div class="offer-card" id="hexOfferCard">
+            <div class="offer-eyebrow">Custom Hex Reservation</div>
+            <div class="offer-title" id="hex_oc_name">Your Hex</div>
+            <div class="offer-addr" id="hex_oc_addr">Enter an address to preview</div>
+            <div class="offer-row"><span class="l">H3 Index</span><span class="v" id="hex_oc_h3">—</span></div>
+            <div class="offer-row"><span class="l">Hex area</span><span class="v" id="hex_oc_area">—</span></div>
+            <div class="offer-row"><span class="l">Base license</span><span class="v" id="hex_oc_base">$0</span></div>
+            <div class="offer-row"><span class="l">Custom-address service</span><span class="v" id="hex_oc_premium">$0</span></div>
+            <div class="offer-total"><span>Total</span><span id="hex_oc_total">$0</span></div>
+            <div class="offer-validity" id="hex_oc_validity">Valid 14 days</div>
+            <div class="offer-note">Part of the Mālama Labs Genesis 200 program — 200 hardware-signed hex node licenses shipping December 2026.</div>
+          </div>
+
+          <div class="form-card" style="margin-top:18px;">
+            <h2 class="section-title" style="font-size:15px;margin-bottom:14px;">Email draft</h2>
+            <div class="email-preview" id="hexEmailPreview">Build an offer to generate the email draft.</div>
+            <div class="form-actions">
+              <button class="secondary" id="hexCopyBtn" type="button">Copy email text</button>
+              <button id="hexMailtoBtn" type="button">Open in email client</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:32px;">
+        <h2 class="section-title">Offer log</h2>
+      </div>
+      <div class="table-wrap">
+        <table id="hexLogTable"><tbody><tr><th>Name</th><th>Address</th><th>H3</th><th>Total</th><th>Date</th></tr></tbody></table>
+      </div>
+      <div class="hint" style="margin-top:-24px;margin-bottom:24px;">Saved to this browser via localStorage — not shared across devices.</div>
+    </div><!-- /tab-hex -->
+
   </main>
 </div>
 
@@ -438,6 +604,8 @@
     document.getElementById('report-month').value =
       `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
     loadKols();
+    checkHexHealth();
+    hexRenderLog();
   }
 
   async function tryAuth(secret) {
@@ -620,6 +788,161 @@
     return String(s ?? '').replace(/[&<>"]/g, c =>
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
+
+  // ── Tabs ─────────────────────────────────────────────────────
+  function showTab(tab) {
+    document.getElementById('tab-kol').style.display = tab === 'kol' ? 'block' : 'none';
+    document.getElementById('tab-hex').style.display = tab === 'hex' ? 'block' : 'none';
+    document.getElementById('tab-btn-kol').classList.toggle('active', tab === 'kol');
+    document.getElementById('tab-btn-hex').classList.toggle('active', tab === 'hex');
+  }
+
+  // ── Hex Builder ──────────────────────────────────────────────
+  const HEX_LOG_KEY = 'malama_custom_hex_offers';
+  let hexLog = JSON.parse(localStorage.getItem(HEX_LOG_KEY) || '[]');
+  let hexCurrentOffer = null;
+  let hexLastGeocodedAddress = null;
+
+  function hexRenderLog() {
+    const table = document.getElementById('hexLogTable');
+    let rows = '<tr><th>Name</th><th>Address</th><th>H3</th><th>Total</th><th>Date</th></tr>';
+    if (hexLog.length === 0) {
+      rows += '<tr><td colspan="5"><span class="empty">No offers saved yet.</span></td></tr>';
+    } else {
+      hexLog.slice().reverse().forEach(o => {
+        rows += `<tr><td class="name">${esc(o.name)}</td><td class="mono">${esc(o.address)}</td><td class="mono">${esc(o.h3)}</td><td class="num accent">$${Number(o.total || 0).toLocaleString()}</td><td class="mono">${esc(o.date)}</td></tr>`;
+      });
+    }
+    table.innerHTML = rows;
+  }
+
+  async function checkHexHealth() {
+    const el = document.getElementById('hexHealthStatus');
+    try {
+      const res = await fetch('/api/admin/hex?action=health', { headers: { Authorization: `Bearer ${ADMIN_SECRET}` } });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'unreachable');
+      el.className = 'status-pill ok';
+      el.innerHTML = `<span class="dot"></span><span>Backend live — geocoding via ${esc(data.provider)}, resolution ${esc(String(data.resolution))}</span>`;
+    } catch (e) {
+      el.className = 'status-pill err';
+      el.innerHTML = `<span class="dot"></span><span>Backend unreachable — check ADMIN_SECRET / server logs</span>`;
+    }
+  }
+
+  document.getElementById('hex_address').addEventListener('input', () => {
+    if (document.getElementById('hex_address').value.trim() !== hexLastGeocodedAddress) {
+      document.getElementById('hex_h3').value = '';
+      document.getElementById('hexGeoResult').className = 'geo-result';
+    }
+  });
+
+  document.getElementById('hexGeocodeBtn').addEventListener('click', async () => {
+    const address = document.getElementById('hex_address').value.trim();
+    const resultEl = document.getElementById('hexGeoResult');
+    const btn = document.getElementById('hexGeocodeBtn');
+    if (!address) { alert('Enter an address first.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Geocoding…';
+    resultEl.className = 'geo-result show';
+    resultEl.textContent = 'Looking up address…';
+
+    try {
+      const res = await fetch('/api/admin/hex?action=address-to-hex&address=' + encodeURIComponent(address), {
+        headers: { Authorization: `Bearer ${ADMIN_SECRET}` },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        resultEl.className = 'geo-result show error';
+        resultEl.textContent = 'Error: ' + (data.error || 'could not geocode this address.');
+        document.getElementById('hex_h3').value = '';
+        return;
+      }
+      document.getElementById('hex_h3').value = data.h3Index;
+      hexLastGeocodedAddress = address;
+      resultEl.className = 'geo-result show';
+      resultEl.textContent = `Matched: ${data.displayName}\nLat/Lon: ${data.lat.toFixed(5)}, ${data.lon.toFixed(5)} · Hex area: ${data.areaKm2.toFixed(4)} km²`;
+      document.getElementById('hex_oc_area').textContent = data.areaKm2.toFixed(4) + ' km²';
+    } catch (e) {
+      resultEl.className = 'geo-result show error';
+      resultEl.textContent = 'Request failed: ' + e.message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Geocode & generate H3';
+    }
+  });
+
+  function hexBuildOffer() {
+    const name = document.getElementById('hex_name').value.trim() || 'there';
+    const email = document.getElementById('hex_email').value.trim();
+    const address = document.getElementById('hex_address').value.trim();
+    const h3 = document.getElementById('hex_h3').value.trim() || '—';
+    const base = Number(document.getElementById('hex_base').value) || 0;
+    const premium = Number(document.getElementById('hex_premium').value) || 0;
+    const validity = Number(document.getElementById('hex_validity').value) || 14;
+    const note = document.getElementById('hex_note').value.trim();
+    const total = base + premium;
+
+    if (!address) { alert("Enter the prospect's address."); return null; }
+    if (h3 === '—') { if (!confirm('No H3 index yet — geocode the address first. Continue anyway?')) return null; }
+
+    document.getElementById('hex_oc_name').textContent = name + "'s Hex";
+    document.getElementById('hex_oc_addr').textContent = address;
+    document.getElementById('hex_oc_h3').textContent = h3;
+    document.getElementById('hex_oc_base').textContent = '$' + base.toLocaleString();
+    document.getElementById('hex_oc_premium').textContent = '$' + premium.toLocaleString();
+    document.getElementById('hex_oc_total').textContent = '$' + total.toLocaleString();
+    document.getElementById('hex_oc_validity').textContent = 'Valid ' + validity + ' days from send';
+
+    const subject = `Your custom Mālama hex — ${address}`;
+    const body = `Hi ${name},
+
+${note ? note + '\n\n' : ''}You asked about reserving the exact hex covering ${address}, so I pulled the specifics together.
+
+HEX DETAILS
+Address: ${address}
+H3 Index: ${h3}
+Base license: $${base.toLocaleString()}
+Custom-address service: $${premium.toLocaleString()}
+Total: $${total.toLocaleString()}
+
+This is part of the Genesis 200 program — 200 hardware-signed hex node licenses mapped via H3 indexing, with the hardware kit shipping December 2026. Reserving this hex now locks in your exact address ahead of general availability.
+
+This offer is valid for ${validity} days. Happy to walk through it live if that's easier — just say the word.
+
+Best,
+[Your name]`;
+
+    document.getElementById('hexEmailPreview').textContent = body;
+    hexCurrentOffer = { name, email, address, h3, base, premium, total, validity, subject, body };
+    return hexCurrentOffer;
+  }
+
+  document.getElementById('hexBuildBtn').addEventListener('click', hexBuildOffer);
+
+  document.getElementById('hexCopyBtn').addEventListener('click', () => {
+    if (!hexCurrentOffer) { alert('Build an offer first.'); return; }
+    navigator.clipboard.writeText(hexCurrentOffer.body).then(() => {
+      const btn = document.getElementById('hexCopyBtn');
+      const orig = btn.textContent; btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = orig; }, 1400);
+    });
+  });
+
+  document.getElementById('hexMailtoBtn').addEventListener('click', () => {
+    if (!hexCurrentOffer) { alert('Build an offer first.'); return; }
+    const mailto = `mailto:${encodeURIComponent(hexCurrentOffer.email)}?subject=${encodeURIComponent(hexCurrentOffer.subject)}&body=${encodeURIComponent(hexCurrentOffer.body)}`;
+    window.open(mailto, '_blank');
+  });
+
+  document.getElementById('hexSaveBtn').addEventListener('click', () => {
+    const o = hexBuildOffer();
+    if (!o) return;
+    hexLog.push({ name: o.name, address: o.address, h3: o.h3, total: o.total, date: new Date().toISOString().slice(0, 10) });
+    localStorage.setItem(HEX_LOG_KEY, JSON.stringify(hexLog));
+    hexRenderLog();
+  });
 
   // ── Init ─────────────────────────────────────────────────────
   if (ADMIN_SECRET) {

@@ -2,6 +2,7 @@
   "name": "malamalabs-com",
   "private": true,
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.4"
+    "@neondatabase/serverless": "^0.10.4",
+    "h3-js": "^4.5.0"
   }
 }
