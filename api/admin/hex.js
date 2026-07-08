@@ -19,7 +19,10 @@
  */
 export const config = { runtime: 'edge' };
 
-import * as h3 from 'h3-js';
+// Import the browser build directly: Vercel's Edge bundler doesn't apply
+// h3-js's package.json "browser" field remap, so the default entry point
+// pulls in a Node fs/path fallback for its WASM loader that Edge rejects.
+import * as h3 from 'h3-js/dist/browser/h3-js.es.js';
 
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
