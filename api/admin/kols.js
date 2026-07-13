@@ -48,6 +48,7 @@ async function listKols() {
       COALESCE(SUM(c.amount_usd), 0)                                    AS total_sales_usd,
       COALESCE(SUM(c.commission_usd), 0)                                AS total_commission_usd,
       COALESCE(SUM(c.commission_usd) FILTER (WHERE NOT c.settled), 0)  AS unpaid_commission_usd,
+      (SELECT COUNT(*) FROM clicks cl WHERE cl.ref_code = rl.code)      AS total_clicks,
       a.agreement_token, a.status AS agreement_status, a.signed_at
     FROM kols k
     LEFT JOIN ref_links rl ON rl.kol_id = k.id
@@ -99,7 +100,15 @@ async function createKol(req) {
   const target = target_url || 'https://malamalabs.com/platform/';
   const portal_token = crypto.randomUUID();
 
-  // Insert KOL and ref link in a transaction-like sequence (Neon HTTP is single-statement)
+  // Reject duplicates up front with a clear 409 (both columns are UNIQUE) so a
+  // constraint violation can't crash the function or leave a partial write.
+  const [dupEmail] = await sql`SELECT 1 FROM kols WHERE email = ${email} LIMIT 1`;
+  if (dupEmail) return json({ ok: false, error: 'A KOL with that email already exists' }, 409);
+  const [dupCode] = await sql`SELECT 1 FROM ref_links WHERE code = ${code} LIMIT 1`;
+  if (dupCode) return json({ ok: false, error: 'That ref code is already taken' }, 409);
+
+  // Neon HTTP can't wrap these in one transaction, so guard the follow-up inserts:
+  // if either fails, remove the KOL we just created to avoid an orphaned row.
   const [kol] = await sql`
     INSERT INTO kols (name, email, commission_pct, payment_details, portal_token, twitter_handle, followers_count)
     VALUES (${name}, ${email}, ${pct}, ${payment_details ?? null}, ${portal_token},
@@ -107,10 +116,16 @@ async function createKol(req) {
     RETURNING id
   `;
 
-  await sql`INSERT INTO ref_links (code, kol_id, target_url) VALUES (${code}, ${kol.id}, ${target})`;
-
   const agreement_token = crypto.randomUUID();
-  await sql`INSERT INTO agreements (kol_id, agreement_token) VALUES (${kol.id}, ${agreement_token})`;
+  try {
+    await sql`INSERT INTO ref_links (code, kol_id, target_url) VALUES (${code}, ${kol.id}, ${target})`;
+    await sql`INSERT INTO agreements (kol_id, agreement_token) VALUES (${kol.id}, ${agreement_token})`;
+  } catch (err) {
+    await sql`DELETE FROM kols WHERE id = ${kol.id}`.catch(() => {});
+    // 23505 = unique_violation (e.g. code taken in a race between the check and insert)
+    if (err?.code === '23505') return json({ ok: false, error: 'That ref code is already taken' }, 409);
+    return json({ ok: false, error: 'Could not create KOL' }, 500);
+  }
 
   return json({
     ok: true,
