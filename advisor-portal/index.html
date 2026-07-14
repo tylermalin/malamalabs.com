@@ -8,108 +8,131 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0a0e0a; --bg-elev: #0f1410; --bg-card: #131a14;
-      --ink: #e8efe5; --ink-dim: #9ba89a; --ink-faint: #5f6c5f;
-      --line: #1f2a20; --line-bright: #2d3d2e;
-      --accent: #c4f061; --accent-dim: #8aa845; --warn: #f0a05a;
-      --serif: 'Fraunces', Georgia, serif;
-      --sans: 'Inter Tight', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, monospace;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--ink); font-family: var(--sans);
-           font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh; }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,240,97,0.05), transparent 60%);
-      pointer-events: none; z-index: 0;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    #loading, #error-state {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; min-height: 100vh; gap: 12px; position: relative; z-index: 1;
-    }
-    #loading p, #error-state p { color: var(--ink-dim); font-size: 13px; }
-    #error-state h2 { font-family: var(--serif); font-weight: 300; font-size: 22px; }
-    .spinner { width: 24px; height: 24px; border: 2px solid var(--line-bright);
-               border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    #app { display: none; position: relative; z-index: 1; }
-    .header { border-bottom: 1px solid var(--line); padding: 16px 40px;
-              display: flex; align-items: center; justify-content: space-between; }
-    .header-brand { font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
-                    text-transform: uppercase; letter-spacing: 0.1em; }
-    .header-brand span { color: var(--accent); }
-    .header-name { font-size: 13px; color: var(--ink-dim); }
-    .main { max-width: 860px; margin: 0 auto; padding: 56px 40px 100px; }
-
-    .hero { margin-bottom: 40px; }
-    .hero-eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase;
-                    letter-spacing: 0.1em; color: var(--accent-dim); margin-bottom: 10px; }
-    .hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 300;
-               line-height: 1.2; margin-bottom: 8px; }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero p { color: var(--ink-dim); font-size: 14px; max-width: 560px; }
-
-    .status-box { background: var(--bg-card); border: 1px solid var(--line);
-                  border-radius: 10px; padding: 20px 24px; margin-bottom: 40px;
-                  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .status-box.signed { border-color: rgba(196,240,97,0.25); }
-    .status-left .label { font-size: 11px; font-family: var(--mono); text-transform: uppercase;
-                     letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 6px; }
-    .status-left .state { font-family: var(--serif); font-size: 22px; font-weight: 300; }
-    .status-left .state.warn { color: var(--warn); }
-    .status-left .state.ok { color: var(--accent); }
-    .status-left .meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
-    .btn { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em;
-           padding: 12px 20px; border-radius: 8px; cursor: pointer; border: 1px solid var(--line-bright);
-           background: transparent; color: var(--ink-dim); transition: all .15s; white-space: nowrap; }
-    .btn:hover { color: var(--ink); }
-    .btn.primary { background: var(--accent); color: #0a0e0a; border-color: var(--accent); }
-    .btn.primary:hover { opacity: .88; }
-
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
-    .stat-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; }
-    .stat-card .label { font-size: 11px; font-family: var(--mono); text-transform: uppercase;
-                        letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px; }
-    .stat-card .value { font-size: 30px; font-family: var(--serif); font-weight: 300; color: var(--ink); line-height: 1; }
-    .stat-card .value.accent { color: var(--accent); }
-    .stat-card .sub { font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
-
-    .section-title { font-family: var(--serif); font-size: 20px; font-weight: 300; margin-bottom: 4px; }
-    .section-sub { font-size: 13px; color: var(--ink-faint); margin-bottom: 20px; }
-    .detail-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px;
-                   padding: 8px 24px; margin-bottom: 40px; }
-    .detail-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0;
-                  border-bottom: 1px solid var(--line); font-size: 14px; }
-    .detail-row:last-child { border-bottom: none; }
-    .detail-row .k { color: var(--ink-faint); font-family: var(--mono); font-size: 12px;
-                     text-transform: uppercase; letter-spacing: 0.05em; }
-    .detail-row .v { color: var(--ink-dim); text-align: right; }
-    @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .main { padding: 40px 20px 80px; } }
+    :root{--bg:#0a0e0a;--bg-elev:#0f1410;--bg-card:#131a14;--ink:#e8efe5;--ink-dim:#9ba89a;--ink-faint:#5f6c5f;--line:#1f2a20;--line-bright:#2d3d2e;--accent:#c4f061;--accent-dim:#8aa845;--warn:#f0a05a;--serif:'Fraunces',Georgia,serif;--sans:'Inter Tight',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+    body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(196,240,97,.05),transparent 60%);pointer-events:none;z-index:0}
+    a{color:inherit;text-decoration:none}
+    #loading,#login{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;position:relative;z-index:1;padding:24px}
+    .spinner{width:24px;height:24px;border:2px solid var(--line-bright);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    /* login */
+    .login-card{background:var(--bg-card);border:1px solid var(--line-bright);border-radius:10px;padding:40px 34px;max-width:420px;width:100%;text-align:center}
+    .login-card .eyebrow{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:14px}
+    .login-card h1{font-family:var(--serif);font-weight:300;font-size:30px;margin-bottom:8px}
+    .login-card p{color:var(--ink-dim);font-size:14px;margin-bottom:24px;line-height:1.6}
+    .login-card input{width:100%;background:var(--bg);border:1px solid var(--line-bright);border-radius:7px;padding:13px 14px;color:var(--ink);font-family:var(--mono);font-size:14px;outline:none;margin-bottom:14px}
+    .login-card input:focus{border-color:var(--accent-dim)}
+    .btn{background:var(--accent);color:#0a0e0a;border:none;border-radius:7px;font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:14px 20px;cursor:pointer;transition:opacity .15s;width:100%}
+    .btn:hover:not(:disabled){opacity:.88}.btn:disabled{opacity:.4;cursor:not-allowed}
+    .btn-ghost{background:transparent;color:var(--ink-dim);border:1px solid var(--line-bright)}
+    .btn-ghost:hover{color:var(--ink)}
+    .note{font-size:12px;color:var(--ink-faint);margin-top:14px;min-height:16px}
+    /* app */
+    #app{display:none;position:relative;z-index:1}
+    .header{border-bottom:1px solid var(--line);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
+    .header-brand{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.1em}
+    .header-brand span{color:var(--accent)}
+    .header-right{display:flex;align-items:center;gap:16px}
+    .header-name{font-size:13px;color:var(--ink-dim)}
+    .link-btn{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;background:none;border:none;cursor:pointer}
+    .link-btn:hover{color:var(--accent)}
+    .main{max-width:940px;margin:0 auto;padding:48px 40px 100px}
+    .hero{margin-bottom:32px}
+    .hero .eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-dim);margin-bottom:10px}
+    .hero h1{font-family:var(--serif);font-size:36px;font-weight:300;line-height:1.15}
+    .hero h1 em{font-style:italic;color:var(--accent)}
+    /* status banner */
+    .status-box{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .status-box.ok{border-color:rgba(196,240,97,.25)}
+    .status-box.warn{border-color:rgba(240,160,90,.3)}
+    .status-left .label{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px}
+    .status-left .state{font-family:var(--serif);font-size:22px;font-weight:300}
+    .status-left .state.ok{color:var(--accent)}.status-left .state.warn{color:var(--warn)}
+    .status-left .meta{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-top:6px}
+    .status-box .btn{width:auto;padding:12px 22px}
+    /* tabs */
+    .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:28px;flex-wrap:wrap}
+    .tab{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);background:none;border:none;border-bottom:2px solid transparent;padding:12px 14px;cursor:pointer;margin-bottom:-1px}
+    .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+    .tab:hover{color:var(--ink)}
+    .panel{display:none}.panel.active{display:block}
+    /* stat cards */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+    .stat-card{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+    .stat-card .label{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:8px}
+    .stat-card .value{font-size:28px;font-family:var(--serif);font-weight:300;line-height:1}
+    .stat-card .value.accent{color:var(--accent)}
+    .stat-card .sub{font-size:11px;color:var(--ink-faint);margin-top:6px}
+    .detail-card{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:8px 24px}
+    .detail-row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+    .detail-row:last-child{border-bottom:none}
+    .detail-row .k{color:var(--ink-faint);font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+    .detail-row .v{color:var(--ink-dim);text-align:right}
+    /* directory */
+    .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .dir-card{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px}
+    .dir-card.me{border-color:var(--accent-dim)}
+    .dir-top{display:flex;align-items:center;gap:12px}
+    .dir-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--bg-elev);border:1px solid var(--line-bright);flex-shrink:0}
+    .dir-name{font-family:var(--serif);font-size:17px;font-weight:400}
+    .dir-title{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+    .dir-bio{font-size:13px;color:var(--ink-dim);line-height:1.5}
+    .dir-links{display:flex;gap:12px;margin-top:4px}
+    .dir-links a{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+    .dir-links a:hover{color:var(--accent)}
+    .badge-lvl{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-dim);border:1px solid var(--line-bright);border-radius:10px;padding:2px 8px;align-self:flex-start}
+    /* messages */
+    .msg-list{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;max-height:420px;overflow-y:auto;padding-right:4px}
+    .msg{max-width:78%;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.5}
+    .msg .who{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:4px}
+    .msg.company{background:var(--bg-card);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:3px}
+    .msg.advisor{background:rgba(196,240,97,.08);border:1px solid rgba(196,240,97,.18);align-self:flex-end;border-bottom-right-radius:3px}
+    .msg-compose{display:flex;gap:10px}
+    .msg-compose textarea{flex:1;background:var(--bg-card);border:1px solid var(--line-bright);border-radius:8px;padding:12px 14px;color:var(--ink);font-family:var(--sans);font-size:14px;outline:none;resize:vertical;min-height:52px}
+    .msg-compose textarea:focus{border-color:var(--accent-dim)}
+    .msg-compose .btn{width:auto;padding:0 22px}
+    /* meetings */
+    .mtg{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .mtg .when{font-family:var(--mono);font-size:12px;color:var(--accent)}
+    .mtg .title{font-family:var(--serif);font-size:18px;font-weight:400}
+    .mtg .meta{font-size:12px;color:var(--ink-faint);margin-top:2px}
+    .mtg .scope{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);border:1px solid var(--line-bright);border-radius:10px;padding:2px 8px;height:fit-content}
+    .empty{color:var(--ink-faint);font-size:13px;padding:24px 0;text-align:center}
+    .section-title{font-family:var(--serif);font-size:20px;font-weight:300;margin-bottom:4px}
+    .section-sub{font-size:13px;color:var(--ink-faint);margin-bottom:20px}
+    @media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,1fr)}.main,.header{padding-left:20px;padding-right:20px}}
   </style>
 </head>
 <body>
 
-<div id="loading"><div class="spinner"></div><p>Loading your portal…</p></div>
-<div id="error-state" style="display:none">
-  <h2>Access not found</h2>
-  <p>This link may be invalid or expired. Contact tyler@malamalabs.com for a new link.</p>
+<div id="loading"><div class="spinner"></div></div>
+
+<!-- LOGIN -->
+<div id="login" style="display:none">
+  <div class="login-card">
+    <div class="eyebrow">Advisory Board</div>
+    <h1>Advisor sign-in</h1>
+    <p>Enter the email associated with your advisor profile. We'll send you a secure, one-time sign-in link — no password needed.</p>
+    <input id="login-email" type="email" placeholder="you@email.com" autocomplete="email">
+    <button class="btn" id="login-btn" onclick="requestLink()">Email me a sign-in link →</button>
+    <div class="note" id="login-note"></div>
+  </div>
 </div>
 
+<!-- APP -->
 <div id="app">
   <div class="header">
     <div class="header-brand"><span>Mālama Labs</span> / Advisor Portal</div>
-    <div class="header-name" id="hdr-name">—</div>
+    <div class="header-right">
+      <span class="header-name" id="hdr-name">—</span>
+      <button class="link-btn" onclick="logout()">Sign out</button>
+    </div>
   </div>
   <div class="main">
     <div class="hero">
-      <div class="hero-eyebrow">Advisory Board</div>
+      <div class="eyebrow">Advisory Board</div>
       <h1>Welcome,<br><em id="hero-name">—</em></h1>
-      <p>Your private advisory workspace — equity terms, agreement status, and documents. Bookmark this link; no password required.</p>
     </div>
 
     <div class="status-box" id="status-box">
@@ -118,95 +141,165 @@
         <div class="state" id="status-state">—</div>
         <div class="meta" id="status-meta"></div>
       </div>
-      <a id="agreement-btn" class="btn primary" href="#">Review &amp; Sign →</a>
+      <a class="btn" id="agreement-btn" href="#" style="display:none">Review &amp; sign →</a>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card"><div class="label">Shares</div><div class="value" id="st-shares">—</div><div class="sub">restricted common</div></div>
-      <div class="stat-card"><div class="label">Equity</div><div class="value accent" id="st-pct">—</div><div class="sub">of fully diluted</div></div>
-      <div class="stat-card"><div class="label">Purchase Price</div><div class="value" id="st-price">—</div><div class="sub" id="st-psp">—</div></div>
-      <div class="stat-card"><div class="label">Vesting</div><div class="value" id="st-vest">—</div><div class="sub" id="st-cliff">—</div></div>
+    <div class="tabs">
+      <button class="tab active" data-tab="equity" onclick="showTab('equity')">My Equity</button>
+      <button class="tab" data-tab="network" onclick="showTab('network')">Advisory Network</button>
+      <button class="tab" data-tab="messages" onclick="showTab('messages')">Messages</button>
+      <button class="tab" data-tab="meetings" onclick="showTab('meetings')">Meetings</button>
     </div>
 
-    <div class="section-title">Engagement terms</div>
-    <div class="section-sub">The details of your advisory role.</div>
-    <div class="detail-card" id="detail-card"></div>
+    <!-- EQUITY -->
+    <div class="panel active" id="panel-equity">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="label">Equity</div><div class="value accent" id="eq-pct">—</div><div class="sub">of fully diluted</div></div>
+        <div class="stat-card"><div class="label">Tier</div><div class="value" id="eq-level">—</div><div class="sub" id="eq-stage">—</div></div>
+        <div class="stat-card"><div class="label">Commitment</div><div class="value" id="eq-hours">—</div><div class="sub">per month</div></div>
+        <div class="stat-card"><div class="label">Vesting</div><div class="value" id="eq-vest">—</div><div class="sub" id="eq-cliff">—</div></div>
+      </div>
+      <div class="section-title">Your engagement</div>
+      <div class="section-sub">FAST v2 — Founder / Advisor Standard Template.</div>
+      <div class="detail-card" id="eq-detail"></div>
+    </div>
+
+    <!-- NETWORK -->
+    <div class="panel" id="panel-network">
+      <div class="section-title">Advisory network</div>
+      <div class="section-sub">Fellow advisors on the Mālama Labs advisory board.</div>
+      <div class="dir-grid" id="dir-grid"><div class="empty">Loading…</div></div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="panel" id="panel-messages">
+      <div class="section-title">Messages</div>
+      <div class="section-sub">Direct line to the Mālama Labs team.</div>
+      <div class="msg-list" id="msg-list"></div>
+      <div class="msg-compose">
+        <textarea id="msg-input" placeholder="Write a message…"></textarea>
+        <button class="btn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- MEETINGS -->
+    <div class="panel" id="panel-meetings">
+      <div class="section-title">Meetings</div>
+      <div class="section-sub">Upcoming advisory board meetings and 1:1s.</div>
+      <div id="mtg-list"><div class="empty">Loading…</div></div>
+    </div>
   </div>
 </div>
 
 <script>
-  const token = new URLSearchParams(location.search).get('token');
-  const fmtDate = (d) => new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-  const fmtUSD = (n) => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});
-  const fmtPS = (n) => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:4});
+  const fmtDate=(d)=>new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const fmtDT=(d)=>new Date(d).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+  const cap=(s)=>s?s.charAt(0).toUpperCase()+s.slice(1):'—';
+  let ME=null;
 
-  async function init() {
-    if (!token) return showError();
-    let res;
-    try {
-      const r = await fetch(`/api/advisor-portal/data?token=${encodeURIComponent(token)}`);
-      res = await r.json();
-    } catch { return showError(); }
-    if (!res.ok) return showError();
-
-    const { advisor, agreement } = res;
-    const shares = Number(advisor.shares);
-
-    document.getElementById('hdr-name').textContent = advisor.name;
-    document.getElementById('hero-name').textContent = advisor.name;
-
-    // Status
-    const box = document.getElementById('status-box');
-    const state = document.getElementById('status-state');
-    const meta = document.getElementById('status-meta');
-    const btn = document.getElementById('agreement-btn');
-    if (agreement && agreement.token) {
-      btn.href = `/advisor-agreement/?token=${agreement.token}`;
-      if (agreement.status === 'signed') {
-        box.classList.add('signed');
-        state.textContent = 'Signed';
-        state.classList.add('ok');
-        meta.textContent = agreement.signed_at ? `Signed on ${fmtDate(agreement.signed_at)}` : '';
-        btn.textContent = 'View / Print Agreement →';
-      } else {
-        state.textContent = 'Pending signature';
-        state.classList.add('warn');
-        meta.textContent = 'Review and sign to activate your advisory position.';
-        btn.textContent = 'Review & Sign →';
-      }
-    } else {
-      state.textContent = 'No agreement on file';
-      meta.textContent = 'Contact the team for your agreement link.';
-      btn.style.display = 'none';
+  async function init(){
+    if(new URLSearchParams(location.search).get('error')==='expired'){
+      show('login'); document.getElementById('login-note').textContent='That link expired or was already used. Request a new one.';
+      return;
     }
+    let r;
+    try{ r=await fetch('/api/advisor-portal/me'); }catch{ return show('login'); }
+    if(r.status===401) return show('login');
+    const d=await r.json();
+    if(!d.ok) return show('login');
+    ME=d; renderApp(d); show('app');
+  }
+  function show(id){ for(const s of ['loading','login','app']) document.getElementById(s).style.display=(s===id?(id==='app'?'block':'flex'):'none'); }
 
-    // Stats
-    document.getElementById('st-shares').textContent = shares >= 1e6 ? (shares/1e6)+'M' : shares.toLocaleString();
-    document.getElementById('st-pct').textContent = advisor.equity_pct;
-    document.getElementById('st-price').textContent = fmtUSD(advisor.purchase_price);
-    document.getElementById('st-psp').textContent = `${fmtPS(advisor.per_share_price)} / share`;
-    document.getElementById('st-vest').textContent = `${advisor.vesting_months} mo`;
-    document.getElementById('st-cliff').textContent = advisor.cliff_months > 0 ? `${advisor.cliff_months}-mo cliff` : 'no cliff';
+  async function requestLink(){
+    const email=document.getElementById('login-email').value.trim();
+    const note=document.getElementById('login-note'); const btn=document.getElementById('login-btn');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ note.style.color='var(--warn)'; note.textContent='Enter a valid email.'; return; }
+    btn.disabled=true; note.style.color='var(--ink-faint)'; note.textContent='Sending…';
+    try{
+      await fetch('/api/auth/request-link',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+      note.style.color='var(--accent)';
+      note.textContent='Check your email — if that address is on the advisory board, a sign-in link is on its way.';
+    }catch{ note.style.color='var(--warn)'; note.textContent='Something went wrong. Try again.'; }
+    btn.disabled=false;
+  }
+  async function logout(){ await fetch('/api/auth/logout',{method:'POST'}); location.href='/advisor-portal/'; }
 
-    // Detail rows
-    const rows = [
-      ['Hours / month', `${advisor.hours_per_month} hrs`],
-      ['Exclusivity', advisor.exclusive ? 'Exclusive' : 'Non-exclusive'],
-      ['Governing law', advisor.governing_law],
-      ['Dispute resolution', advisor.dispute_resolution],
-      ['Services', advisor.services],
-    ];
-    document.getElementById('detail-card').innerHTML = rows.map(([k,v]) =>
-      `<div class="detail-row"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
-
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
+  function renderApp(d){
+    const a=d.advisor, ag=d.agreement;
+    document.getElementById('hdr-name').textContent=a.name;
+    document.getElementById('hero-name').textContent=a.name;
+    // status
+    const box=document.getElementById('status-box'), st=document.getElementById('status-state'),
+          meta=document.getElementById('status-meta'), btn=document.getElementById('agreement-btn');
+    const status=ag?ag.status:'none';
+    if(status==='pending'){ box.classList.add('warn'); st.textContent='Action needed — review & sign'; st.classList.add('warn');
+      meta.textContent='Your FAST advisor agreement is ready for your review.'; btn.style.display='inline-block'; btn.href=`/advisor-agreement/?token=${ag.token}`; btn.textContent='Review & sign →'; }
+    else if(status==='signed'){ box.classList.add('ok'); st.textContent='Signed — awaiting counter-signature'; st.classList.add('ok');
+      meta.textContent=`You signed on ${fmtDate(ag.signed_at)}. Mālama Labs will counter-sign shortly.`; btn.style.display='inline-block'; btn.href=`/advisor-agreement/?token=${ag.token}`; btn.textContent='View agreement →'; }
+    else if(status==='countersigned'){ box.classList.add('ok'); st.textContent='Executed'; st.classList.add('ok');
+      meta.textContent=`Counter-signed by ${ag.company_signer_name||'Mālama Labs'}${ag.effective_date?' · effective '+fmtDate(ag.effective_date):''}.`; btn.style.display='inline-block'; btn.href=`/advisor-agreement/?token=${ag.token}`; btn.textContent='View agreement →'; }
+    else { st.textContent='No agreement on file'; meta.textContent='Contact the team for your agreement.'; }
+    // equity
+    document.getElementById('eq-pct').textContent=a.equity_pct!=null?a.equity_pct+'%':'—';
+    document.getElementById('eq-level').textContent=cap(a.performance_level);
+    document.getElementById('eq-stage').textContent=cap(a.company_stage)+' stage';
+    document.getElementById('eq-hours').textContent=(a.hours_per_month||'—')+' hrs';
+    document.getElementById('eq-vest').textContent=(a.vesting_months||24)+' mo';
+    document.getElementById('eq-cliff').textContent=(a.cliff_months||3)+'-mo cliff';
+    const rows=[['Security', a.security_type==='option'?'Option to purchase Common Stock':'Restricted Common Stock'],
+      ['Equity (fully diluted)', a.equity_pct!=null?a.equity_pct+'%':'TBD'],
+      ['Performance level', cap(a.performance_level)],['Company stage', cap(a.company_stage)],
+      ['Monthly commitment', (a.hours_per_month||'—')+' hours'],
+      ['Vesting', 'Monthly over 2 years, 3-month cliff; accelerates on sale'],
+      ['Governing law', a.governing_law||'Delaware']];
+    document.getElementById('eq-detail').innerHTML=rows.map(([k,v])=>`<div class="detail-row"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
   }
 
-  function showError() {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error-state').style.display = 'flex';
+  let loaded={network:false,messages:false,meetings:false};
+  function showTab(name){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===name));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+name));
+    if(name==='network'&&!loaded.network){loaded.network=true;loadDirectory();}
+    if(name==='messages'&&!loaded.messages){loaded.messages=true;loadMessages();}
+    if(name==='meetings'&&!loaded.meetings){loaded.meetings=true;loadMeetings();}
   }
+  async function loadDirectory(){
+    const r=await(await fetch('/api/advisor-portal/directory')).json();
+    const grid=document.getElementById('dir-grid');
+    if(!r.ok||!r.advisors.length){grid.innerHTML='<div class="empty">No advisors yet.</div>';return;}
+    grid.innerHTML=r.advisors.map(a=>`<div class="dir-card ${a.is_me?'me':''}">
+      <div class="dir-top">
+        ${a.headshot_url?`<img class="dir-avatar" src="${a.headshot_url}" alt="">`:'<div class="dir-avatar"></div>'}
+        <div><div class="dir-name">${esc(a.name)}${a.is_me?' <span style="color:var(--accent-dim);font-size:11px">(you)</span>':''}</div>
+        ${a.title?`<div class="dir-title">${esc(a.title)}</div>`:''}</div>
+      </div>
+      ${a.bio?`<div class="dir-bio">${esc(a.bio)}</div>`:''}
+      <span class="badge-lvl">${esc(a.performance_level||'advisor')}</span>
+      <div class="dir-links">${a.linkedin?`<a href="${a.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a>`:''}${a.links?`<a href="${a.links}" target="_blank" rel="noopener">Links ↗</a>`:''}</div>
+    </div>`).join('');
+  }
+  async function loadMessages(){
+    const r=await(await fetch('/api/advisor-portal/messages')).json();
+    const list=document.getElementById('msg-list');
+    if(!r.ok){list.innerHTML='<div class="empty">Could not load messages.</div>';return;}
+    if(!r.messages.length){list.innerHTML='<div class="empty">No messages yet — say hello.</div>';return;}
+    list.innerHTML=r.messages.map(m=>`<div class="msg ${m.sender}"><div class="who">${m.sender==='advisor'?'You':'Mālama Labs'} · ${fmtDT(m.created_at)}</div>${esc(m.body)}</div>`).join('');
+    list.scrollTop=list.scrollHeight;
+  }
+  async function sendMessage(){
+    const ta=document.getElementById('msg-input'); const body=ta.value.trim(); if(!body)return;
+    ta.value='';
+    await fetch('/api/advisor-portal/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({body})});
+    loadMessages();
+  }
+  async function loadMeetings(){
+    const r=await(await fetch('/api/advisor-portal/meetings')).json();
+    const list=document.getElementById('mtg-list');
+    if(!r.ok||!r.meetings.length){list.innerHTML='<div class="empty">No meetings scheduled yet.</div>';return;}
+    list.innerHTML=r.meetings.map(m=>`<div class="mtg"><div><div class="when">${fmtDT(m.scheduled_at)}</div><div class="title">${esc(m.title)}</div><div class="meta">${[m.location,m.notes].filter(Boolean).map(esc).join(' · ')}</div></div><span class="scope">${m.scope}</span></div>`).join('');
+  }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 
   init();
 </script>
