@@ -49,6 +49,11 @@ export default async function handler(req) {
   if (!row) return json({ ok: false, error: 'Agreement not found' }, 404);
   if (row.status === 'signed') return json({ ok: false, error: 'Already signed' }, 409);
 
+  // Typed name must match the KOL's name on the agreement (case/space-insensitive).
+  if (String(name).trim().toLowerCase() !== String(row.kol_name).trim().toLowerCase()) {
+    return json({ ok: false, error: 'Typed name must match the name on the agreement' }, 400);
+  }
+
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '';
 
   await sql`

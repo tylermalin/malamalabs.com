@@ -39,6 +39,9 @@ export default async function handler(req) {
   }
 
   const [year, mo] = month.split('-').map(Number);
+  if (mo < 1 || mo > 12) {
+    return json({ ok: false, error: 'month must be 01-12' }, 400);
+  }
   const start = new Date(year, mo - 1, 1).toISOString();
   const end   = new Date(year, mo, 1).toISOString(); // exclusive
 

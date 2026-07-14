@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advisor Portal — Mālama Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e0a; --bg-elev: #0f1410; --bg-card: #131a14;
+      --ink: #e8efe5; --ink-dim: #9ba89a; --ink-faint: #5f6c5f;
+      --line: #1f2a20; --line-bright: #2d3d2e;
+      --accent: #c4f061; --accent-dim: #8aa845; --warn: #f0a05a;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter Tight', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans);
+           font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,240,97,0.05), transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    #loading, #error-state {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh; gap: 12px; position: relative; z-index: 1;
+    }
+    #loading p, #error-state p { color: var(--ink-dim); font-size: 13px; }
+    #error-state h2 { font-family: var(--serif); font-weight: 300; font-size: 22px; }
+    .spinner { width: 24px; height: 24px; border: 2px solid var(--line-bright);
+               border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #app { display: none; position: relative; z-index: 1; }
+    .header { border-bottom: 1px solid var(--line); padding: 16px 40px;
+              display: flex; align-items: center; justify-content: space-between; }
+    .header-brand { font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+                    text-transform: uppercase; letter-spacing: 0.1em; }
+    .header-brand span { color: var(--accent); }
+    .header-name { font-size: 13px; color: var(--ink-dim); }
+    .main { max-width: 860px; margin: 0 auto; padding: 56px 40px 100px; }
+
+    .hero { margin-bottom: 40px; }
+    .hero-eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+                    letter-spacing: 0.1em; color: var(--accent-dim); margin-bottom: 10px; }
+    .hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 300;
+               line-height: 1.2; margin-bottom: 8px; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p { color: var(--ink-dim); font-size: 14px; max-width: 560px; }
+
+    .status-box { background: var(--bg-card); border: 1px solid var(--line);
+                  border-radius: 10px; padding: 20px 24px; margin-bottom: 40px;
+                  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .status-box.signed { border-color: rgba(196,240,97,0.25); }
+    .status-left .label { font-size: 11px; font-family: var(--mono); text-transform: uppercase;
+                     letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 6px; }
+    .status-left .state { font-family: var(--serif); font-size: 22px; font-weight: 300; }
+    .status-left .state.warn { color: var(--warn); }
+    .status-left .state.ok { color: var(--accent); }
+    .status-left .meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
+    .btn { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em;
+           padding: 12px 20px; border-radius: 8px; cursor: pointer; border: 1px solid var(--line-bright);
+           background: transparent; color: var(--ink-dim); transition: all .15s; white-space: nowrap; }
+    .btn:hover { color: var(--ink); }
+    .btn.primary { background: var(--accent); color: #0a0e0a; border-color: var(--accent); }
+    .btn.primary:hover { opacity: .88; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; }
+    .stat-card .label { font-size: 11px; font-family: var(--mono); text-transform: uppercase;
+                        letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 8px; }
+    .stat-card .value { font-size: 30px; font-family: var(--serif); font-weight: 300; color: var(--ink); line-height: 1; }
+    .stat-card .value.accent { color: var(--accent); }
+    .stat-card .sub { font-size: 11px; color: var(--ink-faint); margin-top: 6px; }
+
+    .section-title { font-family: var(--serif); font-size: 20px; font-weight: 300; margin-bottom: 4px; }
+    .section-sub { font-size: 13px; color: var(--ink-faint); margin-bottom: 20px; }
+    .detail-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px;
+                   padding: 8px 24px; margin-bottom: 40px; }
+    .detail-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0;
+                  border-bottom: 1px solid var(--line); font-size: 14px; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row .k { color: var(--ink-faint); font-family: var(--mono); font-size: 12px;
+                     text-transform: uppercase; letter-spacing: 0.05em; }
+    .detail-row .v { color: var(--ink-dim); text-align: right; }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .main { padding: 40px 20px 80px; } }
+  </style>
+</head>
+<body>
+
+<div id="loading"><div class="spinner"></div><p>Loading your portal…</p></div>
+<div id="error-state" style="display:none">
+  <h2>Access not found</h2>
+  <p>This link may be invalid or expired. Contact tyler@malamalabs.com for a new link.</p>
+</div>
+
+<div id="app">
+  <div class="header">
+    <div class="header-brand"><span>Mālama Labs</span> / Advisor Portal</div>
+    <div class="header-name" id="hdr-name">—</div>
+  </div>
+  <div class="main">
+    <div class="hero">
+      <div class="hero-eyebrow">Advisory Board</div>
+      <h1>Welcome,<br><em id="hero-name">—</em></h1>
+      <p>Your private advisory workspace — equity terms, agreement status, and documents. Bookmark this link; no password required.</p>
+    </div>
+
+    <div class="status-box" id="status-box">
+      <div class="status-left">
+        <div class="label">Agreement Status</div>
+        <div class="state" id="status-state">—</div>
+        <div class="meta" id="status-meta"></div>
+      </div>
+      <a id="agreement-btn" class="btn primary" href="#">Review &amp; Sign →</a>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><div class="label">Shares</div><div class="value" id="st-shares">—</div><div class="sub">restricted common</div></div>
+      <div class="stat-card"><div class="label">Equity</div><div class="value accent" id="st-pct">—</div><div class="sub">of fully diluted</div></div>
+      <div class="stat-card"><div class="label">Purchase Price</div><div class="value" id="st-price">—</div><div class="sub" id="st-psp">—</div></div>
+      <div class="stat-card"><div class="label">Vesting</div><div class="value" id="st-vest">—</div><div class="sub" id="st-cliff">—</div></div>
+    </div>
+
+    <div class="section-title">Engagement terms</div>
+    <div class="section-sub">The details of your advisory role.</div>
+    <div class="detail-card" id="detail-card"></div>
+  </div>
+</div>
+
+<script>
+  const token = new URLSearchParams(location.search).get('token');
+  const fmtDate = (d) => new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const fmtUSD = (n) => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const fmtPS = (n) => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:4});
+
+  async function init() {
+    if (!token) return showError();
+    let res;
+    try {
+      const r = await fetch(`/api/advisor-portal/data?token=${encodeURIComponent(token)}`);
+      res = await r.json();
+    } catch { return showError(); }
+    if (!res.ok) return showError();
+
+    const { advisor, agreement } = res;
+    const shares = Number(advisor.shares);
+
+    document.getElementById('hdr-name').textContent = advisor.name;
+    document.getElementById('hero-name').textContent = advisor.name;
+
+    // Status
+    const box = document.getElementById('status-box');
+    const state = document.getElementById('status-state');
+    const meta = document.getElementById('status-meta');
+    const btn = document.getElementById('agreement-btn');
+    if (agreement && agreement.token) {
+      btn.href = `/advisor-agreement/?token=${agreement.token}`;
+      if (agreement.status === 'signed') {
+        box.classList.add('signed');
+        state.textContent = 'Signed';
+        state.classList.add('ok');
+        meta.textContent = agreement.signed_at ? `Signed on ${fmtDate(agreement.signed_at)}` : '';
+        btn.textContent = 'View / Print Agreement →';
+      } else {
+        state.textContent = 'Pending signature';
+        state.classList.add('warn');
+        meta.textContent = 'Review and sign to activate your advisory position.';
+        btn.textContent = 'Review & Sign →';
+      }
+    } else {
+      state.textContent = 'No agreement on file';
+      meta.textContent = 'Contact the team for your agreement link.';
+      btn.style.display = 'none';
+    }
+
+    // Stats
+    document.getElementById('st-shares').textContent = shares >= 1e6 ? (shares/1e6)+'M' : shares.toLocaleString();
+    document.getElementById('st-pct').textContent = advisor.equity_pct;
+    document.getElementById('st-price').textContent = fmtUSD(advisor.purchase_price);
+    document.getElementById('st-psp').textContent = `${fmtPS(advisor.per_share_price)} / share`;
+    document.getElementById('st-vest').textContent = `${advisor.vesting_months} mo`;
+    document.getElementById('st-cliff').textContent = advisor.cliff_months > 0 ? `${advisor.cliff_months}-mo cliff` : 'no cliff';
+
+    // Detail rows
+    const rows = [
+      ['Hours / month', `${advisor.hours_per_month} hrs`],
+      ['Exclusivity', advisor.exclusive ? 'Exclusive' : 'Non-exclusive'],
+      ['Governing law', advisor.governing_law],
+      ['Dispute resolution', advisor.dispute_resolution],
+      ['Services', advisor.services],
+    ];
+    document.getElementById('detail-card').innerHTML = rows.map(([k,v]) =>
+      `<div class="detail-row"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+
+  function showError() {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error-state').style.display = 'flex';
+  }
+
+  init();
+</script>
+</body>
+</html>

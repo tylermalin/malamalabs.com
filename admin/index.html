@@ -649,8 +649,8 @@
     document.getElementById('ov-conv').textContent = totalConv;
     document.getElementById('ov-owed').textContent = `$${totalOwed.toFixed(2)}`;
 
-    // Fetch click counts via KOL stats (we'll get from the table data for now)
-    document.getElementById('ov-clicks').textContent = '—';
+    const totalClicks = kols.reduce((s, k) => s + Number(k.total_clicks || 0), 0);
+    document.getElementById('ov-clicks').textContent = totalClicks.toLocaleString();
 
     // Table
     const wrap = document.getElementById('kol-table-wrap');
