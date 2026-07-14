@@ -403,6 +403,7 @@
 
     <div class="tabs">
       <button class="tab-btn active" id="tab-btn-kol" onclick="showTab('kol')">KOL Partners</button>
+      <button class="tab-btn" id="tab-btn-adv" onclick="showTab('adv')">Advisors</button>
       <button class="tab-btn" id="tab-btn-hex" onclick="showTab('hex')">Hex Builder</button>
     </div>
 
@@ -495,6 +496,75 @@
     </div>
 
     </div><!-- /tab-kol -->
+
+    <div id="tab-adv" style="display:none">
+      <!-- Equity pool -->
+      <div class="overview" style="grid-template-columns:repeat(4,1fr)">
+        <div class="stat-card"><div class="label">Advisory Pool</div><div class="value" id="adv-pool-total">—</div><div class="sub">% fully diluted</div></div>
+        <div class="stat-card"><div class="label">Granted</div><div class="value" id="adv-pool-granted">—</div><div class="sub">to active advisors</div></div>
+        <div class="stat-card"><div class="label">Remaining</div><div class="value accent" id="adv-pool-remaining">—</div><div class="sub">available to offer</div></div>
+        <div class="stat-card"><div class="label">Set pool size</div>
+          <div style="display:flex;gap:6px;margin-top:6px"><input type="number" id="adv-pool-input" step="0.05" min="0" max="100" style="width:80px" placeholder="%"><button class="secondary" style="padding:8px 12px" onclick="advSavePool()">Save</button></div>
+        </div>
+      </div>
+
+      <!-- Create advisory agreement -->
+      <div class="section-header"><h2 class="section-title">Create Advisory Agreement</h2></div>
+      <div class="form-card">
+        <form id="adv-form" onsubmit="advCreate(event)">
+          <div class="form-grid">
+            <div class="form-group"><label>Name *</label><input name="name" placeholder="Jane Advisor" required></div>
+            <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="jane@example.com" required></div>
+            <div class="form-group"><label>Title / Role</label><input name="title" placeholder="Former CMO, Acme"></div>
+            <div class="form-group"><label>LinkedIn</label><input name="linkedin" placeholder="https://linkedin.com/in/…"></div>
+            <div class="form-group"><label>Other links</label><input name="links" placeholder="https://…"></div>
+            <div class="form-group"><label>Company Stage *</label>
+              <select name="company_stage" required onchange="advPreview()">
+                <option value="">Select…</option><option value="idea">Idea</option><option value="startup">Startup</option><option value="growth">Growth</option>
+              </select></div>
+            <div class="form-group"><label>Performance Level *</label>
+              <select name="performance_level" required onchange="advPreview()">
+                <option value="">Select…</option><option value="standard">Standard (5 hrs/mo)</option><option value="strategic">Strategic (10 hrs/mo)</option><option value="expert">Expert (20 hrs/mo)</option>
+              </select></div>
+            <div class="form-group"><label>Type of Security</label>
+              <select name="security_type"><option value="restricted">Restricted Common Stock</option><option value="option">Option to purchase Common</option></select></div>
+            <div class="form-group" style="flex:1 1 100%"><label>Bio</label><input name="bio" placeholder="One-line background shown in the advisor network"></div>
+            <div class="form-group" style="flex:1 1 100%"><label>Headshot</label>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <input type="file" id="adv-headshot-file" accept="image/*" onchange="advUpload()" style="font-size:12px">
+                <span style="color:var(--ink-faint);font-size:12px">or paste URL:</span>
+                <input name="headshot_url" id="adv-headshot-url" placeholder="https://…image.jpg" style="flex:1;min-width:200px">
+                <span id="adv-upload-note" style="font-size:11px;color:var(--ink-faint)"></span>
+              </div></div>
+          </div>
+          <div style="background:var(--bg-elev);border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:8px 0;font-family:var(--mono);font-size:12px;color:var(--ink-dim)">
+            FAST equity offer: <strong id="adv-preview" style="color:var(--accent)">—</strong> <span id="adv-preview-note" style="color:var(--ink-faint)"></span>
+          </div>
+          <div class="form-actions"><button type="submit" id="adv-add-btn">Create Advisor + Agreement</button></div>
+        </form>
+        <div id="adv-add-result" style="display:none;margin-top:14px"></div>
+      </div>
+
+      <!-- Advisor list -->
+      <div class="section-header"><h2 class="section-title">Advisors</h2></div>
+      <div class="table-wrap"><table id="adv-table"><thead><tr>
+        <th>Name</th><th>Tier / Stage</th><th>Equity</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="adv-tbody"><tr><td colspan="5" style="color:var(--ink-faint)">Loading…</td></tr></tbody></table></div>
+
+      <!-- Meetings -->
+      <div class="section-header"><h2 class="section-title">Advisory Meetings</h2></div>
+      <div class="form-card">
+        <form id="adv-mtg-form" onsubmit="advCreateMeeting(event)"><div class="form-grid">
+          <div class="form-group"><label>Title *</label><input name="title" placeholder="Q3 Advisory Board Meeting" required></div>
+          <div class="form-group"><label>When *</label><input type="datetime-local" name="scheduled_at" required></div>
+          <div class="form-group"><label>Advisor</label><select name="advisor_id" id="adv-mtg-advisor"><option value="">Whole network</option></select></div>
+          <div class="form-group"><label>Location / Link</label><input name="location" placeholder="Zoom / address"></div>
+          <div class="form-group" style="flex:1 1 100%"><label>Notes</label><input name="notes" placeholder="Agenda"></div>
+        </div><div class="form-actions"><button type="submit">Schedule Meeting</button></div></form>
+        <div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>When</th><th>Title</th><th>Who</th><th></th></tr></thead>
+          <tbody id="adv-mtg-tbody"></tbody></table></div>
+      </div>
+    </div><!-- /tab-adv -->
 
     <div id="tab-hex" style="display:none">
       <div class="section-header">
@@ -791,10 +861,11 @@
 
   // ── Tabs ─────────────────────────────────────────────────────
   function showTab(tab) {
-    document.getElementById('tab-kol').style.display = tab === 'kol' ? 'block' : 'none';
-    document.getElementById('tab-hex').style.display = tab === 'hex' ? 'block' : 'none';
-    document.getElementById('tab-btn-kol').classList.toggle('active', tab === 'kol');
-    document.getElementById('tab-btn-hex').classList.toggle('active', tab === 'hex');
+    for (const t of ['kol', 'adv', 'hex']) {
+      document.getElementById('tab-' + t).style.display = tab === t ? 'block' : 'none';
+      document.getElementById('tab-btn-' + t).classList.toggle('active', tab === t);
+    }
+    if (tab === 'adv' && !window.__advLoaded) { window.__advLoaded = true; advInit(); }
   }
 
   // ── Hex Builder ──────────────────────────────────────────────
@@ -950,6 +1021,152 @@ Best,
       if (ok) showApp();
       else { sessionStorage.removeItem('admin_secret'); ADMIN_SECRET = ''; }
     });
+  }
+
+  // ── Advisors ─────────────────────────────────────────────────
+  const ADV_EQUITY = { standard:{idea:0.25,startup:0.20,growth:0.15}, strategic:{idea:0.50,startup:0.40,growth:0.30}, expert:{idea:1.00,startup:0.80,growth:0.60} };
+  let ADV_POOL = { remaining_pct: 0 };
+  const advEsc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const advCap = s => s?s.charAt(0).toUpperCase()+s.slice(1):'—';
+  const advH = () => ({ Authorization:`Bearer ${ADMIN_SECRET}` });
+  const advDT = d => new Date(d).toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+
+  async function advInit(){ await Promise.all([advLoadPool(), advLoadAdvisors(), advLoadMeetings()]); }
+
+  async function advLoadPool(){
+    const d = await (await fetch('/api/admin/advisor-pool',{headers:advH()})).json();
+    if(!d.ok) return; ADV_POOL = d.pool;
+    document.getElementById('adv-pool-total').textContent = d.pool.total_pct+'%';
+    document.getElementById('adv-pool-granted').textContent = d.pool.granted_pct+'%';
+    document.getElementById('adv-pool-remaining').textContent = d.pool.remaining_pct+'%';
+    document.getElementById('adv-pool-input').value = d.pool.total_pct;
+    advPreview();
+  }
+  async function advSavePool(){
+    const total = Number(document.getElementById('adv-pool-input').value);
+    const d = await (await fetch('/api/admin/advisor-pool',{method:'PATCH',headers:{...advH(),'Content-Type':'application/json'},body:JSON.stringify({total_pct:total})})).json();
+    if(!d.ok) return alert(d.error||'Failed'); advLoadPool();
+  }
+
+  function advPreview(){
+    const f = document.getElementById('adv-form');
+    const lvl = f.performance_level.value, stage = f.company_stage.value;
+    const el = document.getElementById('adv-preview'), note = document.getElementById('adv-preview-note');
+    if(!lvl||!stage){ el.textContent='—'; note.textContent='select stage + level'; return; }
+    const pct = ADV_EQUITY[lvl][stage];
+    el.textContent = pct+'% of fully diluted';
+    const over = pct > ADV_POOL.remaining_pct + 1e-9;
+    note.textContent = over ? `⚠ exceeds remaining pool (${ADV_POOL.remaining_pct}%)` : `· ${ADV_POOL.remaining_pct}% remaining in pool`;
+    note.style.color = over ? 'var(--warn)' : 'var(--ink-faint)';
+  }
+
+  async function advUpload(){
+    const input = document.getElementById('adv-headshot-file'); const note = document.getElementById('adv-upload-note');
+    const file = input.files[0]; if(!file) return;
+    note.style.color='var(--ink-faint)'; note.textContent='Uploading…';
+    try{
+      const r = await fetch(`/api/admin/upload?filename=${encodeURIComponent(file.name)}`,{method:'POST',headers:{...advH(),'Content-Type':file.type},body:file});
+      const d = await r.json();
+      if(d.ok){ document.getElementById('adv-headshot-url').value = d.url; note.style.color='var(--accent)'; note.textContent='Uploaded ✓'; }
+      else { note.style.color='var(--warn)'; note.textContent = d.message || d.error || 'Upload failed — paste a URL instead.'; input.value=''; }
+    }catch{ note.style.color='var(--warn)'; note.textContent='Upload failed — paste a URL instead.'; input.value=''; }
+  }
+
+  async function advCreate(e){
+    e.preventDefault();
+    const btn = document.getElementById('adv-add-btn'); btn.disabled=true;
+    const f = e.target; const body = Object.fromEntries(new FormData(f).entries());
+    const res = document.getElementById('adv-add-result');
+    try{
+      const d = await (await fetch('/api/admin/advisors',{method:'POST',headers:{...advH(),'Content-Type':'application/json'},body:JSON.stringify(body)})).json();
+      if(!d.ok) throw new Error(d.error);
+      res.style.display='block';
+      res.innerHTML = `<div style="background:var(--bg-elev);border:1px solid var(--line);border-radius:6px;padding:14px 16px">
+        <div style="color:var(--accent);font-family:var(--mono);font-size:12px;margin-bottom:8px">✓ Advisor created — ${d.equity_pct}% offered</div>
+        <div style="font-size:12px;color:var(--ink-dim)">Agreement link (advisor signs in to review &amp; sign):</div>
+        <div style="display:flex;gap:8px;margin-top:6px"><input readonly value="${d.agreement_url}" style="flex:1;font-family:var(--mono);font-size:12px" onclick="this.select()"><button class="secondary" style="padding:8px 12px" onclick="navigator.clipboard.writeText('${d.agreement_url}')">Copy</button></div></div>`;
+      f.reset(); document.getElementById('adv-headshot-url').value=''; document.getElementById('adv-upload-note').textContent='';
+      advPreview(); advLoadPool(); advLoadAdvisors(); advLoadMeetings();
+    }catch(err){ res.style.display='block'; res.innerHTML=`<div style="color:var(--warn);font-size:13px">${advEsc(err.message)}</div>`; }
+    btn.disabled=false;
+  }
+
+  async function advLoadAdvisors(){
+    const d = await (await fetch('/api/admin/advisors',{headers:advH()})).json();
+    const tb = document.getElementById('adv-tbody'); const sel = document.getElementById('adv-mtg-advisor');
+    if(!d.ok){ tb.innerHTML='<tr><td colspan="5" style="color:var(--warn)">Failed to load</td></tr>'; return; }
+    if(d.pool){ ADV_POOL=d.pool; }
+    if(!d.advisors.length){ tb.innerHTML='<tr><td colspan="5" style="color:var(--ink-faint)">No advisors yet.</td></tr>'; return; }
+    sel.innerHTML = '<option value="">Whole network</option>' + d.advisors.map(a=>`<option value="${a.id}">${advEsc(a.name)}</option>`).join('');
+    tb.innerHTML = d.advisors.map(a=>{
+      const st = a.agreement_status||'—';
+      const pill = st==='countersigned'?'<span class="pill">executed</span>':st==='signed'?'<span class="pill" style="border-color:var(--accent-dim);color:var(--accent)">signed</span>':`<span class="pill inactive">${st}</span>`;
+      const acts = [];
+      if(a.agreement_token) acts.push(`<button class="secondary" style="padding:6px 10px;font-size:11px" onclick="navigator.clipboard.writeText('https://malamalabs.com/advisor-agreement/?token=${a.agreement_token}')">Copy link</button>`);
+      if(st==='signed') acts.push(`<button class="secondary" style="padding:6px 10px;font-size:11px;border-color:var(--accent-dim);color:var(--accent)" onclick="advCountersign('${a.agreement_token}','${advEsc(a.name)}')">Counter-sign</button>`);
+      acts.push(`<button class="secondary" style="padding:6px 10px;font-size:11px" onclick="advOpenMessages(${a.id},'${advEsc(a.name)}')">Message</button>`);
+      return `<tr><td>${advEsc(a.name)}<div style="font-size:11px;color:var(--ink-faint)">${advEsc(a.email)}</div></td>
+        <td>${advCap(a.performance_level)} · ${advCap(a.company_stage)}</td>
+        <td>${a.equity_pct!=null?a.equity_pct+'%':'—'}</td>
+        <td>${pill}</td>
+        <td><div style="display:flex;gap:6px;flex-wrap:wrap">${acts.join('')}</div></td></tr>`;
+    }).join('');
+  }
+
+  async function advCountersign(token, name){
+    const signer = prompt(`Counter-sign ${name}'s FAST agreement.\nCompany signer name:`, 'Tyler Malin');
+    if(!signer) return;
+    const title = prompt('Company signer title:', 'CEO') || '';
+    const d = await (await fetch('/api/admin/advisor-countersign',{method:'POST',headers:{...advH(),'Content-Type':'application/json'},body:JSON.stringify({agreement_token:token,company_signer_name:signer,company_signer_title:title})})).json();
+    if(!d.ok) return alert(d.error||'Failed'); advLoadAdvisors();
+  }
+
+  // Lightweight message drawer
+  async function advOpenMessages(advisorId, name){
+    let ov = document.getElementById('adv-msg-ov');
+    if(!ov){ ov=document.createElement('div'); ov.id='adv-msg-ov';
+      ov.style.cssText='position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:24px';
+      ov.onclick=e=>{ if(e.target===ov) ov.style.display='none'; }; document.body.appendChild(ov); }
+    ov.style.display='flex';
+    window.__advMsgName = name;
+    ov.innerHTML=`<div style="background:var(--bg-card);border:1px solid var(--line-bright);border-radius:10px;width:100%;max-width:520px;padding:24px;max-height:86vh;display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div style="font-family:var(--serif);font-size:20px">Messages · ${advEsc(name)}</div><button class="secondary" style="padding:6px 10px" onclick="document.getElementById('adv-msg-ov').style.display='none'">Close</button></div>
+      <div id="adv-msg-thread" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px;min-height:120px"></div>
+      <div style="display:flex;gap:8px"><textarea id="adv-msg-text" placeholder="Reply…" style="flex:1;background:var(--bg);border:1px solid var(--line-bright);border-radius:7px;padding:10px;color:var(--ink);font-family:var(--sans);font-size:14px;min-height:50px"></textarea><button onclick="advSendMessage(${advisorId})">Send</button></div></div>`;
+    advLoadThread(advisorId);
+  }
+  async function advLoadThread(advisorId){
+    const d = await (await fetch(`/api/admin/advisor-messages?advisor_id=${advisorId}`,{headers:advH()})).json();
+    const t = document.getElementById('adv-msg-thread'); if(!t) return;
+    if(!d.ok||!d.messages.length){ t.innerHTML='<div style="color:var(--ink-faint);font-size:13px;text-align:center;padding:20px">No messages yet.</div>'; return; }
+    t.innerHTML = d.messages.map(m=>`<div style="align-self:${m.sender==='company'?'flex-end':'flex-start'};max-width:80%;background:${m.sender==='company'?'rgba(196,240,97,.08)':'var(--bg-elev)'};border:1px solid ${m.sender==='company'?'rgba(196,240,97,.18)':'var(--line)'};border-radius:10px;padding:10px 14px;font-size:14px">
+      <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px">${m.sender==='company'?'You (Mālama)':advEsc(window.__advMsgName||'Advisor')} · ${advDT(m.created_at)}</div>${advEsc(m.body)}</div>`).join('');
+    t.scrollTop=t.scrollHeight;
+    window.__advMsgAdvisor = advisorId;
+  }
+  async function advSendMessage(advisorId){
+    const ta=document.getElementById('adv-msg-text'); const body=ta.value.trim(); if(!body) return; ta.value='';
+    await fetch('/api/admin/advisor-messages',{method:'POST',headers:{...advH(),'Content-Type':'application/json'},body:JSON.stringify({advisor_id:advisorId,body})});
+    advLoadThread(advisorId);
+  }
+
+  async function advLoadMeetings(){
+    const d = await (await fetch('/api/admin/advisor-meetings',{headers:advH()})).json();
+    const tb = document.getElementById('adv-mtg-tbody'); if(!d.ok) return;
+    if(!d.meetings.length){ tb.innerHTML='<tr><td colspan="4" style="color:var(--ink-faint)">No meetings scheduled.</td></tr>'; return; }
+    tb.innerHTML = d.meetings.map(m=>`<tr><td>${advDT(m.scheduled_at)}</td><td>${advEsc(m.title)}</td><td>${m.advisor_id?advEsc(m.advisor_name||'advisor'):'Whole network'}</td>
+      <td><button class="secondary" style="padding:5px 9px;font-size:11px" onclick="advDeleteMeeting(${m.id})">Delete</button></td></tr>`).join('');
+  }
+  async function advCreateMeeting(e){
+    e.preventDefault(); const f=e.target; const b=Object.fromEntries(new FormData(f).entries());
+    if(b.scheduled_at) b.scheduled_at = new Date(b.scheduled_at).toISOString();
+    if(!b.advisor_id) delete b.advisor_id;
+    const d = await (await fetch('/api/admin/advisor-meetings',{method:'POST',headers:{...advH(),'Content-Type':'application/json'},body:JSON.stringify(b)})).json();
+    if(!d.ok) return alert(d.error||'Failed'); f.reset(); advLoadMeetings();
+  }
+  async function advDeleteMeeting(id){
+    if(!confirm('Delete this meeting?')) return;
+    await fetch(`/api/admin/advisor-meetings?id=${id}`,{method:'DELETE',headers:advH()}); advLoadMeetings();
   }
 </script>
 </body>

@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
+    "@vercel/blob": "^2.6.1",
     "h3-js": "^4.5.0"
   }
 }
